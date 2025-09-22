@@ -232,6 +232,51 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Our Credentials Section */}
+    {/* Our Credentials Section */}
+<section className="py-20 bg-muted/50">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-extrabold mb-6 text-gray-800 tracking-tight">
+        Our Credentials
+      </h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Precisely covering electrical fields, as an act of local success by providing most of the major industries,
+        firms and projects located all around the country, we have been involved over the years in project planning
+        and turnkey electrical installations.
+      </p>
+    </div>
+
+    <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-2xl p-10 border border-gray-200">
+      <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-light">
+        <p>
+          This enables our customers to turn over a concept to us and walk away from the project with the confidence
+          that it will be completed in a time and cost-efficient manner.
+        </p>
+        <p>
+          We are proficient in the execution of either pre-designed or design &amp; build projects. Our field of
+          experience covers all types of Electrical installation/Security services in projects.
+        </p>
+        <p>
+          This can only be achieved with good communication and understanding, and the correct use of contract
+          management tools: Reporting, Progress evaluation, and an imaginative flexible approach to solving
+          problems.
+        </p>
+        <p>
+          Now we are providing one step solution to all turnkey projects covering the electrical field including
+          designing and setting up of interiors.
+        </p>
+        <p>
+          We also deal in Advance Lightning Arrestors, Building Intelligence Systems and Specialized Earthing
+          Solutions. Power Equations have a superior track record of successful projects in the energy industry and a
+          highly experienced management team.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
       {/* Why Choose Us */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
