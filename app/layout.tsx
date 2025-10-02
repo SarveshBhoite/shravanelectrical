@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description:
     "Leading electrical contractors in Maharashtra providing solar installations, electrical wiring, and industrial solutions with 15+ years of experience.",
   generator: "v0.app",
+  icons:"/logo.png"
 }
 
 export default function RootLayout({
