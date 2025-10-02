@@ -1,10 +1,9 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Zap, Sun, Settings, Cable, Building } from "lucide-react"
+import { ChevronLeft, ChevronRight, Zap, Sun, Settings, Cable, Building, ArrowRight, Users } from "lucide-react"
 import { mockServices } from "@/lib/mock-data"
-import Image from "next/image"
 
 const serviceIcons = [
   Zap, // Electrical Contracting
@@ -15,101 +14,154 @@ const serviceIcons = [
 ]
 
 export function ServicesSection() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  const nextService = () => {
+    if (!isAnimating) {
+      setIsAnimating(true)
+      setActiveIndex((prev) => (prev + 1) % mockServices.length)
+      setTimeout(() => setIsAnimating(false), 800)
+    }
+  }
+
+  const prevService = () => {
+    if (!isAnimating) {
+      setIsAnimating(true)
+      setActiveIndex((prev) => (prev - 1 + mockServices.length) % mockServices.length)
+      setTimeout(() => setIsAnimating(false), 800)
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(nextService, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const activeService = mockServices[activeIndex]
+  const ActiveIcon = serviceIcons[activeIndex] || Zap
+
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-yellow-50 relative overflow-hidden">
-      {/* Background animations */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-float"></div>
-      <div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-yellow-200 rounded-full opacity-20 animate-float"
-        style={{ animationDelay: "1s" }}
-      ></div>
+    <section id="services" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-background via-blue-50 to-white">
+      {/* Subtle Light Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:50px_50px] opacity-30" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Heading */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-blue-900">
-            Our Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto text-pretty">
-            Comprehensive electrical solutions tailored to meet your specific needs
-          </p>
+      {/* Dynamic Background Images with Black-to-Grey Shadow from Complete Left Side */}
+      {mockServices.map((service, index) => (
+        <div
+          key={service.id}
+          className={`absolute inset-0 transition-all duration-1000 ${
+            index === activeIndex ? "opacity-100 scale-100" : "opacity-0 scale-110"
+          }`}
+        >
+          <img
+            src={service.image || "/blog2.jpeg?height=1080&width=1920&q=90"}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,1)_0%,rgba(128,128,128,0.3)_40%,transparent_60%)]" />
         </div>
+      ))}
 
-        {/* Services List */}
-        <div className="space-y-20">
-          {mockServices.map((service, index) => {
-            const IconComponent = serviceIcons[index] || Zap
-            return (
-              <div
-                key={service.id}
-                className={`flex flex-col lg:flex-row items-center gap-12 ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Image Section */}
-                <div
-                  className={`w-full lg:w-1/2 ${
-                    index % 2 === 0 ? "animate-slide-in-left" : "animate-slide-in-right"
-                  }`}
-                >
-                  <div className="relative w-full h-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl hover-lift group">
-                    <Image
-                      src={service.image || "/blog2.jpeg"}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-                    <div className="absolute top-6 right-6 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                      <IconComponent className="h-6 w-6 text-blue-600" />
-                    </div>
-                  </div>
-                </div>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center">
+        <div className="max-w-3xl">
+          <div
+            className={`transition-all duration-800 ${
+              isAnimating ? "opacity-0 translate-y-10" : "opacity-100 translate-y-0"
+            }`}
+          >
+            <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-white text-sm font-semibold mb-6 animate-pulse-glow">
+              {activeService.category || "Electrical Solutions"}
+            </span>
 
-                {/* Info Section */}
-                <div
-                  className={`w-full lg:w-1/2 ${
-                    index % 2 === 0 ? "animate-slide-in-right" : "animate-slide-in-left"
-                  }`}
-                >
-                  <Card className="border-none shadow-2xl bg-white/80 backdrop-blur-sm hover-lift">
-                    <CardContent className="p-8">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                          <IconComponent className="h-6 w-6 text-blue-600" />
-                        </div>
-                        <h3 className="text-3xl font-bold text-blue-900">{service.title}</h3>
-                      </div>
+            <h2 className="text-4xl md:text-6xl font-['Poppins'] font-bold text-white mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              {activeService.title}
+            </h2>
 
-                      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
+            <p className="text-lg text-gray-200 mb-8 leading-relaxed" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
+              {activeService.description}
+            </p>
 
-                      <ul className="space-y-3 mb-8">
-                        {service.features.map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center animate-fade-in-up"
-                            style={{ animationDelay: `${featureIndex * 0.1}s` }}
-                          >
-                            <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3 animate-pulse"></div>
-                            <span className="text-gray-700 font-medium">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 hover-glow">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </div>
+            <div className="flex flex-wrap gap-6 mb-12">
+              <div className="flex items-center gap-3 text-gray-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
+                <ActiveIcon className="w-5 h-5 text-primary" />
+                <span>Category: {activeService.category || "Service"}</span>
               </div>
-            )
-          })}
+              <div className="flex items-center gap-3 text-gray-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
+                <Settings className="w-5 h-5 text-primary" />
+                <span>Scope: {activeService.features[0] || "Comprehensive"}</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
+                <Users className="w-5 h-5 text-primary" />
+                <span>Expertise: {activeService.features[1] || "Specialized Team"}</span>
+              </div>
+            </div>
+
+            <Button
+              className="px-8 py-4 bg-primary text-white rounded-lg font-semibold hover-lift hover-glow transition-all duration-300 shadow-md"
+              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
+            >
+              Learn More
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center gap-4 mt-12">
+            <button
+              onClick={prevService}
+              className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-110"
+              disabled={isAnimating}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <div className="flex gap-2">
+              {mockServices.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (!isAnimating) {
+                      setIsAnimating(true)
+                      setActiveIndex(index)
+                      setTimeout(() => setIsAnimating(false), 800)
+                    }
+                  }}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    index === activeIndex ? "w-12 bg-primary" : "w-8 bg-border hover:bg-primary/50"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextService}
+              className="w-14 h-14 rounded-full bg-card border border-border flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-110"
+              disabled={isAnimating}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Service Counter */}
+      <div className="absolute bottom-8 right-8 z-10">
+        <div className="text-right">
+          <div className="text-6xl font-bold text-foreground/20">
+            {String(activeIndex + 1).padStart(2, "0")}
+          </div>
+          <div className="text-xl text-muted-foreground/40">
+            / {String(mockServices.length).padStart(2, "0")}
+          </div>
+        </div>
+      </div>
+
+      {/* Font Import for Poppins */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      `}</style>
     </section>
   )
 }

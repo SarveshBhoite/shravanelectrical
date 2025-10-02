@@ -1,132 +1,124 @@
-"use client"; // MUST be the very first line
+"use client"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Award, Users, Zap, ShieldCheck } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { Award, Users, Zap, ArrowRight, Phone } from "lucide-react"
 
 export function CompanyIntro() {
-  const [activeId, setActiveId] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const [counts, setCounts] = useState({
+    projects: 0,
+    years: 0,
+    clients: 0,
+  })
 
-  const coreServices = [
-    {
-      id: 1,
-      icon: <Award className="h-8 w-8 text-blue-600" />,
-      title: "Infrastructure",
-      short: "Well-furnished office & central stores boosting performance.",
-      details:
-        "Situated in a well-furnished office catering to all needs of office management, along with the central stores supplying to all the sites, add to the overall performance.",
-      bg: "bg-blue-100",
-    },
-    {
-      id: 2,
-      icon: <Users className="h-8 w-8 text-yellow-600" />,
-      title: "Customer Satisfaction",
-      short: "Customer-focused, open & honest relationships.",
-      details:
-        "Constantly working to improve our quality service in order to maintain high standards. We value customer feedback, aim for repeat business, and operate with transparency.",
-      bg: "bg-yellow-100",
-    },
-    {
-      id: 3,
-      icon: <Zap className="h-8 w-8 text-blue-600" />,
-      title: "Quality Assurance",
-      short: "Turnkey projects with continual quality improvements.",
-      details:
-        "Specialized in internal & external electrification projects. Ensuring effective operations with a robust Quality Management System, focusing on efficiency and client needs.",
-      bg: "bg-blue-100",
-    },
-    {
-      id: 4,
-      icon: <ShieldCheck className="h-8 w-8 text-green-600" />,
-      title: "Health & Safety",
-      short: "Safe & healthy work environment for all.",
-      details:
-        "We comply with health & safety acts by maintaining safe environments, preventing accidents, training staff, and ensuring welfare for employees and partners.",
-      bg: "bg-green-100",
-    },
-  ];
+  useEffect(() => {
+    setIsVisible(true)
+
+    // Animate counters
+    const targets = { projects: 500, years: 25, clients: 100 }
+    const duration = 2000
+    const steps = 60
+    const interval = duration / steps
+
+    let step = 0
+    const timer = setInterval(() => {
+      step++
+      const progress = step / steps
+      setCounts({
+        projects: Math.floor(targets.projects * progress),
+        years: Math.floor(targets.years * progress),
+        clients: Math.floor(targets.clients * progress),
+      })
+      if (step >= steps) clearInterval(timer)
+    }, interval)
+
+    return () => clearInterval(timer)
+  }, [])
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6 leading-tight">
-                  Powering Progress with <span className="text-yellow-500">Excellence</span>
-                </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  SHRAVAN Electrical Contractor in Vazirabad Nanded, a leading provider of comprehensive contracting and building services, specializes in delivering high-quality solutions that cater to Government Licensed Electrical Contractors projects. The company's experienced professionals are dedicated to ensuring that every project, regardless of size, is executed with precision and excellence.
-                </p>
-              </div>
+    <section className="py-10 relative overflow-hidden bg-gradient-to-br from-primary/20 via-background to-accent/20">
+      {/* Subtle Light Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:50px_50px] opacity-30" />
 
-              {/* Core Services Cards */}
-              <div className="grid sm:grid-cols-2 gap-6">
-                {coreServices.map((service) => (
-                  <div
-                    key={service.id}
-                    onMouseEnter={() => setActiveId(service.id)}
-                    onMouseLeave={() => setActiveId(null)}
-                    className="cursor-pointer p-6 text-center border border-gray-200 rounded-xl shadow-md hover:shadow-lg bg-white transition-all"
-                  >
-                    <div className={`w-16 h-16 ${service.bg} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                      {service.icon}
-                    </div>
-                    <h3 className="font-semibold text-blue-900 mb-2">{service.title}</h3>
-                    <p className="text-sm text-gray-600">{service.short}</p>
-
-                    {/* Animated Details */}
-                    <AnimatePresence>
-                      {activeId === service.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.4 }}
-                          className="mt-3 text-gray-700 text-sm leading-relaxed"
-                        >
-                          {service.details}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                  Get Quote <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white bg-transparent">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call Now
-                </Button>
-              </div>
+      <div className="container mx-auto px-6 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Company Summary */}
+          <div
+            className={`space-y-6 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+            }`}
+          >
+            <div className="inline-block">
+              <span className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-semibold animate-pulse-glow">
+                Leading Electrical Contractor in Nanded
+              </span>
             </div>
 
-            {/* Right Image */}
-            <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/blog1.jpeg" alt="Shravan Electrical team at work" className="w-full h-full object-cover" />
-              </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+              Powering <span className="bg-gradient-to-r from-primary via-secondary to-yellow-500 bg-clip-text text-transparent animate-gradient">Excellence</span> in Electrical Solutions
+            </h2>
 
-              {/* Floating Stats */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-6 border border-gray-100 text-center">
-                <div className="text-3xl font-bold text-blue-600">500+</div>
-                <div className="text-sm text-gray-600">Projects Completed</div>
-              </div>
-              <div className="absolute -top-6 -right-6 bg-yellow-400 rounded-xl shadow-lg p-6 text-center">
-                <div className="text-3xl font-bold text-blue-900">25+</div>
-                <div className="text-sm text-blue-900">Years Experience</div>
-              </div>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              Since 2009, Shravan Electrical Contractor has delivered high-quality H.T. and L.T. electrical works, sheet metal fabrication, and consultancy services in Nanded. With a turnover of ₹25-100 Cr, we serve MSEDCL, PWD, and private clients with precision and reliability.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button
+                size="lg"
+                className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover-lift hover-glow transition-all duration-300 shadow-md"
+              >
+                Get Quote <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8 py-4 text-primary border-primary rounded-lg font-semibold hover:bg-primary hover:text-primary hover-lift transition-all duration-300"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                Call Now
+              </Button>
             </div>
+
+            {/* Animated Stats */}
+            <div className="grid grid-cols-3 gap-4 pt-8">
+              {[
+                { label: "Projects", value: `${counts.projects}+`, icon: Zap },
+                { label: "Years", value: `${counts.years}+`, icon: Award },
+                { label: "Clients", value: `${counts.clients}+`, icon: Users },
+              ].map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className="text-center p-4 bg-card rounded-lg border border-border hover:border-primary/50 hover-lift transition-all duration-300 animate-fade-in-up shadow-sm"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" aria-hidden="true" />
+                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side - Maharashtra Image without Div Box */}
+          <div
+            className={`relative transition-all duration-1000 delay-300 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+            } animate-scale-in`}
+            style={{ perspective: '1000px' }}
+          >
+            <img
+              src="/maharahtrawithflow-Photoroom.png?height=650&width=850&q=90"
+              alt="Maharashtra map highlighting Shravan Electricals' project locations in Nanded and surrounding areas"
+              className="object-contain transition-transform duration-500"
+              
+            />
           </div>
         </div>
       </div>
+
+      
     </section>
-  );
+  )
 }

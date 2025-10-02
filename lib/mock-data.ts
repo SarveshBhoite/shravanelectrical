@@ -1,3 +1,4 @@
+import { uptime } from "process"
 import { ReactNode } from "react"
 
 export interface Project {
@@ -28,6 +29,9 @@ export interface Staff {
 }
 
 export interface Stats {
+  satisfaction: any
+  uptime: any
+  response: any
   experience: number
   projects: number
   engineers: number
@@ -192,6 +196,9 @@ export const mockStats: Stats = {
   projects: 200,
   engineers: 50,
   branches: 3,
+  satisfaction: 100,
+  uptime: 98,
+  response: 99,
 }
 
 // Mock Company Info
