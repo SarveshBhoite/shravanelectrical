@@ -45,7 +45,7 @@ export const mockProjects: Project[] = [
     name: "Solar Power Plant - 50MW",
     description:
       "Complete installation and commissioning of a 50MW solar power plant with advanced monitoring systems and grid integration.",
-    image: "/blog4.jpeg",
+    image: "/solar.jpeg",
     category: "Solar Projects",
     completedDate: "2024",
     location: "Rajasthan, India",
@@ -55,7 +55,7 @@ export const mockProjects: Project[] = [
     name: "Industrial Electrical Infrastructure",
     description:
       "Complete electrical infrastructure setup for a manufacturing facility including power distribution, lighting, and automation systems.",
-    image: "/blog3.jpeg",
+    image: "/electricalcontracting.png",
     category: "Electrical Contracting",
     completedDate: "2023",
     location: "Gujarat, India",
@@ -65,7 +65,7 @@ export const mockProjects: Project[] = [
     name: "Transformer Manufacturing Unit",
     description:
       "Established a state-of-the-art transformer manufacturing facility with capacity for 100+ units per month.",
-    image: "/blog2.jpeg",
+    image: "/hero1.png",
     category: "Transformer Manufacturing",
     completedDate: "2023",
     location: "Maharashtra, India",
@@ -75,7 +75,7 @@ export const mockProjects: Project[] = [
     name: "Smart Grid Implementation",
     description:
       "Implementation of smart grid technology for efficient power distribution across urban areas with real-time monitoring.",
-    image: "/blog1.jpeg",
+    image: "/hero2.png",
     category: "Infrastructure",
     completedDate: "2024",
     location: "Karnataka, India",
@@ -84,7 +84,7 @@ export const mockProjects: Project[] = [
     id: "5",
     name: "Cable Manufacturing Plant",
     description: "Setup of automated cable and conductor manufacturing plant with quality control systems.",
-    image: "/blog8.jpeg",
+    image: "/tower.png",
     category: "Cable Fabrication",
     completedDate: "2022",
     location: "Tamil Nadu, India",
