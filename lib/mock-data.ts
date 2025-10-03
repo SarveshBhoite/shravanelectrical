@@ -97,7 +97,7 @@ export const mockServices: Service[] = [
     id: "1",
     title: "Electrical Contracting",
     description: "Complete electrical solutions for residential, commercial, and industrial projects with certified professionals and quality assurance.",
-    image: "/blog4.jpeg",
+    image: "/electricalcontracting.png",
     features: [
       "Power Distribution Systems",
       "Lighting Solutions",
@@ -111,7 +111,7 @@ export const mockServices: Service[] = [
     id: "2",
     title: "Solar Projects",
     description: "End-to-end solar energy solutions from design to installation and maintenance for sustainable power generation.",
-    image: "/blog3.jpeg",
+    image: "/hero3.png",
     features: [
       "Solar Panel Installation",
       "Grid-Tie Systems",
@@ -125,7 +125,7 @@ export const mockServices: Service[] = [
     id: "3",
     title: "Transformer Manufacturing & Repair",
     description: "Custom transformer manufacturing and comprehensive repair services for all types of electrical transformers.",
-    image: "/blog2.jpeg",
+    image: "/repair.png",
     features: [
       "Custom Transformer Design",
       "Manufacturing & Testing",
@@ -139,7 +139,7 @@ export const mockServices: Service[] = [
     id: "4",
     title: "Cable/Conductor/Box Fabrication",
     description: "High-quality cable, conductor, and electrical box fabrication with modern machinery and quality control.",
-    image: "/blog1.jpeg",
+    image: "/cableconductor.png",
     features: [
       "Cable Manufacturing",
       "Conductor Production",
@@ -153,7 +153,7 @@ export const mockServices: Service[] = [
     id: "5",
     title: "Infrastructure Turnkey Projects",
     description: "Complete infrastructure solutions from planning to execution for large-scale electrical and power projects.",
-    image: "/blog8.jpeg",
+    image: "/tower.png",
     features: [
       "Project Planning & Design",
       "Procurement & Installation",
