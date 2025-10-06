@@ -1,400 +1,410 @@
 "use client";
-
-import { useState } from "react";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { StickyButtons } from "@/components/sticky-buttons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { companyInfo } from "@/lib/mock-data";
 import {
+  Building2,
   Target,
   Eye,
+  Award,
+  Users,
   Zap,
   Shield,
-  Clock,
-  CheckCircle,
-  Calendar,
+  TrendingUp,
+  ChevronDown,
 } from "lucide-react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // ✅ Import framer-motion
 
-export default function AboutPage() {
-  const [activeValueId, setActiveValueId] = useState<number | null>(null);
+function App() {
+  const [activeYear, setActiveYear] = useState(2024);
 
-  const teamMembers = [
+  const timeline = [
     {
-      name: "Rajesh Shravan",
-      position: "Founder & CEO",
-      experience: "25+ Years",
-      specialization: "Electrical Infrastructure",
-      image: "/blog8.jpeg?height=300&width=300",
+      year: 2024,
+      event: "Expanded to 50+ countries with AI-powered electronics",
+    },
+    { year: 2023, event: "Launched Smart Home Division" },
+    { year: 2022, event: "Achieved ISO 9001:2015 certification" },
+    { year: 2021, event: "Opened state-of-the-art R&D facility" },
+    { year: 2020, event: "Reached $100M in annual revenue" },
+    { year: 2019, event: "Strategic partnership with major tech companies" },
+    { year: 2018, event: "Expanded manufacturing capabilities" },
+    { year: 2017, event: "Company founded with vision to innovate" },
+  ];
+
+  const values = [
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "	INFRASTRUCTURE",
+      description:
+        "Situated in a well-furnished office catering to all needs of office Management, along with the central Stores, supplying to all the sites, add to the overall performance.We sincerely hope that you will find our services useful and we shall be happy to associate Ourselves in your projects.",
     },
     {
-      name: "Priya Sharma",
-      position: "Chief Technical Officer",
-      experience: "18+ Years",
-      specialization: "Solar & Renewable Energy",
-      image: "/blog1.jpeg?height=300&width=300",
+      icon: <Shield className="w-8 h-8" />,
+      title: "	Customer Satisfaction",
+      description:
+        "At‘’Shravan Electrical Contractor ’’ constantly working to improve our Quality service to our customers in order to maintain and achieve high standard of quality work. The Management of SHRAVAN believes that customer satisfaction is an important key to the success of our business.",
     },
     {
-      name: "Amit Kumar",
-      position: "Project Manager",
-      experience: "15+ Years",
-      specialization: "Infrastructure Projects",
-      image: "/blog2.jpeg?height=300&width=300",
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "	Quality Assurance",
+      description:
+        "SHRAVAN is committed to operate every aspect of Business to those Standards that offer higher possibility of quality of service to all clients. The Management is committed to the continual improvement of the Quality Management System by establishing and reviewing quality objectives for all the area of company. This is ensuring that the company operates effectively and efficiently meets the needs of customer.",
     },
     {
-      name: "Sunita Patel",
-      position: "Quality Assurance Head",
-      experience: "12+ Years",
-      specialization: "Safety & Compliance",
-      image: "/blog2.jpeg?height=300&width=300",
+      icon: <Zap className="w-8 h-8" />,
+      title: "	Health &Safety Policy",
+      description:
+        "SHRAVAN provide a safe and healthy environment According to the Health and Safety Work Act. The company policies are: Make proper arrangements and protect the health, safety, and welfare of employees and others who may be affected by its activities. Meet its responsibilities as an employer to prevent accidents, injuries, and damages.",
     },
   ];
 
-  const milestones = [
+  const leadership = [
     {
-      year: "1999",
-      event: "Company Founded",
-      description: "Started as a small electrical contracting business",
+      name: "Sarah Johnson",
+      position: "Chief Executive Officer",
+      image:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "With over 20 years in the electronics industry, Sarah leads our vision for innovation.",
     },
     {
-      year: "2005",
-      event: "First Major Project",
-      description: "Completed 500KV substation installation",
+      name: "Michael Chen",
+      position: "Chief Technology Officer",
+      image:
+        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "Michael drives our technological advancement and product development strategies.",
     },
     {
-      year: "2010",
-      event: "Solar Division Launch",
-      description: "Expanded into renewable energy solutions",
-    },
-    {
-      year: "2015",
-      event: "Manufacturing Unit",
-      description: "Established transformer manufacturing facility",
-    },
-    {
-      year: "2020",
-      event: "Digital Transformation",
-      description: "Implemented IoT and smart grid solutions",
-    },
-    {
-      year: "2024",
-      event: "Sustainability Leader",
-      description: "Achieved carbon-neutral operations",
+      name: "Emily Rodriguez",
+      position: "Chief Operations Officer",
+      image:
+        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+      bio: "Emily ensures operational excellence across all our manufacturing facilities.",
     },
   ];
 
-  const coreValues = [
-    {
-      id: 1,
-      icon: <Shield className="h-12 w-12 text-primary mx-auto mb-4" />,
-      title: "Infrastructure",
-      short: "Well-furnished office & central stores.",
-      details: `Situated in a well-furnished office catering to all needs of office management, along with the central stores supplying to all the sites, add to the overall performance.
-We sincerely hope that you will find our services useful and we shall be happy to associate ourselves in your projects.`,
-    },
-    {
-      id: 2,
-      icon: <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />,
-      title: "Customer Satisfaction",
-      short: "Open & honest client relationships.",
-      details: `At ‘’Shravan Electrical Contractor’’ constantly working to improve our quality service to our customers to maintain and achieve high standard of work.
-We operate open & honest relationships with all our clients, aiming for repeat business by fulfilling customer requirements.`,
-    },
-    {
-      id: 3,
-      icon: <Clock className="h-12 w-12 text-primary mx-auto mb-4" />,
-      title: "Quality Assurance",
-      short: "Turnkey electrical projects.",
-      details: `SHRAVAN specializes in internal & external electrification projects.
-We ensure continual improvement of a Quality Management System to meet client needs effectively and efficiently.`,
-    },
-    {
-      id: 4,
-      icon: <Zap className="h-12 w-12 text-primary mx-auto mb-4" />,
-      title: "Health & Safety",
-      short: "Safe & healthy environment.",
-      details: `SHRAVAN provides a safe and healthy environment according to the Health and Safety Work Act.
-We make arrangements to protect employee health and welfare, prevent accidents, and train all employees on safety responsibilities.`,
-    },
+  const awards = [
+    "Best Electronics Manufacturer 2024",
+    "Innovation Excellence Award 2023",
+    "Sustainability Leadership Award 2023",
+    "Top Employer of the Year 2022",
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-
+    <div className="min-h-screen ">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge
-              variant="outline"
-              className="mb-4 text-primary border-primary"
-            >
-              About {companyInfo.name}
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-              Powering India's{" "}
-              <span className="text-primary">Electrical Future</span>
+      <section className="relative h-[550px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=1260')] bg-cover bg-center opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Powering Innovation Since 2019
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 text-pretty">
-              For over two decades, we've been at the forefront of electrical
-              infrastructure development, delivering innovative solutions that
-              power communities and industries across the nation.
+            <p className="text-xl text-slate-200 leading-relaxed">
+              A fast-growing electronics company dedicated to delivering
+              cutting-edge solutions in consumer electronics, smart home
+              systems, and industrial automation.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg">
-                <Link href="/contact">Get In Touch</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/projects">View Our Work</Link>
-              </Button>
-            </div>
           </div>
         </div>
-      </section>
-
-      {/* Company Story */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  In the year 2009, we were established as a proprietary firm
-                  and successfully elevated since then. We have undergone
-                  significant growth in electrical works and increased our Turn
-                  Over up to Rs. 101.35 crore in FY 2024-25. We are PWD
-                  registered CLASS ‘A’ electrical and Class IV Civil contractor.
-                  Registered with M.S.E.D.C.L, M.S.E.T.C.L, PWD. Senior
-                  management team has ~15 years experience across development,
-                  engineering, construction, finance, operations, asset
-                  management, and energy trading.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/blog4.jpeg?height=500&width=600"
-                alt="Company facilities"
-                className="rounded-lg shadow-lg"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold">25+</div>
-                <div className="text-sm">Years of Excellence</div>
-              </div>
-            </div>
-          </div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-8 h-8 text-white" />
         </div>
       </section>
-
-      {/* Mission & Vision */}
-      <section className="py-16 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <Target className="h-8 w-8 text-primary mr-3" />
-                  <h3 className="text-2xl font-bold">OBJECTIVES</h3>
-                </div>
-                <p className="text-muted-foreground">
-                  Our objective is to achieve customer satisfaction and
-                  continual improvement of customer services. Establishing long
-                  term mutually rewarding relationship and Provide excellent
-                  quality services to meets the requirement four customers.{" "}
+      <div className="min-h-screen ">
+        {/* About Section */}
+        <section id="about" className="py-20 bg-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-bold text-slate-900 mb-6">
+                  About Sharavan Electrical
+                </h2>
+                <p className="text-lg text-slate-700 mb-4 leading-relaxed">
+                  In the year 2009 Established as a proprietary firm and
+                  successfully elevated since then. We have undergone
+                  significant invasion and entered in the wide spread works of
+                  electrical field and increase our Turn Over up to Rs. 101.35
+                  crore in the FY 2024-25.
                 </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <Eye className="h-8 w-8 text-primary mr-3" />
-                  <h3 className="text-2xl font-bold">AIM</h3>
-                </div>
-                <p className="text-muted-foreground">
+                <p className="text-lg text-slate-700 mb-4 leading-relaxed">
+                  We are PWD registered CLASS ‘A’ electrical and Class IV Civil
+                  contractor. Also, we are registered With the M.S.E.D.C.L,
+                  M.S.E.T.C.L , PWD. The members of the Company’s senior
+                  management team have an average experience of approximately 15
+                  years in diverse areas of the energy market including
+                  development, engineering, construction, finance, operations,
+                  asset management, and energy trading and Contracting.
+                </p>
+              </div>
+              <motion.div
+                className="relative h-[400px] rounded-lg overflow-hidden shadow-2xl cursor-pointer"
+                initial={{ rotateY: 90, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                whileHover={{
+                  rotateY: 15,
+                  scale: 1.05,
+                  transition: { duration: 0.5 },
+                }}
+              >
+                <img
+                  src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Electronics manufacturing"
+                  className="w-full h-full object-cover  rounded-2xl shadow-2xl"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+        {/* Mission & Vision Section */}{" "}
+        <section id="mission" className="py-20 bg-blue-80">
+          {" "}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {" "}
+            <div className="grid md:grid-cols-2 gap-12 mb-16">
+              {" "}
+              <div className="bg-blue-500 p-10 rounded-2xl text-black shadow-xl">
+                {" "}
+                <Target className="w-12 h-12 mb-6" />{" "}
+                <h3 className="text-3xl font-bold mb-4">Objectives</h3>{" "}
+                <p className="text-lg leading-relaxed opacity-90">
+                  {" "}
+                  To deliver innovative, high-quality electronic solutions that
+                  empower individuals and businesses to achieve more, while
+                  maintaining environmental responsibility and ethical business
+                  practices..{" "}
+                </p>{" "}
+              </div>{" "}
+              <div className="bg-blue-500 p-10 rounded-2xl text-black shadow-xl">
+                {" "}
+                <Eye className="w-12 h-12 mb-6" />{" "}
+                <h3 className="text-3xl font-bold mb-4">AIM</h3>{" "}
+                <p className="text-lg leading-relaxed opacity-90">
+                  {" "}
                   Our aim is to provide high quality of Services to all our
                   clients and make continual improvement to our services and
                   people. Maintain customer satisfaction is prime factor in our
-                  Success.
-                </p>
-              </CardContent>
-            </Card>
+                  Success.{" "}
+                </p>{" "}
+              </div>{" "}
+            </div>{" "}
+            {/* Core Values */}
+            <CoreValuesSection values={values} />
           </div>
-        </div>
-      </section>
-
-      {/* Core Values with Hover Animation */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Fundamental principles that guide every decision and project
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreValues.map((value) => (
+        </section>
+        {/* CEO Message Section */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-3 gap-12 items-center">
               <motion.div
-                key={value.id}
-                className="cursor-pointer overflow-hidden rounded-lg border bg-white"
-                onMouseEnter={() => setActiveValueId(value.id)}
-                onMouseLeave={() => setActiveValueId(null)}
-                initial={{
-                  height: 180,
-                  scale: 1,
-                  boxShadow: "0px 0px 0px rgba(0,0,0,0)",
-                }}
-                animate={{
-                  height: activeValueId === value.id ? 400 : 180,
-                  scale: activeValueId === value.id ? 1.05 : 1,
-                  boxShadow:
-                    activeValueId === value.id
-                      ? "0px 15px 30px rgba(0,0,0,0.15)"
-                      : "0px 0px 0px rgba(0,0,0,0)",
-                }}
-                transition={{ duration: 0.4 }}
+                className="md:col-span-1 cursor-pointer"
+                style={{ perspective: 1000 }} // ✅ Add perspective for 3D flip
               >
-                <CardContent className="p-6 text-center">
-                  {value.icon}
-                  <h3 className="font-semibold mb-2">{value.title}</h3>
-                  <AnimatePresence>
-                    {activeValueId === value.id ? (
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-sm text-muted-foreground whitespace-pre-line"
-                      >
-                        {value.details}
-                      </motion.p>
-                    ) : (
-                      <p className="text-sm text-muted-foreground">
-                        {value.short}
-                      </p>
-                    )}
-                  </AnimatePresence>
-                </CardContent>
+                <motion.img
+                  src="director1.png"
+                  alt="CEO"
+                  className="w-full rounded-2xl shadow-2xl"
+                  initial={{ rotateY: 0 }}
+                  whileHover={{
+                    rotateY: 360, // 🔄 Full circular flip
+                    transition: { duration: 1, ease: "easeInOut" },
+                  }}
+                />
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Timeline / Milestones */}
-      <section className="py-16 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Key milestones that have shaped our growth and success over the
-              years
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-                    {milestone.year.slice(-2)}
+              <div className="md:col-span-2">
+                <h1 className="text-3xl font-bold text-slate-900 mb-6">
+                  Director
+                </h1>
+                <div className="space-y-4 text-lg text-slate-700 leading-relaxed">
+                  <p>
+                    As we navigate an era of unprecedented technological
+                    advancement, ElectroTech remains committed to our founding
+                    principles of innovation, quality, and customer
+                    satisfaction.
+                  </p>
+                  <p>
+                    The electronics industry is evolving rapidly, with emerging
+                    technologies like AI, IoT, and renewable energy reshaping
+                    our world. We're investing heavily in research and
+                    development to ensure our products not only meet today's
+                    needs but anticipate tomorrow's challenges.
+                  </p>
+                 
+                  <div className="mt-6">
+                    <p className="font-bold text-slate-900">
+                      Mr.Balaji G. Kanthewad
+                    </p>
+                    <p className="text-slate-600">
+                      {" "}
+                      (Polytechnic Electrical Eng.) ( BE Computer Eng.) 
+                    </p>
                   </div>
                 </div>
-                <Card className="flex-1">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="h-4 w-4 text-primary" />
-                      <span className="font-semibold text-primary">
-                        {milestone.year}
-                      </span>
-                    </div>
-                    <h3 className="font-bold mb-2">{milestone.event}</h3>
-                    <p className="text-muted-foreground">
-                      {milestone.description}
-                    </p>
-                  </CardContent>
-                </Card>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Leadership Team</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Meet the experienced professionals who drive our vision and ensure
-              project excellence
+        </section>
+        <section className="py-20 bg-slate-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid md:grid-cols-3 gap-12 items-center">
+      {/* Text on Left */}
+      <div className="md:col-span-2">
+        <h1 className="text-3xl font-bold text-slate-900 mb-6">
+          Director
+        </h1>
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed">
+          <p>
+            As we navigate an era of unprecedented technological
+            advancement, ElectroTech remains committed to our founding
+            principles of innovation, quality, and customer
+            satisfaction.
+          </p>
+          <p>
+            The electronics industry is evolving rapidly, with emerging
+            technologies like AI, IoT, and renewable energy reshaping
+            our world. We're investing heavily in research and
+            development to ensure our products not only meet today's
+            needs but anticipate tomorrow's challenges.
+          </p>
+          <div className="mt-6">
+            <p className="font-bold text-slate-900">
+             Mrs.Sharmila B. Kanthewad
+            </p>
+            <p className="text-slate-600">
+              BE Computer Enginering
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <img
-                    src={member.image || "/blog4.jpeg"}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                  />
-                  <h3 className="font-bold mb-1">{member.name}</h3>
-                  <p className="text-primary font-medium mb-2">
-                    {member.position}
-                  </p>
-                  <Badge variant="outline" className="mb-2">
-                    {member.experience}
-                  </Badge>
-                  <p className="text-sm text-muted-foreground">
-                    {member.specialization}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Power Your Next Project?
-          </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Let's discuss how our expertise can bring your electrical
-            infrastructure vision to life
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" variant="secondary">
-              <Link href="/contact">Start Your Project</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
-            >
-              <Link href="/services">Explore Services</Link>
-            </Button>
+      {/* Image on Right */}
+      <motion.div
+        className="md:col-span-1 cursor-pointer"
+        style={{ perspective: 1000 }} // Add perspective for 3D flip
+      >
+        <motion.img
+          src="director2.png"
+          alt="Director"
+          className="w-full rounded-2xl shadow-2xl"
+          initial={{ rotateY: 0 }}
+          whileHover={{
+            rotateY: 360, // Full circular flip
+            transition: { duration: 1, ease: "easeInOut" },
+          }}
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
+
+        {/* Leadership Section */}
+        <section id="leadership" className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-bold text-slate-900 mb-12 text-center">
+              Board of Directors
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {leadership.map((leader, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group cursor-pointer"
+                  initial={{ rotateX: 90, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                  transition={{ duration: 1, delay: index * 0.3 }}
+                  whileHover={{
+                    rotateX: 10,
+                    scale: 1.05,
+                    transition: { duration: 0.5 },
+                  }}
+                >
+                  <div className="h-64 overflow-hidden">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                      {leader.name}
+                    </h3>
+                    <p className="text-slate-600 font-medium mb-4">
+                      {leader.position}
+                    </p>
+                    <p className="text-slate-700">{leader.bio}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      <Footer />
-      <StickyButtons />
+        </section>
+      </div>
     </div>
   );
 }
+
+export default App;
+
+// CoreValuesSection component moved outside App
+import { useState } from "react";
+
+type CoreValue = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+};
+
+interface CoreValuesSectionProps {
+  values: CoreValue[];
+}
+
+const CoreValuesSection = ({ values }: CoreValuesSectionProps) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <div>
+      <h3 className="text-3xl font-bold text-slate-900 mb-10 text-center">
+        Our Core Values
+      </h3>
+      <div className="grid md:grid-cols-4 gap-8 relative">
+        {values.map((value, index) => {
+          const isActive = activeIndex === index;
+          return (
+            <AnimatePresence key={index}>
+              {(isActive || activeIndex === null) && (
+                <motion.div
+                  className={`text-center p-6 rounded-xl shadow-lg cursor-pointer bg-white flex flex-col items-center justify-start`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{
+                    opacity: 1,
+                    scale: isActive ? 1.2 : 1,
+                    zIndex: isActive ? 20 : 0,
+                  }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                  onClick={() => setActiveIndex(isActive ? null : index)}
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 rounded-full mb-4 text-slate-800">
+                    {value.icon}
+                  </div>
+                  <h4 className="text-xl font-bold text-slate-900 mb-2">
+                    {value.title}
+                  </h4>
+                  {isActive && (
+                    <motion.p
+                      className="text-slate-600 mt-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {value.description}
+                    </motion.p>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

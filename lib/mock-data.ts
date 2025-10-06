@@ -94,75 +94,145 @@ export const mockProjects: Project[] = [
 // Mock Services Data
 export const mockServices: Service[] = [
   {
-    id: "1",
-    title: "Electrical Contracting",
-    description: "Complete electrical solutions for residential, commercial, and industrial projects with certified professionals and quality assurance.",
-    image: "/electricalcontracting.png",
-    features: [
-      "Power Distribution Systems",
-      "Lighting Solutions",
-      "Electrical Panel Installation",
-      "Wiring & Cabling",
-      "Maintenance & Repair",
+    "id": "1",
+    "title": "Electrical Contracting",
+    "description": "Comprehensive electrical solutions for government, industrial, and rural/urban projects, ensuring safety and regulatory compliance.",
+    "image": "/electricalcontracting.png",
+    "features": [
+      "HT/LT Power Distribution Systems",
+      "Substation Installation (33/11 kV, 22/11 kV)",
+      "Wiring for Rural/Urban Networks",
+      "Metering & Service Connections",
+      "Breakdown Maintenance & Repairs"
     ],
-    category: undefined
+    "category": "Electrical Infrastructure"
   },
   {
-    id: "2",
-    title: "Solar Projects",
-    description: "End-to-end solar energy solutions from design to installation and maintenance for sustainable power generation.",
-    image: "/hero3.png",
-    features: [
-      "Solar Panel Installation",
-      "Grid-Tie Systems",
-      "Off-Grid Solutions",
-      "Solar Water Heating",
-      "Maintenance Services",
+    "id": "2",
+    "title": "Solar Projects",
+    "description": "End-to-end solar energy solutions, including photovoltaic plants and agricultural pump systems, supporting sustainable power initiatives.",
+    "image": "/hero3.png",
+    "features": [
+      "Solar PV Plant Installation (23 MW)",
+      "Off-Grid Solar Pumps (3-7.5 HP)",
+      "11 kV Transmission Line & Bay Extension",
+      "System Maintenance (5-Year Warranty)",
+      "Grid Integration for Solar Projects"
     ],
-    category: undefined
+    "category": "Renewable Energy"
   },
   {
-    id: "3",
-    title: "Transformer Manufacturing & Repair",
-    description: "Custom transformer manufacturing and comprehensive repair services for all types of electrical transformers.",
-    image: "/repair.png",
-    features: [
-      "Custom Transformer Design",
-      "Manufacturing & Testing",
-      "Repair & Refurbishment",
-      "Oil Analysis",
-      "Preventive Maintenance",
-    ],
-    category: undefined
-  },
-  {
-    id: "4",
-    title: "Cable/Conductor/Box Fabrication",
-    description: "High-quality cable, conductor, and electrical box fabrication with modern machinery and quality control.",
-    image: "/cableconductor.png",
-    features: [
-      "Cable Manufacturing",
-      "Conductor Production",
-      "Junction Box Fabrication",
-      "Custom Solutions",
-      "Quality Testing",
-    ],
-    category: undefined
-  },
-  {
-    id: "5",
-    title: "Infrastructure Turnkey Projects",
-    description: "Complete infrastructure solutions from planning to execution for large-scale electrical and power projects.",
-    image: "/tower.png",
-    features: [
-      "Project Planning & Design",
-      "Procurement & Installation",
+    "id": "3",
+    "title": "Transformer Installation & Maintenance",
+    "description": "Supply, installation, and repair of transformers for reliable power distribution in government and public projects.",
+    "image": "/repair.png",
+    "features": [
+      "Transformer Installation (up to 200 kVA)",
+      "Repair of Failed Transformers",
       "Testing & Commissioning",
-      "Project Management",
-      "After-Sales Support",
+      "Substation Augmentation",
+      "Preventive Maintenance"
     ],
-    category: undefined
+    "category": "Power Equipment"
   },
+  {
+    "id": "4",
+    "title": "Cable & Line Erection",
+    "description": "Installation and jointing of HT/LT overhead lines and underground cables for robust power distribution networks.",
+    "image": "/cableconductor.png",
+    "features": [
+      "HT/LT Overhead Line Erection (11/33 kV)",
+      "Underground Cable Installation & Jointing",
+      "Fuse Call Maintenance",
+      "Network Modernization",
+      "Line Testing & Commissioning"
+    ],
+    "category": "Power Distribution"
+  },
+  {
+    "id": "5",
+    "title": "Infrastructure Turnkey Projects",
+    "description": "Complete turnkey solutions for large-scale electrical infrastructure, including substations, distribution networks, and civil works.",
+    "image": "/tower.png",
+    "features": [
+      "Substation Design & Construction (33/11 kV)",
+      "HT/LT Network Development",
+      "Civil & Allied Infrastructure Works",
+      "Project Management & Execution",
+      "Loss Reduction & Efficiency Measures"
+    ],
+    "category": "Infrastructure Development"
+  },
+  {
+    "id": "6",
+    "title": "EV Charging Infrastructure",
+    "description": "High-tension power supply setups for electric vehicle charging stations, supporting clean mobility initiatives.",
+    "image": "/evcharging.png",
+    "features": [
+      "HT Equipment & Cabling Installation",
+      "Power Supply Integration with MSEDCL Grid",
+      "Testing & Safety Compliance",
+      "Infrastructure for EV Bus Charging",
+      "Network Connectivity Solutions"
+    ],
+    "category": "Clean Energy"
+  },
+  {
+    "id": "7",
+    "title": "Electrical Audits & Consulting",
+    "description": "Energy audits, safety assessments, and regulatory liaisoning to optimize and ensure compliant electrical systems.",
+    "image": "/audits.png",
+    "features": [
+      "Energy Efficiency Audits",
+      "Electrical Safety Compliance Checks",
+      "Regulatory Approvals & Liaisoning",
+      "Metering System Solutions",
+      "System Performance Optimization"
+    ],
+    "category": "Consulting Services"
+  },
+  {
+    "id": "8",
+    "title": "High Voltage Distribution System (HVDS)",
+    "description": "Dedicated high-voltage systems for agricultural consumers to reduce losses and improve voltage regulation.",
+    "image": "/hvds.png",
+    "features": [
+      "11/33 kV Dedicated Line Installation",
+      "Three-Phase Metering for Agriculture",
+      "System Modernization & Loss Reduction",
+      "Transformer Setup for HVDS",
+      "Rural Network Upgradation"
+    ],
+    "category": "Agricultural Power"
+  },
+  {
+    "id": "9",
+    "title": "Rural & Urban Electrification",
+    "description": "Strengthening power infrastructure for rural and urban areas under government schemes for reliable electricity access.",
+    "image": "/electrification.png",
+    "features": [
+      "New/Augmented 11/22 kV & LT Lines",
+      "Single-Phase Connections for BPL Households",
+      "Internal House Wiring & Metering",
+      "Solar Rooftop & Boundary Metering",
+      "Urban Feeder Upgradation"
+    ],
+    "category": "Infrastructure Development"
+  },
+  {
+    "id": "10",
+    "title": "Civil & Allied Works",
+    "description": "Construction and civil engineering support for electrical infrastructure projects, including substations and lines.",
+    "image": "/civilworks.png",
+    "features": [
+      "Substation Foundations & Enclosures",
+      "Civil Works for Line Erection",
+      "Structural Support for Transformers",
+      "Infrastructure for Railway/Water Projects",
+      "Allied Construction Services"
+    ],
+    "category": "Civil Engineering"
+  }
 ]
 
 // Mock Staff Data
