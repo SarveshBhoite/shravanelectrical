@@ -37,7 +37,7 @@ export function HeroSection() {
           <motion.video
             key="hero-video"
             ref={videoRef}
-            src="/video.mp4"
+            src="/video2.mp4"
             autoPlay
             muted
             playsInline
