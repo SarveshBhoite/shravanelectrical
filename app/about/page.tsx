@@ -18,7 +18,7 @@ import {
   Calendar,
 } from "lucide-react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 import { DM_Serif_Display } from "next/font/google";
 
@@ -175,13 +175,20 @@ const staff = [
   { name: "Mahesh panchal", qualification: "B.Com", designation: "Purchase" },
 ];
 
-// Motion variants for global fade-up
-const fadeUp = {
+// Explicitly define the Variants type for Framer Motion
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5, 
+      ease: ["easeOut"] // Explicitly use an array for the easing function
+    } 
+  },
 };
 
-const staggerParent = {
+const staggerParent: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08 } },
 };
@@ -244,7 +251,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Section - Detailed Story with Flip Animation */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container mx-auto px-4 space-y-24">
           {/* First block: Image on Left */}
           <div className="grid lg:grid-cols-5 gap-12 items-center">
@@ -561,7 +568,7 @@ export default function AboutPage() {
       </section>
 
       {/* Meet Our Directors - big square images 50% width, alternating layout, colored bar + rotating ring */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <motion.h2

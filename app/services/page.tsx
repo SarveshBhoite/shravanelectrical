@@ -1,12 +1,26 @@
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { StickyButtons } from "@/components/sticky-buttons"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { services } from "@/lib/mock-data"
-import { Zap, Sun, Factory, Building, Shield, CheckCircle, ArrowRight, Phone, Clock, Users, Award } from "lucide-react"
-import Link from "next/link"
+"use client";
+
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { StickyButtons } from "@/components/sticky-buttons";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { services } from "@/lib/mock-data";
+import {
+  Zap,
+  Sun,
+  Factory,
+  Building,
+  Shield,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  Clock,
+  Users,
+  Award,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function ServicesPage() {
   const serviceCategories = [
@@ -58,7 +72,7 @@ export default function ServicesPage() {
         "Emergency Power Systems",
       ],
     },
-  ]
+  ];
 
   const processSteps = [
     {
@@ -81,7 +95,7 @@ export default function ServicesPage() {
       title: "Support",
       description: "Ongoing maintenance and support",
     },
-  ]
+  ];
 
   const whyChooseUs = [
     {
@@ -104,7 +118,10 @@ export default function ServicesPage() {
       title: "Timely Delivery",
       description: "On-time project completion guarantee",
     },
-  ]
+  ];
+
+  const slugify = (s: string) =>
+    s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   return (
     <div className="min-h-screen bg-background">
@@ -178,7 +195,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 6).map((service, index) => (
+            {services.map((service: any, index: number) => (
               <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img
@@ -187,14 +204,24 @@ export default function ServicesPage() {
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary/90 text-primary-foreground">{service.category}</Badge>
+                    {service.category && (
+                      <Badge className="bg-primary/90 text-primary-foreground">
+                        {service.category}
+                      </Badge>
+                    )}
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-3">{service.description}</p>
-                  <Button variant="ghost" className="p-0 h-auto font-medium group-hover:text-primary">
-                    Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 line-clamp-3">
+                    {service.description}
+                  </p>
+                  <Button asChild variant="ghost" className="p-0 h-auto font-medium group-hover:text-primary">
+                    <Link href={`/services/${service.slug ?? slugify(service.title)}`}>
+                      Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -232,50 +259,39 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Our Credentials Section */}
-    {/* Our Credentials Section */}
-<section className="py-20 bg-muted/50">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-extrabold mb-6 text-gray-800 tracking-tight">
-        Our Credentials
-      </h2>
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-        Precisely covering electrical fields, as an act of local success by providing most of the major industries,
-        firms and projects located all around the country, we have been involved over the years in project planning
-        and turnkey electrical installations.
-      </p>
-    </div>
+      {/* Our Credentials Section (gradient, no white) */}
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-extrabold mb-6 tracking-tight">
+              Our Credentials
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Precisely covering electrical fields as a trusted partner to major industries and public projects across India—planning and delivering turnkey solutions end-to-end.
+            </p>
+          </div>
 
-    <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-2xl p-10 border border-gray-200">
-      <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-light">
-        <p>
-          This enables our customers to turn over a concept to us and walk away from the project with the confidence
-          that it will be completed in a time and cost-efficient manner.
-        </p>
-        <p>
-          We are proficient in the execution of either pre-designed or design &amp; build projects. Our field of
-          experience covers all types of Electrical installation/Security services in projects.
-        </p>
-        <p>
-          This can only be achieved with good communication and understanding, and the correct use of contract
-          management tools: Reporting, Progress evaluation, and an imaginative flexible approach to solving
-          problems.
-        </p>
-        <p>
-          Now we are providing one step solution to all turnkey projects covering the electrical field including
-          designing and setting up of interiors.
-        </p>
-        <p>
-          We also deal in Advance Lightning Arrestors, Building Intelligence Systems and Specialized Earthing
-          Solutions. Power Equations have a superior track record of successful projects in the energy industry and a
-          highly experienced management team.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+          <div className="max-w-5xl mx-auto rounded-2xl p-10 border bg-gradient-to-br from-primary/10 via-background to-accent/10">
+            <div className="space-y-6 text-foreground/90 text-lg leading-relaxed">
+              <p>
+                This enables our customers to turn over a concept to us and walk away from the project with the confidence that it will be completed in a time and cost-efficient manner.
+              </p>
+              <p>
+                We are proficient in the execution of either pre-designed or design &amp; build projects. Our field experience covers all types of electrical installation/security services in projects.
+              </p>
+              <p>
+                This can only be achieved with good communication and understanding, and the correct use of contract management tools: reporting, progress evaluation, and a flexible approach to solving problems.
+              </p>
+              <p>
+                We provide a one-step solution to turnkey electrical projects, including interior setups, safety systems, and energy optimization.
+              </p>
+              <p>
+                We also deal in Advanced Lightning Arrestors, Building Intelligence Systems, and Specialized Earthing Solutions—backed by a proven track record and experienced leadership.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose Us */}
       <section className="py-16 bg-muted/50">
@@ -287,17 +303,17 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyChooseUs.map((item, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {whyChooseUs.map((item, index) => (
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
         </div>
       </section>
 
@@ -308,8 +324,7 @@ export default function ServicesPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Service Areas</h2>
               <p className="text-muted-foreground mb-6">
-                We proudly serve clients across multiple states and regions, bringing our expertise to projects of all
-                sizes and complexities.
+                We proudly serve clients across multiple states and regions, bringing our expertise to projects of all sizes and complexities.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="space-y-2">
@@ -375,5 +390,5 @@ export default function ServicesPage() {
       <Footer />
       <StickyButtons />
     </div>
-  )
+  );
 }
