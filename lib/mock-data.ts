@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
 export interface Project {
   id: string;
@@ -65,7 +65,7 @@ export const mockProjects: Project[] = [
     name: "Infrastructure Development Plan II - Bhokar & Degloor",
     description:
       "This project, executed under Phase B of Infrastructure Development Plan II, transformed the electrical infrastructure across Bhokar, Degloor, and Nanded Circle. Our team constructed and commissioned 33/11 kV substations, installed high-tension (HT) and low-tension (LT) lines, and established advanced distribution systems. The initiative significantly enhanced power reliability and capacity, benefiting both urban and rural communities in Nanded Zone by ensuring stable electricity supply for residential, commercial, and agricultural needs. Rigorous testing and quality assurance measures ensured compliance with regulatory standards, making this a benchmark project for infrastructure upgrades in Maharashtra.",
-    image: "/infrastructure.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Infrastructure",
     completedDate: "05.09.2016",
     location: "Nanded Zone, Maharashtra, India",
@@ -79,7 +79,7 @@ export const mockProjects: Project[] = [
     name: "IPDS Part-II Electrification - Hingoli Circle",
     description:
       "Under the Integrated Power Development Scheme (IPDS) Part-II, this project focused on upgrading electrical infrastructure in Hingoli Circle. We augmented 22 kV and 11 kV lines, installed distribution transformer centers, and provided single-phase electricity connections to rural households. The inclusion of solar rooftop systems, boundary metering, and internal house wiring improved power access, reduced transmission losses, and promoted sustainable energy solutions. This initiative significantly enhanced the quality of life for rural communities by ensuring reliable electricity for daily needs and agricultural activities, aligning with national electrification goals.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "05.07.2018",
     location: "Hingoli Circle, Nanded Zone, Maharashtra, India",
@@ -93,7 +93,7 @@ export const mockProjects: Project[] = [
     name: "IPDS Part-II Electrification - Nanded Circle",
     description:
       "This IPDS Part-II initiative in Nanded Circle enhanced the region's electrical infrastructure by upgrading 22 kV and 11 kV lines and distribution transformer centers. We implemented single-phase connections, solar rooftop systems, and advanced metering infrastructure, ensuring reliable power supply and supporting sustainable energy goals. The project improved electricity access for local communities, reduced outages, and facilitated efficient energy management across urban and rural areas. Comprehensive planning and execution ensured minimal disruptions and long-term reliability for Nanded Circle's power grid.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "04.07.2018",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -107,7 +107,7 @@ export const mockProjects: Project[] = [
     name: "IPDS Part-II Electrification - Parbhani Circle",
     description:
       "Implemented under the IPDS Part-II scheme, this project upgraded the electrical grid in Parbhani Circle by enhancing 22 kV and 11 kV lines and distribution transformer centers. We installed single-phase connections, solar rooftop systems, and boundary metering, improving electricity access and grid efficiency. This initiative supported both rural and urban areas in Nanded Zone, ensuring reliable power supply and promoting sustainable energy practices. The project included rigorous testing and stakeholder coordination to deliver a robust and future-ready electrical network.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "03.07.2018",
     location: "Parbhani Circle, Nanded Zone, Maharashtra, India",
@@ -121,7 +121,7 @@ export const mockProjects: Project[] = [
     name: "DDUGJY Part-II Electrification - Hingoli Circle",
     description:
       "Under the Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY) Part-II, this project electrified Below Poverty Line (BPL) households in Hingoli Circle. We augmented 22 kV and 11 kV lines, installed distribution transformer centers, and provided HT/LT metering and internal wiring. This initiative ensured affordable and reliable power access for underserved rural communities, significantly improving their access to electricity and supporting rural development. The project adhered to strict safety and quality standards, ensuring long-term sustainability and community empowerment.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "05.07.2018",
     location: "Hingoli Circle, Nanded Zone, Maharashtra, India",
@@ -135,7 +135,7 @@ export const mockProjects: Project[] = [
     name: "DDUGJY Part-II Electrification - Nanded Circle",
     description:
       "This DDUGJY Part-II project in Nanded Circle focused on electrifying BPL households by upgrading 22 kV and 11 kV lines and distribution transformer centers. We installed single-phase connections, HT/LT metering, and internal wiring, enhancing power reliability and access. The project supported rural electrification goals, reduced transmission losses, and improved the quality of life for rural communities in Nanded Zone. Our team coordinated with local authorities to ensure seamless implementation and compliance with scheme guidelines.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "05.07.2018",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -149,7 +149,7 @@ export const mockProjects: Project[] = [
     name: "DDUGJY Part-II Electrification - Parbhani Circle",
     description:
       "Under DDUGJY Part-II, this project electrified BPL households in Parbhani Circle by upgrading 22 kV and 11 kV lines and distribution transformer centers. We provided single-phase connections, HT/LT metering, and internal wiring, promoting equitable power distribution. The initiative enhanced grid reliability and supported rural development by ensuring consistent electricity access for underserved communities. Detailed planning and stakeholder engagement ensured the project's success and alignment with national electrification objectives.",
-    image: "/electrification.jpg",
+    image: "/hero2.png", // Replaced with service image
     category: "Electrification",
     completedDate: "02.07.2018",
     location: "Parbhani Circle, Nanded Zone, Maharashtra, India",
@@ -163,7 +163,7 @@ export const mockProjects: Project[] = [
     name: "DDUGJY Part-I Substation Upgrades - Parbhani Circle",
     description:
       "This DDUGJY Part-I project involved constructing new 33/11 kV and 22/11 kV substations and augmenting power transformers in Parbhani Circle. We installed associated HT lines, enhancing grid capacity and reliability. The project supported rural electrification goals in Nanded Zone by improving power infrastructure, reducing outages, and ensuring stable electricity supply for rural communities. Our team employed advanced engineering practices to deliver a robust and efficient power distribution network.",
-    image: "/substation.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Substation",
     completedDate: "03.09.2020",
     location: "Parbhani Circle, Nanded Zone, Maharashtra, India",
@@ -177,7 +177,7 @@ export const mockProjects: Project[] = [
     name: "DDUGJY Part-I Substation Upgrades - Nanded Circle",
     description:
       "Under DDUGJY Part-I, we established new 33/11 kV and 22/11 kV substations and augmented power transformers in Nanded Circle. The project included the installation of 33 kV and 22 kV lines, significantly improving power infrastructure. This initiative supported rural electrification goals in Nanded Zone, ensuring reliable power supply and enhancing grid efficiency for both rural and urban areas. Comprehensive testing and quality assurance ensured the project's long-term reliability and performance.",
-    image: "/substation.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Substation",
     completedDate: "15.12.2018",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -191,7 +191,7 @@ export const mockProjects: Project[] = [
     name: "HVDS Infrastructure - Nanded Circle",
     description:
       "This turnkey project under the High Voltage Distribution System (HVDS) involved constructing and commissioning 11 kV lines, distribution transformer centers, and three-phase metering in Nanded Circle. We supplied and installed AB switches and HT lines, significantly reducing transmission losses and enhancing power distribution efficiency. The project improved electricity reliability for rural areas, supporting agricultural and residential consumers, and adhered to strict safety and quality standards for sustainable operations.",
-    image: "/hvds.jpg",
+    image: "/solar.jpeg", // Replaced with service image
     category: "HVDS",
     completedDate: "30.08.2021",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -205,7 +205,7 @@ export const mockProjects: Project[] = [
     name: "Transformer Repair - Bhokar Division",
     description:
       "This project focused on the repair and restoration of failed distribution transformers up to 200 kVA in Bhokar Division. Our team conducted diagnostics, repaired critical components, and performed rigorous testing to ensure rapid restoration of functionality. The initiative minimized downtime, maintained reliable power supply, and supported local communities in Nanded Zone by ensuring consistent electricity access. Advanced diagnostic tools and skilled technicians ensured high-quality repairs and extended transformer lifespan.",
-    image: "/transformer.jpg",
+    image: "/repair.png", // Replaced with service image
     category: "Transformer Maintenance",
     completedDate: "31.03.2023",
     location: "Bhokar Division, Nanded Zone, Maharashtra, India",
@@ -219,7 +219,7 @@ export const mockProjects: Project[] = [
     name: "New HT Lines from EHV Substation - Nanded Circle",
     description:
       "This project involved constructing new 11 kV and 33 kV lines from a 132 kV Extra High Voltage (EHV) substation in Nanded Circle. The initiative enhanced the high-voltage transmission network, improving power reliability and capacity for industrial and residential consumers. Our team ensured precise installation, rigorous testing, and compliance with safety standards, contributing to a robust electrical infrastructure in Nanded Zone and supporting regional development.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Infrastructure",
     completedDate: "31.03.2023",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -233,7 +233,7 @@ export const mockProjects: Project[] = [
     name: "HVDS Turnkey Substation Project - Nanded Circle",
     description:
       "This turnkey HVDS project involved constructing new 33/11 kV substations, augmenting power transformers, and installing HT lines and distribution transformer centers in Nanded Circle. The project enhanced grid efficiency, reduced transmission losses, and supported high-voltage distribution for rural electrification. Our comprehensive approach ensured reliable power supply for agricultural and residential consumers in Nanded Zone, with strict adherence to quality and safety protocols.",
-    image: "/substation.jpg",
+    image: "/solar.jpeg", // Replaced with service image
     category: "HVDS",
     completedDate: "12.04.2023",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -247,7 +247,7 @@ export const mockProjects: Project[] = [
     name: "AG-HVDS Electrification - Nanded Circle",
     description:
       "Under the AG-HVDS 500 Cr GoM Grant Scheme, this turnkey project installed plant and equipment for paid pending OPEN and OBC category connections in Nanded Circle. We constructed 11 kV lines, distribution transformer centers, and advanced metering systems, improving access to reliable power for agricultural users. The initiative enhanced grid efficiency, reduced losses, and supported rural electrification goals in Nanded Zone, with comprehensive stakeholder coordination and quality assurance.",
-    image: "/electrification.jpg",
+    image: "/solar.jpeg", // Replaced with service image
     category: "HVDS",
     completedDate: "31.03.2024",
     location: "Nanded Circle, Nanded Zone, Maharashtra, India",
@@ -261,7 +261,7 @@ export const mockProjects: Project[] = [
     name: "Solar Photovoltaic Power Stations - PM-KUSUM MSKVY 2.0",
     description:
       "As a Solar Power Developer under the PM-KUSUM MSKVY 2.0 Scheme, we are developing solar photovoltaic power generating stations with a total capacity of 23 MW (AC) across Maharashtra. The project involves site assessment, engineering, procurement, installation, and commissioning of solar plants, along with grid integration and performance monitoring. This initiative promotes renewable energy adoption, supports agricultural sustainability by powering irrigation systems, and reduces carbon emissions in rural areas. Our team employs advanced solar technologies and SCADA systems to ensure optimal performance and reliability.",
-    image: "/solar.jpg",
+    image: "/hero3.png", // Replaced with service image
     category: "Solar",
     completedDate: "TBD",
     location: "Maharashtra, India",
@@ -275,7 +275,7 @@ export const mockProjects: Project[] = [
     name: "Substation Maintenance - Nanded Division",
     description:
       "This ongoing project focuses on breakdown maintenance for substations in Nanded Division under O&M Nanded Circle. Our team is conducting diagnostics, repairs, and preventive maintenance for critical substation equipment, including transformers, switchgear, and control systems. The initiative ensures minimal downtime, enhances grid reliability, and maintains consistent power supply for urban and rural consumers in Nanded Zone. Advanced diagnostic tools and skilled technicians ensure high-quality maintenance and compliance with safety standards.",
-    image: "/substation.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Substation Maintenance",
     completedDate: "TBD",
     location: "Nanded Division, Nanded Zone, Maharashtra, India",
@@ -289,7 +289,7 @@ export const mockProjects: Project[] = [
     name: "DTC Maintenance - Nanded Urban Division",
     description:
       "This project involves breakdown maintenance of Distribution Transformer Centers (DTCs) in Nanded Urban Subdivision under O&M Nanded Division. Our team is performing diagnostics, repairs, and testing of transformers up to 200 kVA, ensuring rapid restoration of functionality. The initiative minimizes power disruptions and supports reliable electricity supply for urban consumers in Nanded Circle. We employ advanced testing methods and OEM-grade spares to extend transformer lifespan and ensure grid stability.",
-    image: "/transformer.jpg",
+    image: "/repair.png", // Replaced with service image
     category: "Transformer Maintenance",
     completedDate: "TBD",
     location: "Nanded Urban Division, Nanded Zone, Maharashtra, India",
@@ -303,7 +303,7 @@ export const mockProjects: Project[] = [
     name: "HT Line and Cable Maintenance - Nanded Urban Division",
     description:
       "This ongoing project focuses on the breakdown maintenance of high-tension (HT) overhead lines and underground cables in Nanded Urban Division. Our team is conducting inspections, repairs, and testing to ensure the integrity of the HT network. The initiative enhances power reliability, reduces outages, and supports the electrical infrastructure for urban consumers in Nanded Circle. We utilize advanced diagnostic tools and certified linemen to ensure safety and compliance with regulatory standards.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Nanded Urban Division, Nanded Zone, Maharashtra, India",
@@ -317,7 +317,7 @@ export const mockProjects: Project[] = [
     name: "LT Line and Cable Maintenance - Nanded Urban Division",
     description:
       "This project involves breakdown maintenance of low-tension (LT) overhead lines, underground cables, and fuse calls in Nanded Urban Division. Our team is performing rapid repairs, testing, and preventive maintenance to ensure a stable LT network. The initiative minimizes disruptions and supports reliable power supply for residential and commercial consumers in Nanded Circle. We employ certified technicians and advanced testing equipment to ensure high-quality maintenance and adherence to safety protocols.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Nanded Urban Division, Nanded Zone, Maharashtra, India",
@@ -331,7 +331,7 @@ export const mockProjects: Project[] = [
     name: "DTC Maintenance - Bhokar Rural Subdivision",
     description:
       "This ongoing project focuses on breakdown maintenance of Distribution Transformer Centers (DTCs) in Bhokar Rural Subdivision under O&M Bhokar Division. Our team is conducting diagnostics, repairs, and testing of transformers up to 200 kVA, ensuring rapid restoration of functionality. The initiative supports reliable power supply for rural communities, minimizing downtime and enhancing grid stability. Advanced diagnostic tools and OEM-grade spares ensure high-quality repairs and extended transformer lifespan.",
-    image: "/transformer.jpg",
+    image: "/repair.png", // Replaced with service image
     category: "Transformer Maintenance",
     completedDate: "TBD",
     location: "Bhokar Division, Nanded Zone, Maharashtra, India",
@@ -345,7 +345,7 @@ export const mockProjects: Project[] = [
     name: "HT Line and Cable Maintenance - Bhokar Rural Subdivision",
     description:
       "This project involves breakdown maintenance of high-tension (HT) overhead lines and underground cables in Bhokar Rural Subdivision under O&M Bhokar Division. Our team is performing inspections, repairs, and testing to maintain the integrity of the HT network. The initiative enhances power reliability and supports rural electrification goals in Nanded Zone. We utilize certified linemen and advanced testing equipment to ensure safety and compliance with regulatory standards.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Bhokar Division, Nanded Zone, Maharashtra, India",
@@ -359,7 +359,7 @@ export const mockProjects: Project[] = [
     name: "LT Line and Cable Maintenance - Bhokar Rural Subdivision",
     description:
       "This ongoing project focuses on breakdown maintenance of low-tension (LT) overhead lines and underground cables in Bhokar Rural Subdivision under O&M Bhokar Division. Our team is conducting rapid repairs, testing, and preventive maintenance to ensure a stable LT network. The initiative minimizes disruptions and supports reliable power supply for rural consumers in Nanded Zone. Certified technicians and advanced equipment ensure high-quality maintenance and adherence to safety standards.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Bhokar Division, Nanded Zone, Maharashtra, India",
@@ -373,7 +373,7 @@ export const mockProjects: Project[] = [
     name: "DTC Maintenance - Degloor Division",
     description:
       "This project involves breakdown maintenance of Distribution Transformer Centers (DTCs) in Degloor Division under Nanded Circle. Our team is performing diagnostics, repairs, and testing of transformers up to 200 kVA, ensuring rapid restoration of functionality. The initiative supports reliable power supply for rural communities, minimizing downtime and enhancing grid stability in Nanded Zone. Advanced diagnostic tools and OEM-grade spares ensure high-quality repairs and extended transformer lifespan.",
-    image: "/transformer.jpg",
+    image: "/repair.png", // Replaced with service image
     category: "Transformer Maintenance",
     completedDate: "TBD",
     location: "Degloor Division, Nanded Zone, Maharashtra, India",
@@ -387,7 +387,7 @@ export const mockProjects: Project[] = [
     name: "HT Line and Cable Maintenance - Degloor Division",
     description:
       "This ongoing project focuses on breakdown maintenance of high-tension (HT) overhead lines and underground cables in Degloor Division under Nanded Circle. Our team is conducting inspections, repairs, and testing to maintain the integrity of the HT network. The initiative enhances power reliability and supports rural electrification goals in Nanded Zone. We utilize certified linemen and advanced testing equipment to ensure safety and compliance with regulatory standards.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Degloor Division, Nanded Zone, Maharashtra, India",
@@ -401,7 +401,7 @@ export const mockProjects: Project[] = [
     name: "LT Line and Cable Maintenance - Degloor Division",
     description:
       "This project involves breakdown maintenance of low-tension (LT) overhead lines, underground cables, and fuse calls in Degloor Division under Nanded Circle. Our team is performing rapid repairs, testing, and preventive maintenance to ensure a stable LT network. The initiative minimizes disruptions and supports reliable power supply for rural consumers in Nanded Zone. Certified technicians and advanced equipment ensure high-quality maintenance and adherence to safety protocols.",
-    image: "/htlines.jpg",
+    image: "/cableconductor.png", // Replaced with service image
     category: "Line Maintenance",
     completedDate: "TBD",
     location: "Degloor Division, Nanded Zone, Maharashtra, India",
@@ -415,7 +415,7 @@ export const mockProjects: Project[] = [
     name: "Substation Maintenance - Hingoli Circle",
     description:
       "This ongoing project focuses on breakdown maintenance for substations in Hingoli Circle under Nanded Zone. Our team is conducting diagnostics, repairs, and preventive maintenance for critical substation equipment, including transformers, switchgear, and control systems. The initiative ensures minimal downtime, enhances grid reliability, and maintains consistent power supply for urban and rural consumers in Hingoli Circle. Advanced diagnostic tools and skilled technicians ensure high-quality maintenance and compliance with safety standards.",
-    image: "/substation.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Substation Maintenance",
     completedDate: "TBD",
     location: "Hingoli Circle, Nanded Zone, Maharashtra, India",
@@ -429,7 +429,7 @@ export const mockProjects: Project[] = [
     name: "Power Transformer Maintenance - Nanded Zone",
     description:
       "This project involves the breakdown maintenance of failed 33/11 kV power transformers across Nanded Zone. Our team is performing diagnostics, repairs, and testing to restore transformer functionality, ensuring minimal downtime. The initiative supports reliable power supply for urban and rural consumers, enhancing grid stability and efficiency across the region. We employ advanced diagnostic tools and OEM-grade spares to ensure high-quality repairs and extended transformer lifespan.",
-    image: "/transformer.jpg",
+    image: "/repair.png", // Replaced with service image
     category: "Transformer Maintenance",
     completedDate: "TBD",
     location: "Nanded Zone, Maharashtra, India",
@@ -443,7 +443,7 @@ export const mockProjects: Project[] = [
     name: "Substation Maintenance - Parbhani Circle",
     description:
       "This ongoing project focuses on breakdown maintenance for substations in Parbhani Circle under Nanded Zone. Our team is conducting diagnostics, repairs, and preventive maintenance for critical substation equipment, including transformers, switchgear, and control systems. The initiative ensures minimal downtime, enhances grid reliability, and maintains consistent power supply for urban and rural consumers in Parbhani Circle. Advanced diagnostic tools and skilled technicians ensure high-quality maintenance and compliance with safety standards.",
-    image: "/substation.jpg",
+    image: "/electricalcontracting.png", // Replaced with service image
     category: "Substation Maintenance",
     completedDate: "TBD",
     location: "Parbhani Circle, Nanded Zone, Maharashtra, India",
@@ -457,7 +457,7 @@ export const mockProjects: Project[] = [
     name: "RDSS Infrastructure Development - Nanded (Package 1)",
     description:
       "Under the Revamped Distribution Sector Scheme (RDSS), this ongoing project focuses on upgrading the electrical distribution infrastructure in Nanded. Our team is implementing advanced metering infrastructure, feeder segregation, and distribution network enhancements to reduce losses and improve reliability. The initiative supports smart grid development, ensures sustainable power supply for urban and rural consumers, and aligns with national goals for modernizing India's power sector. Comprehensive planning and stakeholder coordination ensure seamless execution and long-term impact.",
-    image: "/infrastructure.jpg",
+    image: "/tower.png", // Replaced with service image
     category: "Infrastructure",
     completedDate: "TBD",
     location: "Nanded Zone, Maharashtra, India",
@@ -471,7 +471,7 @@ export const mockProjects: Project[] = [
     name: "Solar Transmission Line and Bay Extension - PM-KUSUM 2.0",
     description:
       "This ongoing project involves the construction of 11 kV transmission lines and bay extensions for solar projects under the PM-KUSUM 2.0 scheme in Nanded. Our team is handling site surveys, line erection, and grid integration to support renewable energy evacuation. The initiative promotes clean energy adoption, enhances grid connectivity, and supports agricultural sustainability by powering irrigation systems in Nanded Zone. Advanced engineering and SCADA integration ensure efficient and reliable power evacuation.",
-    image: "/solar.jpg",
+    image: "/hero3.png", // Replaced with service image
     category: "Solar",
     completedDate: "TBD",
     location: "Nanded Zone, Maharashtra, India",
@@ -485,7 +485,7 @@ export const mockProjects: Project[] = [
     name: "RDSS Infrastructure Development - Nanded (Package 2)",
     description:
       "This project under the Revamped Distribution Sector Scheme (RDSS) focuses on further enhancing the electrical distribution infrastructure in Nanded. Our team is implementing advanced metering, feeder upgrades, and loss reduction measures to improve grid efficiency. The initiative supports smart grid development, ensures reliable power supply, and promotes sustainable energy solutions for urban and rural consumers in Nanded Zone. Comprehensive stakeholder coordination and quality assurance ensure the project's success and alignment with national objectives.",
-    image: "/infrastructure.jpg",
+    image: "/tower.png", // Replaced with service image
     category: "Infrastructure",
     completedDate: "TBD",
     location: "Nanded Zone, Maharashtra, India",
@@ -499,7 +499,7 @@ export const mockProjects: Project[] = [
     name: "Off-Grid Solar Pump Systems - PM KUSUM B",
     description:
       "This tender project under the PM KUSUM B / Magel Tyala Saur Krushi Pump Scheme involves the design, manufacture, supply, transport, installation, testing, and commissioning of off-grid DC solar photovoltaic water pumping systems (3HP, 5HP, and 7.5HP) at identified farmer sites across Maharashtra. The project includes a 5-year warranty and maintenance, promoting sustainable irrigation for farmers. Currently in the proposal submission stage, awaiting LOA issuance, this initiative will enhance agricultural productivity, reduce dependency on grid power, and support renewable energy adoption in rural areas.",
-    image: "/solar.jpg",
+    image: "/hero3.png", // Replaced with service image
     category: "Solar",
     completedDate: "TBD",
     location: "Maharashtra, India",
@@ -1216,7 +1216,7 @@ export const mockServices: Service[] = [
         status: "Ongoing",
         year: "2024",
         location: "Karnataka",
-        capacity: "Plant backbone",
+        capacity: "132 kV interface",
         snippet: "Plinths, roads, and drainage works.",
       },
     ],
