@@ -90,11 +90,11 @@ export function ServicesSection() {
               </div>
               <div className="flex items-center gap-3 text-gray-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
                 <Settings className="w-5 h-5 text-primary" />
-                <span>Scope: {activeService.features[0] || "Comprehensive"}</span>
+                <span>Scope: {(activeService.features?.[0]) || "Comprehensive"}</span>
               </div>
               <div className="flex items-center gap-3 text-gray-200" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}>
                 <Users className="w-5 h-5 text-primary" />
-                <span>Expertise: {activeService.features[1] || "Specialized Team"}</span>
+                <span>Expertise: {activeService.features?.[1] || "Specialized Team"}</span>
               </div>
             </div>
 
