@@ -23,10 +23,10 @@ export default function ProjectsPage() {
   const categories = [
     "All",
     "Infrastructure",
-    "Electrification",
+    "Commercial",
+    "Maintenance",
     "Substation",
     "HVDS",
-    "Transformer Maintenance",
     "Substation Maintenance",
     "Line Maintenance",
     "Solar",

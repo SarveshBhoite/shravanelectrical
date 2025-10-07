@@ -71,7 +71,7 @@ export function Footer() {
           <div className="space-y-6 animate-fadeInUp">
             <div>
               <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
-                {companyInfo.name.split(" ")[0]}
+                {companyInfo.name}
               </h3>
               <p className="text-muted-foreground text-sm">Engineering Excellence Since 2009</p>
             </div>

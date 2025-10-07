@@ -28,38 +28,6 @@ const dmSerif = DM_Serif_Display({
   weight: "400",
 });
 
-// Re-defining data structures for clarity and to match new content
-const teamMembers = [
-  {
-    name: "Rajesh Shravan",
-    position: "Founder & CEO",
-    experience: "15+ Years",
-    specialization: "Electrical Infrastructure",
-    image: "/blog8.jpeg?height=300&width=300",
-  },
-  {
-    name: "Priya Sharma",
-    position: "Chief Technical Officer",
-    experience: "18+ Years",
-    specialization: "Solar & Renewable Energy",
-    image: "/blog1.jpeg?height=300&width=300",
-  },
-  {
-    name: "Amit Kumar",
-    position: "Project Manager",
-    experience: "15+ Years",
-    specialization: "Infrastructure Projects",
-    image: "/blog2.jpeg?height=300&width=300",
-  },
-  {
-    name: "Sunita Patel",
-    position: "Quality Assurance Head",
-    experience: "12+ Years",
-    specialization: "Safety & Compliance",
-    image: "/blog2.jpeg?height=300&width=300",
-  },
-];
-
 // Updated milestones aligned with 2009 establishment and growth
 const milestones = [
   {
