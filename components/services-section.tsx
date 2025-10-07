@@ -147,16 +147,17 @@ export function ServicesSection() {
       </div>
 
       {/* Service Counter */}
-      <div className="absolute bottom-8 right-8 z-10">
-        <div className="text-right">
-          <div className="text-6xl font-bold text-foreground/20">
-            {String(activeIndex + 1).padStart(2, "0")}
-          </div>
-          <div className="text-xl text-muted-foreground/40">
-            / {String(mockServices.length).padStart(2, "0")}
-          </div>
-        </div>
-      </div>
+      <div className="absolute bottom-8 right-8 z-20">
+  <div className="text-right bg-black/40 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-white/10">
+    <div className="text-6xl font-bold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+      {String(activeIndex + 1).padStart(2, "0")}
+    </div>
+    <div className="text-xl text-white/70 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
+      / {String(mockServices.length).padStart(2, "0")}
+    </div>
+  </div>
+</div>
+
 
       {/* Font Import for Poppins */}
       <style jsx global>{`

@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Calendar, MapPin, ArrowRight, Zap } from "lucide-react"
 import { mockProjects } from "@/lib/mock-data"
 import Image from "next/image"
+import Link from "next/link"
+
+// Slug helper (matches projects/page.tsx and project/[slug]/page.tsx)
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 
 function useInView(options?: IntersectionObserverInit) {
   const ref = useRef<HTMLDivElement>(null)
@@ -85,6 +90,9 @@ export function ProjectsSection() {
   const [sectionRef, isInView] = useInView({ threshold: 0.15 })
   const [active, setActive] = useState(0)
 
+  // Limit to top 5 projects
+  const displayedProjects = mockProjects.slice(0, 5)
+
   // Track which list item is in view
   const itemsRef = useRef<(HTMLDivElement | null)[]>([])
   useEffect(() => {
@@ -110,17 +118,24 @@ export function ProjectsSection() {
     [spot]
   )
 
-  // Sticky preview height -> dynamic spacer to prevent cutoff
+  // Dynamic height for section to ensure alignment
+  const timelineRef = useRef<HTMLDivElement>(null)
   const previewRef = useRef<HTMLDivElement>(null)
-  const [previewHeight, setPreviewHeight] = useState(0)
+  const [sectionHeight, setSectionHeight] = useState(0)
   useLayoutEffect(() => {
-    const el = previewRef.current
-    if (!el) return
-    const ro = new ResizeObserver((entries) => {
-      const h = entries[0].contentRect.height
-      setPreviewHeight(h)
-    })
-    ro.observe(el)
+    const updateHeight = () => {
+      const timelineEl = timelineRef.current
+      const previewEl = previewRef.current
+      if (timelineEl && previewEl) {
+        const timelineH = timelineEl.getBoundingClientRect().height
+        const previewH = previewEl.getBoundingClientRect().height
+        setSectionHeight(Math.max(timelineH, previewH))
+      }
+    }
+    updateHeight()
+    const ro = new ResizeObserver(updateHeight)
+    if (timelineRef.current) ro.observe(timelineRef.current)
+    if (previewRef.current) ro.observe(previewRef.current)
     return () => ro.disconnect()
   }, [])
 
@@ -133,20 +148,20 @@ export function ProjectsSection() {
         const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect()
         setSpot({ x: e.clientX - rect.left, y: e.clientY - rect.top })
       }}
-      className="relative py-24 overflow-visible bg-gradient-to-br from-blue-50 via-white to-yellow-50"
+      className="relative py-24 overflow-x-hidden bg-gradient-to-br from-blue-50 via-white to-yellow-50"
       style={spotlightStyle}
     >
       {/* Background effects */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-blue-300 blur-3xl animate-float" />
-        <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-yellow-300 blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-30">
+        <div className="absolute top-0 left-0 w-48 h-48 md:w-64 md:h-64 rounded-full bg-blue-300 blur-3xl animate-float translate-x-[-50%] md:translate-x-[-25%]" />
+        <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64 rounded-full bg-yellow-300 blur-3xl animate-float translate-x-[50%] md:translate-x-[25%]" style={{ animationDelay: "1s" }} />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="[background:radial-gradient(rgba(59,130,246,0.14)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:linear-gradient(to_bottom,transparent_5%,black_20%,black_80%,transparent_95%)] w-full h-full" />
         <div className="absolute inset-0 [mask-image:radial-gradient(200px_200px_at_var(--x)_var(--y),#000_10%,transparent_70%)] bg-gradient-to-r from-blue-200/35 via-cyan-200/25 to-yellow-200/35" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4 max-w-7xl">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-blue-200 text-blue-700 backdrop-blur-sm mb-4">
@@ -158,22 +173,18 @@ export function ProjectsSection() {
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent"> Power Possibilities</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mt-4">
-            A scrollable showcase of <span className="font-semibold text-blue-800">reliable</span>, <span className="font-semibold text-cyan-700">efficient</span>, and <span className="font-semibold text-yellow-700">future-ready</span> electrical work.
+            A showcase of our top <span className="font-semibold text-blue-800">reliable</span>, <span className="font-semibold text-cyan-700">efficient</span>, and <span className="font-semibold text-yellow-700">future-ready</span> electrical projects.
           </p>
         </div>
 
         {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10" style={{ minHeight: sectionHeight ? `${sectionHeight}px` : "auto" }}>
           {/* Timeline list */}
-          <div
-            className="lg:col-span-6"
-            // Spacer equals preview height + some breathing room, so bottom projects aren't hidden
-            style={{ paddingBottom: previewHeight ? previewHeight + 32 : 0 }}
-          >
+          <div ref={timelineRef} className="w-full">
             <ul className="relative">
               {/* Vertical gradient line */}
               <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-blue-300/60 via-cyan-300/60 to-yellow-300/60" />
-              {mockProjects.map((project, index) => {
+              {displayedProjects.map((project, index) => {
                 const isActive = index === active
                 return (
                   <li key={project.id} className="relative pl-12 pb-8 last:pb-0 scroll-mt-28">
@@ -203,20 +214,26 @@ export function ProjectsSection() {
                             ${isActive ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white" : "bg-blue-50 text-blue-700"}`}>
                             {project.category}
                           </span>
+                          <span
+                            className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+                            ${project.status === "Completed" ? "bg-green-600/90 text-white" : project.status === "Work in Hand" ? "bg-blue-600/90 text-white" : "bg-orange-600/90 text-white"}`}
+                          >
+                            {project.status}
+                          </span>
                           {isActive && (
                             <span className="text-[11px] font-medium text-blue-700/80">In view</span>
                           )}
                         </div>
                         <h3 className={`text-xl md:text-2xl font-bold text-blue-900 mb-2 transition-colors ${isActive ? "" : "group-hover:text-blue-800"}`}>
-                          {project.name}
+                          <Link href={`/projects/${slugify(project.name)}`}>{project.name}</Link>
                         </h3>
-                        <p className="text-gray-700/90 mb-4">
+                        <p className="text-gray-700/90 mb-4 line-clamp-3">
                           {highlightText(project.description)}
                         </p>
                         <div className="flex flex-wrap gap-4 text-gray-600">
                           <div className="flex items-center">
                             <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                            <span className="text-sm">{project.completedDate}</span>
+                            <span className="text-sm">{project.completedDate === "TBD" ? "Ongoing/TBD" : project.completedDate}</span>
                           </div>
                           <div className="flex items-center">
                             <MapPin className="w-4 h-4 mr-2 text-blue-600" />
@@ -232,17 +249,17 @@ export function ProjectsSection() {
             </ul>
           </div>
 
-          {/* Sticky preview (desktop only) */}
-          <aside className="lg:col-span-6 lg:sticky top-24 self-start">
-            <div className="relative" ref={previewRef}>
+          {/* Preview */}
+          <div ref={previewRef} className="w-full">
+            <div className="relative">
               {/* Glow frame */}
               <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-400/50 via-cyan-400/50 to-yellow-400/50 blur opacity-50" />
               <Card className="relative rounded-2xl overflow-hidden border-2 border-white/60 bg-white/80 backdrop-blur-xl shadow-2xl">
                 <div ref={tiltRef} className="relative" style={{ transformStyle: "preserve-3d" } as CSSProperties}>
                   <div className="relative h-[280px] md:h-[360px] w-full">
                     <Image
-                      src={mockProjects[active].image || "/blog2.jpeg?height=600&width=900"}
-                      alt={mockProjects[active].name}
+                      src={displayedProjects[active].image || "/blog2.jpeg?height=600&width=900"}
+                      alt={displayedProjects[active].name}
                       fill
                       className="object-cover"
                       priority
@@ -253,38 +270,48 @@ export function ProjectsSection() {
                   <CardContent className="p-6 md:p-7">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
-                        {mockProjects[active].category}
+                        {displayedProjects[active].category}
+                      </span>
+                      <span
+                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+                        ${displayedProjects[active].status === "Completed" ? "bg-green-600/90 text-white" : displayedProjects[active].status === "Work in Hand" ? "bg-blue-600/90 text-white" : "bg-orange-600/90 text-white"}`}
+                      >
+                        {displayedProjects[active].status}
                       </span>
                       <span className="text-[11px] font-medium text-gray-600">Featured preview</span>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-extrabold text-blue-900 mb-2">
-                      {mockProjects[active].name}
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-blue-900 mb-2 hover:text-blue-800 transition-colors">
+                      <Link href={`/projects/${slugify(displayedProjects[active].name)}`}>
+                        {displayedProjects[active].name}
+                      </Link>
                     </h3>
-                    <p className="text-gray-700 mb-5">{highlightText(mockProjects[active].description)}</p>
+                    <p className="text-gray-700 mb-5">{highlightText(displayedProjects[active].description)}</p>
                     <div className="flex flex-wrap items-center gap-4 mb-6 text-gray-600">
                       <div className="flex items-center">
                         <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                        <span className="text-sm">{mockProjects[active].completedDate}</span>
+                        <span className="text-sm">{displayedProjects[active].completedDate === "TBD" ? "Ongoing/TBD" : displayedProjects[active].completedDate}</span>
                       </div>
                       <div className="flex items-center">
                         <MapPin className="w-4 h-4 mr-2 text-blue-600" />
-                        <span className="text-sm">{mockProjects[active].location}</span>
+                        <span className="text-sm">{displayedProjects[active].location}</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold group">
-                        View Project Details
-                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" />
+                      <Button asChild className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold group">
+                        <Link href={`/projects/${slugify(displayedProjects[active].name)}`}>
+                          View Project Details
+                          <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" />
+                        </Link>
                       </Button>
-                      <Button variant="outline" className="border-blue-200 hover:bg-blue-50">
-                        All Projects
+                      <Button asChild variant="outline" className="border-blue-200 hover:bg-blue-50">
+                        <Link href="/projects">All Projects</Link>
                       </Button>
                     </div>
                   </CardContent>
                 </div>
               </Card>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
 

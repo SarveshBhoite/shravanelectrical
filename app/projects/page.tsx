@@ -11,31 +11,43 @@ import { Filter, MapPin, Calendar, Users, Zap, Building, Factory, Search } from 
 import Link from "next/link"
 import { useState } from "react"
 
-// Helper to build URL-friendly slugs from project titles
+// Helper to build URL-friendly slugs from project names
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedStatus, setSelectedStatus] = useState("All")
   const [searchTerm, setSearchTerm] = useState("")
 
-  const categories = ["All", "Solar", "Industrial", "Residential", "Commercial", "Infrastructure"]
+  const categories = [
+    "All",
+    "Infrastructure",
+    "Electrification",
+    "Substation",
+    "HVDS",
+    "Transformer Maintenance",
+    "Substation Maintenance",
+    "Line Maintenance",
+    "Solar",
+  ]
+
+  const statuses = ["All", "Completed", "Work in Hand", "In Process Tender"]
 
   const filteredProjects = projects.filter((project) => {
     const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
+    const matchesStatus = selectedStatus === "All" || project.status === selectedStatus
     const matchesSearch =
-      project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.description.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && matchesSearch
+    return matchesCategory && matchesStatus && matchesSearch
   })
 
-  const featuredProjects = projects.slice(0, 3)
-
   const projectStats = [
-    { icon: Building, label: "Projects Completed", value: "500+" },
-    { icon: Users, label: "Happy Clients", value: "200+" },
-    { icon: Zap, label: "MW Installed", value: "150+" },
-    { icon: Factory, label: "States Covered", value: "12+" },
+    { icon: Building, label: "Total Projects", value: "32" },
+    { icon: Users, label: "Clients Served", value: "5+" },
+    { icon: Zap, label: "MW Supported", value: "123+" },
+    { icon: Factory, label: "Regions Covered", value: "Nanded Zone" },
   ]
 
   return (
@@ -51,11 +63,10 @@ export default function ProjectsPage() {
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
               Powering Progress
-              <span className="text-primary"> Across India</span>
+              <span className="text-primary"> in Nanded Zone</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 text-pretty">
-              Explore our extensive portfolio of successful electrical projects spanning residential, commercial, and
-              industrial sectors across multiple states.
+              Explore our extensive portfolio of 32 electrical projects, including completed, ongoing, and tender-stage initiatives, delivering reliable and sustainable power infrastructure across Nanded, Hingoli, and Parbhani Circles.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
@@ -86,86 +97,26 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* All Projects */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Highlighting some of our most significant and innovative electrical installations
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => {
-              const href = `/projects/${slugify(project.title)}`
-              return (
-                <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                  <Link href={href} aria-label={`View details about ${project.title}`}>
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <img
-                        src={project.image || "/blog5.jpeg?height=250&width=400"}
-                        alt={project.title}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-primary/90 text-primary-foreground">Featured</Badge>
-                      </div>
-                      <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className="text-sm font-medium">{project.category} Project</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{project.location}</span>
-                    </div>
-                    <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors">
-                      <Link href={href}>{project.title}</Link>
-                    </h3>
-                    <p className="text-muted-foreground mb-4 line-clamp-3">{project.description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{project.completionDate}</span>
-                      </div>
-                      <Badge variant="outline">{project.category}</Badge>
-                    </div>
-                    <div className="mt-4">
-                      <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary p-0 h-auto">
-                        <Link href={href}>View Details</Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* All Projects */}
-      <section className="py-16 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">All Projects</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Browse through our complete portfolio of electrical projects
+              Browse through our comprehensive portfolio of electrical infrastructure projects, including completed, ongoing, and tender-stage initiatives
             </p>
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="relative">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-8">
+            <div className="relative w-full sm:w-auto">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full sm:w-64 pl-10 pr-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -182,23 +133,48 @@ export default function ProjectsPage() {
                 </Button>
               ))}
             </div>
+            <div className="flex flex-wrap gap-2">
+              {statuses.map((status) => (
+                <Button
+                  key={status}
+                  variant={selectedStatus === status ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedStatus(status)}
+                  className="transition-all duration-200"
+                >
+                  <Filter className="h-4 w-4 mr-2" />
+                  {status}
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => {
-              const href = `/projects/${slugify(project.title)}`
+              const href = `/projects/${slugify(project.name)}`
               return (
                 <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <Link href={href} aria-label={`View details about ${project.title}`}>
+                  <Link href={href} aria-label={`View details about ${project.name}`}>
                     <div className="relative overflow-hidden rounded-t-lg">
                       <img
-                        src={project.image || "/blog5.jpeg?height=200&width=400"}
-                        alt={project.title}
+                        src={project.image || "/project-default.jpg?height=200&width=400"}
+                        alt={project.name}
                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute top-4 left-4">
+                      <div className="absolute top-4 left-4 flex gap-2">
                         <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
+                        <Badge
+                          className={
+                            project.status === "Completed"
+                              ? "bg-green-600/90 text-white"
+                              : project.status === "Work in Hand"
+                              ? "bg-blue-600/90 text-white"
+                              : "bg-orange-600/90 text-white"
+                          }
+                        >
+                          {project.status}
+                        </Badge>
                       </div>
                     </div>
                   </Link>
@@ -208,13 +184,15 @@ export default function ProjectsPage() {
                       <span className="text-sm text-muted-foreground">{project.location}</span>
                     </div>
                     <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                      <Link href={href}>{project.title}</Link>
+                      <Link href={href}>{project.name}</Link>
                     </h3>
                     <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{project.completionDate}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {project.completedDate === "TBD" ? "Ongoing/TBD" : project.completedDate}
+                        </span>
                       </div>
                       <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary">
                         <Link href={href}>View Details</Link>
@@ -233,6 +211,7 @@ export default function ProjectsPage() {
                 variant="outline"
                 onClick={() => {
                   setSelectedCategory("All")
+                  setSelectedStatus("All")
                   setSearchTerm("")
                 }}
                 className="mt-4"
