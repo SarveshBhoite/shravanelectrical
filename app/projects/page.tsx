@@ -11,6 +11,10 @@ import { Filter, MapPin, Calendar, Users, Zap, Building, Factory, Search } from 
 import Link from "next/link"
 import { useState } from "react"
 
+// Helper to build URL-friendly slugs from project titles
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [searchTerm, setSearchTerm] = useState("")
@@ -93,39 +97,51 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="relative overflow-hidden rounded-t-lg">
-                  <img
-                    src={project.image || "/blog5.jpeg?height=250&width=400"}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary/90 text-primary-foreground">Featured</Badge>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium">{project.category} Project</p>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">{project.location}</span>
-                  </div>
-                  <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{project.completionDate}</span>
+            {featuredProjects.map((project, index) => {
+              const href = `/projects/${slugify(project.title)}`
+              return (
+                <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <Link href={href} aria-label={`View details about ${project.title}`}>
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      <img
+                        src={project.image || "/blog5.jpeg?height=250&width=400"}
+                        alt={project.title}
+                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-primary/90 text-primary-foreground">Featured</Badge>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-sm font-medium">{project.category} Project</p>
+                      </div>
                     </div>
-                    <Badge variant="outline">{project.category}</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </Link>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">{project.location}</span>
+                    </div>
+                    <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors">
+                      <Link href={href}>{project.title}</Link>
+                    </h3>
+                    <p className="text-muted-foreground mb-4 line-clamp-3">{project.description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">{project.completionDate}</span>
+                      </div>
+                      <Badge variant="outline">{project.category}</Badge>
+                    </div>
+                    <div className="mt-4">
+                      <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary p-0 h-auto">
+                        <Link href={href}>View Details</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -170,37 +186,44 @@ export default function ProjectsPage() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="relative overflow-hidden rounded-t-lg">
-                  <img
-                    src={project.image || "/blog5.jpeg?height=200&width=400"}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">{project.location}</span>
-                  </div>
-                  <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">{project.completionDate}</span>
+            {filteredProjects.map((project, index) => {
+              const href = `/projects/${slugify(project.title)}`
+              return (
+                <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <Link href={href} aria-label={`View details about ${project.title}`}>
+                    <div className="relative overflow-hidden rounded-t-lg">
+                      <img
+                        src={project.image || "/blog5.jpeg?height=200&width=400"}
+                        alt={project.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
+                      </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary">
-                      View Details
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </Link>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">{project.location}</span>
+                    </div>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                      <Link href={href}>{project.title}</Link>
+                    </h3>
+                    <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">{project.completionDate}</span>
+                      </div>
+                      <Button asChild variant="ghost" size="sm" className="text-primary hover:text-primary">
+                        <Link href={href}>View Details</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
 
           {filteredProjects.length === 0 && (
