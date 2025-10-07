@@ -2,8 +2,28 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react"
-import { companyInfo, mockServices } from "@/lib/mock-data"
+import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowUp, Building, Shield } from "lucide-react"
+import { mockServices } from "@/lib/mock-data"
+
+const companyInfo = {
+  name: "Shravan Electrical Contractor PVT LTD",
+  description: "Leading electrical contractor delivering reliable and sustainable solutions since 2009",
+  address: "Janki Nagar, Hanuman Gadh, Nanded, Maharashtra 431604",
+  phone: "+918888888765",
+  email: "info@shravanelectrical.com",
+  telefax: "02462-220025",
+  directors: [
+    "Shri. Balaji G. Kanthewad",
+    "Mrs. Sharmila B. Kanthewad",
+  ],
+  licenseNo: "23964",
+  pwdClass: "Class A",
+  providentFund: "NGAUR2232263000",
+  esic: "25000142880000999",
+  pan: "ABECS8374D",
+  registrationCert: "27711810984P",
+  gstin: "27ABECS8374D1Z3",
+}
 
 export function Footer() {
   const [email, setEmail] = useState("")
@@ -53,11 +73,33 @@ export function Footer() {
               <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
                 {companyInfo.name.split(" ")[0]}
               </h3>
-              <p className="text-muted-foreground text-sm">Engineering Excellence Since 1999</p>
+              <p className="text-muted-foreground text-sm">Engineering Excellence Since 2009</p>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               {companyInfo.description}
             </p>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Building className="w-5 h-5 text-primary" />
+                <span>Directors: {companyInfo.directors.join(", ")}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>License No.: {companyInfo.licenseNo}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>PWD Class: {companyInfo.pwdClass}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>PAN: {companyInfo.pan}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary" />
+                <span>GSTIN: {companyInfo.gstin}</span>
+              </div>
+            </div>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon
@@ -112,7 +154,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Get In Touch (moved into the same row) */}
+          {/* Get In Touch */}
           <div className="animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
             <h4 className="text-foreground font-bold text-lg mb-6">Get In Touch</h4>
             <div className="space-y-4">
@@ -123,6 +165,10 @@ export function Footer() {
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group">
                 <Phone className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <a href={`tel:${companyInfo.phone}`} className="text-sm">{companyInfo.phone}</a>
+              </div>
+              <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group">
+                <Phone className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-sm">Telefax: {companyInfo.telefax}</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group">
                 <Mail className="w-5 h-5 flex-shrink-0 group-hover:scale-110 transition-transform" />

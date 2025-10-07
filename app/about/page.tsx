@@ -33,7 +33,7 @@ const teamMembers = [
   {
     name: "Rajesh Shravan",
     position: "Founder & CEO",
-    experience: "25+ Years",
+    experience: "15+ Years",
     specialization: "Electrical Infrastructure",
     image: "/blog8.jpeg?height=300&width=300",
   },

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useLayoutEffect, CSSProperties } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, ArrowRight, Zap } from "lucide-react"
+import { Calendar, MapPin, ArrowRight, Zap, ChevronLeft, ChevronRight } from "lucide-react"
 import { mockProjects } from "@/lib/mock-data"
 import Image from "next/image"
 import Link from "next/link"
@@ -110,6 +110,14 @@ export function ProjectsSection() {
     itemsRef.current.forEach((el) => el && observer.observe(el))
     return () => observer.disconnect()
   }, [])
+
+  // Navigation handlers for arrow buttons
+  const handlePrev = () => {
+    setActive((prev) => (prev === 0 ? displayedProjects.length - 1 : prev - 1))
+  }
+  const handleNext = () => {
+    setActive((prev) => (prev === displayedProjects.length - 1 ? 0 : prev + 1))
+  }
 
   // Spotlight cursor
   const [spot, setSpot] = useState({ x: -9999, y: -9999 })
@@ -265,6 +273,25 @@ export function ProjectsSection() {
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/40" />
+                    {/* Navigation Buttons */}
+                    <div className="absolute inset-y-0 left-0 flex items-center">
+                      <Button
+                        onClick={handlePrev}
+                        aria-label="Previous project"
+                        className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white border border-white/40 backdrop-blur-sm p-0 flex items-center justify-center transition-all hover:scale-110"
+                      >
+                        <ChevronLeft className="w-6 h-6" />
+                      </Button>
+                    </div>
+                    <div className="absolute inset-y-0 right-0 flex items-center">
+                      <Button
+                        onClick={handleNext}
+                        aria-label="Next project"
+                        className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white border border-white/40 backdrop-blur-sm p-0 flex items-center justify-center transition-all hover:scale-110"
+                      >
+                        <ChevronRight className="w-6 h-6" />
+                      </Button>
+                    </div>
                   </div>
 
                   <CardContent className="p-6 md:p-7">

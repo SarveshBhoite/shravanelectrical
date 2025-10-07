@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -12,9 +11,13 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { companyInfo } from "@/lib/mock-data"
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, Calendar, CheckCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react"
 import Link from "next/link"
+
+const companyInfo = {
+  phone: "+918888888765",
+  email: "info@shravanelectrical.com",
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -82,8 +85,8 @@ export default function ContactPage() {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Quick chat for urgent queries",
-      value: "+91 98765 43210",
-      action: "https://wa.me/919876543210",
+      value: "+919923799555",
+      action: "https://wa.me/919923799555",
       available: "Mon-Sat, 9 AM - 9 PM",
     },
   ]
@@ -91,23 +94,24 @@ export default function ContactPage() {
   const offices = [
     {
       title: "Head Office",
-      address: "123 Industrial Area, Phase-II, Pune, Maharashtra 411019",
-      phone: "+91 98765 43210",
+      address: "Janki Nagar, Hanuman Gadh, Nanded, Maharashtra 431604",
+      phone: "+918888888765",
+      email: "nanded@shravanelectrical.com",
+      hours: "Mon-Sat: 9:00 AM - 6:00 PM",
+      telefax: "02462-220025",
+    },
+    {
+      title: "Pune Branch",
+      address: "Shikrapur, c/o Om Sai Enterprises, near old Bridge, Tq. Shirur, Dist. Pune, Maharashtra",
+      phone: "+919923799555",
       email: "pune@shravanelectrical.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
     {
       title: "Mumbai Branch",
-      address: "456 Business District, Andheri East, Mumbai, Maharashtra 400069",
-      phone: "+91 98765 43211",
+      address: "Pratiksha Nagar, Sayan Koliwad Building No. L11 B, Plot No. 103, Mumbai, Maharashtra",
+      phone: "+919923799555",
       email: "mumbai@shravanelectrical.com",
-      hours: "Mon-Sat: 9:00 AM - 6:00 PM",
-    },
-    {
-      title: "Bangalore Office",
-      address: "789 Tech Park, Electronic City, Bangalore, Karnataka 560100",
-      phone: "+91 98765 43212",
-      email: "bangalore@shravanelectrical.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
   ]
@@ -176,7 +180,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactMethods.map((method, index) => (
               <Card
                 key={index}
@@ -376,6 +380,12 @@ export default function ContactPage() {
                         {office.phone}
                       </Link>
                     </div>
+                    {office.telefax && (
+                      <div className="flex items-center gap-2">
+                        <Phone className="h-4 w-4 text-primary" />
+                        <span className="text-sm text-muted-foreground">Telefax: {office.telefax}</span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-2">
                       <Mail className="h-4 w-4 text-primary" />
                       <Link href={`mailto:${office.email}`} className="text-primary hover:underline">
@@ -436,8 +446,8 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" variant="destructive">
-                <Link href="tel:+919876543210">
-                  <Phone className="h-4 w-4 mr-2" />
+                <Link href="tel:+919876543210" className="text-white">
+                  <Phone className="h-4 w-4 mr-2 text-white" />
                   Emergency Hotline
                 </Link>
               </Button>

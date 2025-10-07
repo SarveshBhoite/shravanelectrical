@@ -100,7 +100,7 @@ export default function ServicesPage() {
   const whyChooseUs = [
     {
       icon: Award,
-      title: "25+ Years Experience",
+      title: "15+ Years Experience",
       description: "Proven track record in electrical contracting",
     },
     {

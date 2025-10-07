@@ -71,8 +71,12 @@ export function ContactSection() {
                     <Phone className="h-6 w-6 text-blue-900" />
                   </div>
                   <h4 className="font-semibold text-white mb-2">Call Us</h4>
-                  <p className="text-blue-100 text-sm">+91 98765 43210</p>
-                  <p className="text-blue-100 text-sm">+91 87654 32109</p>
+                  <p className="text-blue-100 text-sm">
+                    <a href="tel:+918888888765">+918888888765</a>
+                  </p>
+                  <p className="text-blue-100 text-sm">
+                    <a href="tel:+919923799555">+919923799555</a>
+                  </p>
                 </CardContent>
               </Card>
 
@@ -82,8 +86,12 @@ export function ContactSection() {
                     <Mail className="h-6 w-6 text-blue-900" />
                   </div>
                   <h4 className="font-semibold text-white mb-2">Email Us</h4>
-                  <p className="text-blue-100 text-sm">info@shravanelectrical.com</p>
-                  <p className="text-blue-100 text-sm">projects@shravanelectrical.com</p>
+                  <p className="text-blue-100 text-sm">
+                    <a href="mailto:info@shravanelectrical.com">info@shravanelectrical.com</a>
+                  </p>
+                  <p className="text-blue-100 text-sm">
+                    <a href="mailto:support@shravanelectrical.com">support@shravanelectrical.com</a>
+                  </p>
                 </CardContent>
               </Card>
 
@@ -93,8 +101,8 @@ export function ContactSection() {
                     <MapPin className="h-6 w-6 text-blue-900" />
                   </div>
                   <h4 className="font-semibold text-white mb-2">Visit Us</h4>
-                  <p className="text-blue-100 text-sm">123 Industrial Area</p>
-                  <p className="text-blue-100 text-sm">Mumbai, Maharashtra</p>
+                  <p className="text-blue-100 text-sm">Janki Nagar, Hanuman Gadh</p>
+                  <p className="text-blue-100 text-sm">Nanded, Maharashtra 431604</p>
                 </CardContent>
               </Card>
 

@@ -1,23 +1,26 @@
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { StickyButtons } from "@/components/sticky-buttons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+"use client"
 
+import { useState } from "react"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { StickyButtons } from "@/components/sticky-buttons"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import {
   Shield,
   Award,
   CheckCircle,
-  Download,
   Calendar,
   Building,
   Users,
-  ExternalLink,
-} from "lucide-react";
-import Link from "next/link";
+  X,
+} from "lucide-react"
+import Link from "next/link"
 
 export default function CertificatesPage() {
+  const [selectedCert, setSelectedCert] = useState<string | null>(null)
+
   const certifications = [
     {
       title: "Solvency Certificate",
@@ -81,7 +84,7 @@ export default function CertificatesPage() {
         "Certificate of Enrollment for Kumari Siddhi Balaji Kanthewad under the Maharashtra State Tax on Professions, Trades, Callings and Employments Act, 1975, with Enrollment Certificate Number 99474461512P, effective from 01-Apr-22, issued on 29-Nov-22, with the principal place of work/business at Shradha Niwas, Hanuman Gadh, Shivajinagar (Nanded), Nanded, Maharashtra, PIN 431602.",
       image: "/uploaded_image3.jpg?height=300&width=400",
     },
-  ];
+  ]
 
   const awards = [
     {
@@ -112,7 +115,7 @@ export default function CertificatesPage() {
       description:
         "Consistent quality delivery and customer satisfaction in electrical services",
     },
-  ];
+  ]
 
   const memberships = [
     {
@@ -136,7 +139,7 @@ export default function CertificatesPage() {
       type: "Active Member",
       since: "2012",
     },
-  ];
+  ]
 
   const categoryColors = {
     Quality: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
@@ -149,113 +152,55 @@ export default function CertificatesPage() {
       "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
     Solar:
       "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
-  };
+    Financial:
+      "bg-blue-200 text-blue-900 dark:bg-blue-800 dark:text-blue-200",
+    Legal:
+      "bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200",
+  }
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
-     <section className="pt-24 pb-16 relative overflow-hidden">
-  {/* Background Image Overlap */}
-  <div className="absolute inset-0 z-0">
-    <img
-      src="/background-certification.jpg"
-      alt="Background"
-      className="w-full h-full object-cover opacity-20"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
-  </div>
+      <section className="pt-24 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/background-certification.jpg"
+            alt="Background"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+        </div>
 
-  <div className="container mx-auto px-4 relative z-10">
-    <div className="max-w-4xl mx-auto text-center">
-      {/* Animated Badge */}
-      <Badge
-        variant="outline"
-        className="mb-4 text-primary border-primary animate-fade-in-up"
-      >
-        Certifications & Awards
-      </Badge>
-      {/* Animated Heading */}
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left">
-        Certified
-        <span className="text-primary"> Excellence</span>
-      </h1>
-      {/* Animated Paragraph */}
-      <p className="text-xl text-muted-foreground mb-8 text-pretty animate-fade-in-up delay-200">
-        Our commitment to quality, safety, and environmental
-        responsibility is validated through internationally recognized
-        certifications and industry awards.
-      </p>
-      {/* Animated Buttons */}
-      <div className="flex flex-wrap justify-center gap-4 animate-slide-in-right delay-300">
-        <Button asChild size="lg" className="hover:scale-105 transition-transform">
-          <Link href="/contact">Work With Certified Experts</Link>
-        </Button>
-        <Button asChild variant="outline" size="lg" className="hover:scale-105 transition-transform">
-          <Link href="/about">Learn More About Us</Link>
-        </Button>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* Remove the <style> block from here. Use a global CSS file or a CSS-in-JS solution for these styles. 
-   For example, you can add the following to your global CSS (e.g., globals.css): 
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.8s ease-out;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
-}
-*/}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge
+              variant="outline"
+              className="mb-4 text-primary border-primary animate-fade-in-up"
+            >
+              Certifications & Awards
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left">
+              Certified
+              <span className="text-primary"> Excellence</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 text-pretty animate-fade-in-up delay-200">
+              Our commitment to quality, safety, and environmental
+              responsibility is validated through internationally recognized
+              certifications and industry awards.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 animate-slide-in-right delay-300">
+              <Button asChild size="lg" className="hover:scale-105 transition-transform">
+                <Link href="/contact">Work With Certified Experts</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="hover:scale-105 transition-transform">
+                <Link href="/about">Learn More About Us</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Certification Stats */}
       <section className="py-16 bg-muted/50">
@@ -296,84 +241,90 @@ export default function CertificatesPage() {
       </section>
 
       {/* Certifications */}
-<section className="py-16">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold mb-4">Our Certifications</h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">
-        Internationally recognized certifications that validate our
-        commitment to quality, safety, and environmental responsibility
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {certifications.map((cert, index) => (
-        <div
-          key={index}
-          className="group hover:shadow-xl transition-all duration-300 border border-gray-200 rounded-lg shadow-md"
-        >
-          <div className="relative overflow-hidden rounded-t-lg">
-            {/* Thumbnail Image */}
-            <img
-              src={cert.image || "/blog2.jpeg"}
-              alt={cert.title}
-              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-
-            {/* Full Image on Hover Overlay */}
-            <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-              <img
-                src={cert.image || "/blog2.jpeg"}
-                alt={cert.title}
-                className="max-h-[90vh] max-w-[90vw] rounded-lg border-4 border-white shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Category Badge */}
-            <div className="absolute top-4 left-4 z-10">
-              <Badge
-                className={
-                  categoryColors[
-                    cert.category as keyof typeof categoryColors
-                  ]
-                }
-              >
-                {cert.category}
-              </Badge>
-            </div>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Certifications</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Internationally recognized certifications that validate our
+              commitment to quality, safety, and environmental responsibility
+            </p>
           </div>
 
-          {/* Card Content */}
-          <div className="p-6">
-            <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">
-              {cert.title}
-            </h3>
-            <p className="text-primary font-medium mb-3">
-              {cert.subtitle}
-            </p>
-            <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-              {cert.description}
-            </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certifications.map((cert, index) => (
+              <div
+                key={index}
+                className="group hover:shadow-xl transition-all duration-300 border border-gray-200 rounded-lg shadow-md"
+              >
+                <div className="relative overflow-hidden rounded-t-lg cursor-pointer" onClick={() => setSelectedCert(cert.image)}>
+                  <img
+                    src={cert.image || "/blog2.jpeg"}
+                    alt={cert.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="absolute top-4 left-4 z-10">
+                    <Badge
+                      className={categoryColors[cert.category as keyof typeof categoryColors]}
+                    >
+                      {cert.category}
+                    </Badge>
+                  </div>
+                </div>
 
-            <div className="space-y-2 mb-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Issued by:</span>
-                <span className="font-medium">{cert.issuer}</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Valid until:</span>
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
-                  <span className="font-medium">{cert.validUntil}</span>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                    {cert.title}
+                  </h3>
+                  <p className="text-primary font-medium mb-3">{cert.subtitle}</p>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                    {cert.description}
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Issued by:</span>
+                      <span className="font-medium">{cert.issuer}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Valid until:</span>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3" />
+                        <span className="font-medium">{cert.validUntil}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* Pop-Up Modal */}
+      {selectedCert && (
+        <div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+          onClick={() => setSelectedCert(null)}
+        >
+          <div
+            className="relative bg-white rounded-lg p-4 max-w-[90vw] max-h-[90vh] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-2 p-2 bg-gray-200 rounded-full hover:bg-gray-300"
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close modal"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <img
+              src={selectedCert}
+              alt="Certificate Preview"
+              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Awards */}
       <section className="py-16 bg-muted/50">
@@ -401,12 +352,8 @@ export default function CertificatesPage() {
                         <h3 className="font-bold text-lg">{award.title}</h3>
                         <Badge variant="outline">{award.year}</Badge>
                       </div>
-                      <p className="text-primary font-medium mb-2">
-                        {award.issuer}
-                      </p>
-                      <p className="text-muted-foreground">
-                        {award.description}
-                      </p>
+                      <p className="text-primary font-medium mb-2">{award.issuer}</p>
+                      <p className="text-muted-foreground">{award.description}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -416,13 +363,11 @@ export default function CertificatesPage() {
         </div>
       </section>
 
-      {/* Professional Memberships 
+      {/* Professional Memberships */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Professional Memberships
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Professional Memberships</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Active participation in leading industry associations and
               professional bodies
@@ -440,9 +385,7 @@ export default function CertificatesPage() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold mb-1">
-                        {membership.organization}
-                      </h3>
+                      <h3 className="font-bold mb-1">{membership.organization}</h3>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
                         <span>{membership.type}</span>
                         <span>•</span>
@@ -455,7 +398,7 @@ export default function CertificatesPage() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Why Certifications Matter */}
       <section className="py-16 bg-muted/50">
@@ -517,7 +460,7 @@ export default function CertificatesPage() {
                 className="rounded-lg shadow-lg"
               />
               <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold">25+</div>
+                <div className="text-2xl font-bold">15+</div>
                 <div className="text-sm">Years Certified</div>
               </div>
             </div>
@@ -554,5 +497,5 @@ export default function CertificatesPage() {
       <Footer />
       <StickyButtons />
     </div>
-  );
+  )
 }
