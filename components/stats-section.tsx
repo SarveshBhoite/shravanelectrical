@@ -177,7 +177,7 @@ export function StatsSection() {
               <div className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-white/10 border border-white/15 text-white/80 mb-3">
                 Highlights
               </div>
-              <h2 className="text-4xl font-extrabold mb-3 tracking-tight bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
+              <h2 className="text-4xl font-extrabold mb-3 tracking-tight bg-gradient-to-r from-accent via-accent/80 to-accent bg-clip-text text-transparent">
                 Our Achievements
               </h2>
               <p className="text-lg text-slate-300">Numbers that define our journey.</p>
@@ -195,8 +195,8 @@ export function StatsSection() {
                     <div className="w-10 h-10 mb-2 bg-slate-700 rounded-full flex items-center justify-center border border-slate-600 mx-auto">
                       <IconComponent className="h-5 w-5 text-blue-400" />
                     </div>
-                    <Counter end={stat.value} suffix={stat.suffix} isInView={isInView} className="text-3xl font-bold" />
-                    <h3 className="text-sm font-semibold text-slate-300 mt-1">{stat.label}</h3>
+                    <Counter end={stat.value} suffix={stat.suffix} isInView={isInView} className="text-3xl text-black font-bold" />
+                    <h3 className="text-sm font-semibold text-blue-400 mt-1">{stat.label}</h3>
                   </div>
                 );
               })}

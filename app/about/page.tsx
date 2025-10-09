@@ -248,7 +248,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Section - Detailed Story with Flip Animation */}
-      <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
+      <section className="py-16 bg-gradient-to-br from-primary/50 via-background to-accent/50">
         <div className="container mx-auto px-4 space-y-24">
           {/* First block: Image on Left */}
           <div className="grid lg:grid-cols-5 gap-12 items-center">
