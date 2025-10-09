@@ -96,7 +96,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="absolute top-8 left-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
+          className="absolute top-10 left-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image src="/hero1.png" alt="Corner Image 1" fill style={{ objectFit: "cover" }} />
         </motion.div>
@@ -104,7 +104,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="absolute top-8 right-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
+          className="absolute top-10 right-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image src="/blog2.jpeg" alt="Corner Image 2" fill style={{ objectFit: "cover" }} />
         </motion.div>
@@ -127,11 +127,19 @@ export default function GalleryPage() {
 
         {/* Main Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">A Global View of Our Impact</h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          {/* UPDATED HEADING AND PARAGRAPH */}
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+            A Global View of
+            <span className="bg-gradient-to-r from-primary via-secondary to-yellow-500 bg-clip-text text-transparent animate-gradient">
+              {" "}
+              Our Impact
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             Experience our projects and capabilities from a dynamic, new perspective.
           </p>
 
+          {/* Ring */}
           <div className="relative flex items-center justify-center h-[500px] w-full">
             {/* Centered border ring (STATIC, centered) */}
             <div
@@ -141,8 +149,8 @@ export default function GalleryPage() {
 
             {/* Central Logo (fixed center) */}
             <motion.div
-              className="absolute rounded-full overflow-hidden shadow-xl z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ width: 128, height: 128 }}
+              className="absolute rounded-full overflow-hidden z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              style={{ width: 135, height: 135 }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6, duration: 0.6, type: "spring", stiffness: 100 }}
@@ -167,10 +175,21 @@ export default function GalleryPage() {
                     style={{ left: "50%", top: "50%", transform: `translate(${x - 56}px, ${y - 56}px)` }}
                   >
                     <div className="counter-spin">
+                      {/* APPEAR ANIMATION added here */}
                       <motion.div
                         className="relative w-28 h-28 rounded-lg overflow-hidden shadow-lg border-2 border-primary/50 cursor-pointer bg-background/30 backdrop-blur"
+                        initial={{ opacity: 0, scale: 0.6, filter: "blur(6px)" }}
+                        animate={{
+                          opacity: 1,
+                          scale: [0.6, 1.12, 1],
+                          filter: "blur(0px)",
+                        }}
+                        transition={{
+                          duration: 0.7,
+                          delay: index * 0.08,
+                          ease: "easeOut",
+                        }}
                         whileHover={{ scale: 1.18, zIndex: 50 }}
-                        transition={{ type: "spring", stiffness: 300 }}
                         onClick={() => openLightbox(image)}
                       >
                         <Image
@@ -192,15 +211,27 @@ export default function GalleryPage() {
         {/* Spin + counter-spin to keep images upright while ring rotates */}
         <style jsx>{`
           @keyframes spin {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
           }
           @keyframes spinReverse {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(-360deg); }
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(-360deg);
+            }
           }
-          .ring-spin { animation: spin 60s linear infinite; }
-          .counter-spin { animation: spinReverse 60s linear infinite; }
+          .ring-spin {
+            animation: spin 60s linear infinite;
+          }
+          .counter-spin {
+            animation: spinReverse 60s linear infinite;
+          }
         `}</style>
       </section>
 

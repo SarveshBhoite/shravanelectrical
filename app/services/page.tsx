@@ -21,6 +21,7 @@ import {
   Award,
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ServicesPage() {
   const serviceCategories = [
@@ -127,25 +128,40 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4 text-primary border-primary">
+      {/* Hero Section with Video */}
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+        {/* Background video element */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          src="/video4.mp4" // Assuming your video file is named video4.mp4 and is in the public folder
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-center p-4 z-10 text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Badge variant="outline" className="mb-4 text-white border-white">
               Our Services
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
               Comprehensive
-              <span className="text-primary"> Electrical Solutions</span>
+              <span className="text-blue-400"> Electrical Solutions</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 text-pretty">
+            <p className="text-xl text-white/80 mb-8 text-pretty">
               From residential installations to large-scale industrial projects, we deliver innovative electrical
               solutions tailored to your specific needs.
             </p>
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="secondary">
               <Link href="/contact">Get Free Quote</Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -303,17 +319,17 @@ export default function ServicesPage() {
             </p>
           </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whyChooseUs.map((item, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyChooseUs.map((item, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

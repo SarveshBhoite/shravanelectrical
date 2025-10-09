@@ -1,24 +1,34 @@
-"use client"
+"use client";
 
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { StickyButtons } from "@/components/sticky-buttons"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { projects } from "@/lib/mock-data"
-import { Filter, MapPin, Calendar, Users, Zap, Building, Factory, Search } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { StickyButtons } from "@/components/sticky-buttons";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { projects } from "@/lib/mock-data";
+import {
+  Filter,
+  MapPin,
+  Calendar,
+  Users,
+  Zap,
+  Building,
+  Factory,
+  Search,
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 // Helper to build URL-friendly slugs from project names
 const slugify = (s: string) =>
-  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedStatus, setSelectedStatus] = useState("All")
-  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedStatus, setSelectedStatus] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
     "All",
@@ -30,53 +40,68 @@ export default function ProjectsPage() {
     "Substation Maintenance",
     "Line Maintenance",
     "Solar",
-  ]
+  ];
 
-  const statuses = ["All", "Completed", "Work in Hand", "In Process Tender"]
+  const statuses = ["All", "Completed", "Work in Hand", "In Process Tender"];
 
   const filteredProjects = projects.filter((project) => {
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
-    const matchesStatus = selectedStatus === "All" || project.status === selectedStatus
+    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
+    const matchesStatus = selectedStatus === "All" || project.status === selectedStatus;
     const matchesSearch =
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesCategory && matchesStatus && matchesSearch
-  })
+      project.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesStatus && matchesSearch;
+  });
 
   const projectStats = [
     { icon: Building, label: "Total Projects", value: "32" },
     { icon: Users, label: "Clients Served", value: "5+" },
     { icon: Zap, label: "MW Supported", value: "123+" },
     { icon: Factory, label: "Regions Covered", value: "Nanded Zone" },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4 text-primary border-primary">
+      {/* Hero Section with Video */}
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+        {/* Background video element */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          src="/video2.mp4" // Assuming your video file is named video4.mp4 and is in the public folder
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-center p-4 z-10 text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Badge variant="outline" className="mb-4 text-white border-white">
               Our Portfolio
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
               Powering Progress
-              <span className="text-primary"> in Nanded Zone</span>
+              <span className="text-blue-400"> in Nanded Zone</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 text-pretty">
+            <p className="text-xl text-white/80 mb-8 text-pretty">
               Explore our extensive portfolio of 32 electrical projects, including completed, ongoing, and tender-stage initiatives, delivering reliable and sustainable power infrastructure across Nanded, Hingoli, and Parbhani Circles.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg">
+              <Button asChild size="lg" variant="secondary">
                 <Link href="/contact">Start Your Project</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-black">
                 <Link href="/services">Our Services</Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -152,7 +177,7 @@ export default function ProjectsPage() {
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => {
-              const href = `/projects/${slugify(project.name)}`
+              const href = `/projects/${slugify(project.name)}`;
               return (
                 <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <Link href={href} aria-label={`View details about ${project.name}`}>
@@ -169,8 +194,8 @@ export default function ProjectsPage() {
                             project.status === "Completed"
                               ? "bg-green-600/90 text-white"
                               : project.status === "Work in Hand"
-                              ? "bg-blue-600/90 text-white"
-                              : "bg-orange-600/90 text-white"
+                                ? "bg-blue-600/90 text-white"
+                                : "bg-orange-600/90 text-white"
                           }
                         >
                           {project.status}
@@ -200,7 +225,7 @@ export default function ProjectsPage() {
                     </div>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
 
@@ -210,9 +235,9 @@ export default function ProjectsPage() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  setSelectedCategory("All")
-                  setSelectedStatus("All")
-                  setSearchTerm("")
+                  setSelectedCategory("All");
+                  setSelectedStatus("All");
+                  setSearchTerm("");
                 }}
                 className="mt-4"
               >
@@ -283,5 +308,5 @@ export default function ProjectsPage() {
       <Footer />
       <StickyButtons />
     </div>
-  )
+  );
 }
