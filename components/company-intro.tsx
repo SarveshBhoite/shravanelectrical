@@ -15,7 +15,7 @@ const CompanyIntro: React.FC = () => {
   useEffect(() => {
     setIsVisible(true);
 
-    const targets = { projects: 37, years: 16, clients: 100 };
+    const targets = { projects: 250, years: 16, clients: 100 };
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
