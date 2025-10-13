@@ -19,7 +19,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
+
+// Elegant serif for headings
+const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 // Helper to build URL-friendly slugs from project names
 const slugify = (s: string) =>
@@ -54,7 +57,7 @@ export default function ProjectsPage() {
   });
 
   const projectStats = [
-    { icon: Building, label: "Total Projects", value: "32" },
+    { icon: Building, label: "Total Projects", value: "250" },
     { icon: Users, label: "Clients Served", value: "5+" },
     { icon: Zap, label: "MW Supported", value: "123+" },
     { icon: Factory, label: "Regions Covered", value: "Nanded Zone" },
@@ -66,27 +69,20 @@ export default function ProjectsPage() {
 
       {/* Hero Section with Video */}
       <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-        {/* Background video element */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          src="/video2.mp4" // Assuming your video file is named video4.mp4 and is in the public folder
+          src="/video2.mp4"
           autoPlay
           loop
           muted
           playsInline
         />
-        {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-center p-4 z-10 text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
+          <div className="max-w-4xl mx-auto">
             <Badge variant="outline" className="mb-4 text-white border-white">
               Our Portfolio
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
+            <h1 className={`text-4xl md:text-6xl font-bold mb-6 text-balance ${dmSerif.className}`}>
               Powering Progress
               <span className="text-blue-400"> in Nanded Zone</span>
             </h1>
@@ -97,11 +93,11 @@ export default function ProjectsPage() {
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contact">Start Your Project</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-black">
+              <Button asChild variant="secondary" size="lg" className="border-white bg-white text-black hover:bg-white hover:text-black">
                 <Link href="/services">Our Services</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -126,7 +122,9 @@ export default function ProjectsPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
+            <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+              Our Projects
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Browse through our comprehensive portfolio of electrical infrastructure projects, including completed, ongoing, and tender-stage initiatives
             </p>
@@ -208,7 +206,7 @@ export default function ProjectsPage() {
                       <MapPin className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm text-muted-foreground">{project.location}</span>
                     </div>
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                    <h3 className={`font-bold text-lg mb-2 group-hover:text-primary transition-colors ${dmSerif.className}`}>
                       <Link href={href}>{project.name}</Link>
                     </h3>
                     <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
@@ -252,7 +250,9 @@ export default function ProjectsPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Project Approach</h2>
+            <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+              Our Project Approach
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Every project follows our proven methodology to ensure quality and timely delivery
             </p>
@@ -274,7 +274,7 @@ export default function ProjectsPage() {
                     <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border -translate-x-8"></div>
                   )}
                 </div>
-                <h3 className="font-bold text-lg mb-2">{phase.title}</h3>
+                <h3 className={`font-bold text-lg mb-2 ${dmSerif.className}`}>{phase.title}</h3>
                 <p className="text-muted-foreground">{phase.description}</p>
               </div>
             ))}
@@ -285,7 +285,9 @@ export default function ProjectsPage() {
       {/* CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Join Our Success Stories?</h2>
+          <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+            Ready to Join Our Success Stories?
+          </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Let's discuss your electrical project requirements and create another success story together
           </p>

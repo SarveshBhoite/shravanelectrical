@@ -116,7 +116,7 @@ const CompanyIntro: React.FC = () => {
             <img
               src="/maharahtrawithflow-Photoroom.png?height=650&width=850&q=90"
               alt="Maharashtra map highlighting Shravan Electricals' project locations"
-              className="object-contain transition-transform duration-500"
+              className="object-contain transition-transform duration-500 shadow-2xl"
             />
           </div>
         </div>

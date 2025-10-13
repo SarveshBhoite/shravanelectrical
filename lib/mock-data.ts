@@ -1256,7 +1256,7 @@ export const mockStaff: Staff[] = [
 // Mock Stats Data
 export const mockStats: Stats = {
   experience: 15,
-  projects: 200,
+  projects: 250,
   engineers: 50,
   branches: 3,
   satisfaction: 100,

@@ -24,8 +24,8 @@ export function Navbar() {
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
-    { name: "Certificates", href: "/certificates" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Certificates", href: "/certificates" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -92,13 +92,13 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button
+            {/* <Button
               asChild
               size="sm"
               className="border-white bg-yellow-400 text-blue-900 hover:bg-yellow-500 hover:text-blue-900"
             >
               <Link href="/admin">Admin</Link>
-            </Button>
+            </Button> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -133,7 +133,7 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t">
+              {/* <div className="flex flex-col space-y-2 pt-4 border-t">
                 <Button
                   asChild
                   size="sm"
@@ -141,7 +141,7 @@ export function Navbar() {
                 >
                   <Link href="/admin">Admin</Link>
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

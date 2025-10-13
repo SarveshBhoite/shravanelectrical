@@ -9,22 +9,24 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { DM_Serif_Display } from "next/font/google";
+
+// Elegant serif for headings
+const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 // Array of images for the gallery.
 const galleryImages = [
-  { src: "/hero1.png", alt: "Electrical Substation Project" },
-  { src: "/hero2.png", alt: "Rural Electrification Work" },
-  { src: "/hero3.png", alt: "Solar Panel Installation" },
-  { src: "/blog1.jpeg", alt: "Team Meeting" },
-  { src: "/blog2.jpeg", alt: "Safety Training" },
-  { src: "/blog3.jpeg", alt: "Construction Site" },
-  { src: "/blog4.jpeg", alt: "Company Facility" },
-  { src: "/electricalcontracting.png", alt: "Electrical Contracting Services" },
-  { src: "/cableconductor.png", alt: "Cable and Line Erection" },
-  { src: "/repair.png", alt: "Transformer Repair" },
-  { src: "/solar.jpeg", alt: "Solar Project" },
-  { src: "/tower.png", alt: "High-Tension Tower" },
-  { src: "/hero3.png", alt: "Company Hero Shot" },
+  { src: "/gallery/gallery1.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery2.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery3.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery4.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery5.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery6.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery7.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery8.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery9.jpg", alt: "Gallery image" },
+  { src: "/gallery/gallery10.jpeg", alt: "Gallery image" },
+  { src: "/gallery/gallery11.jpeg", alt: "Gallery image" },
 ];
 
 export default function GalleryPage() {
@@ -66,8 +68,7 @@ export default function GalleryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Increased size/weight */}
-            <h1 className="text-6xl md:text-8xl font-black text-white text-balance leading-tight tracking-tight">
+            <h1 className={`text-6xl md:text-8xl font-black text-white text-balance leading-tight tracking-tight ${dmSerif.className}`}>
               Our Work in Pictures
             </h1>
             <p className="mt-4 text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
@@ -106,7 +107,7 @@ export default function GalleryPage() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="absolute top-10 right-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/blog2.jpeg" alt="Corner Image 2" fill style={{ objectFit: "cover" }} />
+          <Image src="/hero3.png" alt="Corner Image 2" fill style={{ objectFit: "cover" }} />
         </motion.div>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -114,7 +115,7 @@ export default function GalleryPage() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="absolute bottom-8 left-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/blog3.jpeg" alt="Corner Image 3" fill style={{ objectFit: "cover" }} />
+          <Image src="/tower.png" alt="Corner Image 3" fill style={{ objectFit: "cover" }} />
         </motion.div>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -127,8 +128,7 @@ export default function GalleryPage() {
 
         {/* Main Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
-          {/* UPDATED HEADING AND PARAGRAPH */}
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+          <h2 className={`text-4xl md:text-5xl font-bold text-foreground leading-tight ${dmSerif.className}`}>
             A Global View of
             <span className="bg-gradient-to-r from-primary via-secondary to-yellow-500 bg-clip-text text-transparent animate-gradient">
               {" "}
@@ -136,7 +136,7 @@ export default function GalleryPage() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Experience our projects and capabilities from a dynamic, new perspective.
+            Experience our activities and capabilities from a dynamic, new perspective.
           </p>
 
           {/* Ring */}
@@ -175,7 +175,6 @@ export default function GalleryPage() {
                     style={{ left: "50%", top: "50%", transform: `translate(${x - 56}px, ${y - 56}px)` }}
                   >
                     <div className="counter-spin">
-                      {/* APPEAR ANIMATION added here */}
                       <motion.div
                         className="relative w-28 h-28 rounded-lg overflow-hidden shadow-lg border-2 border-primary/50 cursor-pointer bg-background/30 backdrop-blur"
                         initial={{ opacity: 0, scale: 0.6, filter: "blur(6px)" }}
@@ -239,7 +238,9 @@ export default function GalleryPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Project Highlights & Activities</h2>
+            <h2 className={`text-3xl md:text-4xl font-bold ${dmSerif.className}`}>
+              Company Highlights & Activities
+            </h2>
             <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
               Explore a collection of moments that define our journey and expertise.
             </p>
