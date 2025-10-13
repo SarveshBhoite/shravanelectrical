@@ -16,17 +16,17 @@ const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 // Array of images for the gallery.
 const galleryImages = [
-  { src: "/gallery/gallery1.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery2.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery3.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery4.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery5.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery6.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery7.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery8.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery9.jpg", alt: "Gallery image" },
-  { src: "/gallery/gallery10.jpeg", alt: "Gallery image" },
-  { src: "/gallery/gallery11.jpeg", alt: "Gallery image" },
+  { src: "/gallery/gallery1.jpg", alt: "Gallery image1" },
+  { src: "/gallery/gallery2.jpg", alt: "Gallery image2" },
+  { src: "/gallery/gallery3.jpg", alt: "Gallery image3" },
+  { src: "/gallery/gallery4.jpg", alt: "Gallery image4" },
+  { src: "/gallery/gallery5.jpg", alt: "Gallery image5" },
+  { src: "/gallery/gallery6.jpg", alt: "Gallery image6" },
+  { src: "/gallery/gallery7.jpg", alt: "Gallery image7" },
+  { src: "/gallery/gallery8.jpg", alt: "Gallery image8" },
+  { src: "/gallery/gallery9.jpg", alt: "Gallery image9" },
+  { src: "/gallery/gallery10.jpeg", alt: "Gallery image10" },
+  { src: "/gallery/gallery11.jpeg", alt: "Gallery image11" },
 ];
 
 export default function GalleryPage() {
