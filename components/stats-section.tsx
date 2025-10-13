@@ -69,9 +69,9 @@ export function StatsSection() {
   const offFactor = 3.8; // how far circles start off-screen along the same radial
 
   const stats = [
-    { value: mockStats.experience, label: "Experience", description: "Decades of expertise", icon: Award },
-    { value: mockStats.projects, label: "Projects Done", description: "Across various sectors", icon: TrendingUp },
-    { value: mockStats.engineers, label: "Expert Engineers", description: "Certified professionals", icon: Users },
+    { value: mockStats.experience, label: "Experience", description: "Decades of expertise", icon: Award, suffix: '+' },
+    { value: mockStats.projects, label: "Projects Done", description: "Across various sectors", icon: TrendingUp, suffix: '+' },
+    { value: mockStats.engineers, label: "Expert Engineers", description: "Certified professionals", icon: Users, suffix: '+' },
     { value: mockStats.branches, label: "Service Branches", description: "For national reach", icon: MapPin },
     { value: mockStats.satisfaction, label: "Satisfaction", description: "Client satisfaction rate", icon: ShieldCheck, suffix: '%' },
     { value: mockStats.uptime, label: "Uptime Guarantee", description: "Reliable service delivery", icon: Clock, suffix: '%' },

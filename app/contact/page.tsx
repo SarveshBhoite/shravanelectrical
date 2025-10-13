@@ -1,23 +1,47 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { StickyButtons } from "@/components/sticky-buttons"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react"
-import Link from "next/link"
+import type React from "react";
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { StickyButtons } from "@/components/sticky-buttons";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import { motion, Variants } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
+
+const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUpText: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerText: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
 const companyInfo = {
   phone: "+918888888765",
   email: "info@shravanelectrical.com",
-}
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -29,24 +53,19 @@ export default function ContactPage() {
     message: "",
     projectType: "",
     budget: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-
-    // Reset form after 3 seconds
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmitted(false)
+      setIsSubmitted(false);
       setFormData({
         name: "",
         email: "",
@@ -56,13 +75,13 @@ export default function ContactPage() {
         message: "",
         projectType: "",
         budget: "",
-      })
-    }, 3000)
-  }
+      });
+    }, 3000);
+  };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const contactMethods = [
     {
@@ -89,7 +108,7 @@ export default function ContactPage() {
       action: "https://wa.me/919923799555",
       available: "Mon-Sat, 9 AM - 9 PM",
     },
-  ]
+  ];
 
   const offices = [
     {
@@ -114,7 +133,7 @@ export default function ContactPage() {
       email: "mumbai@shravanelectrical.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
-  ]
+  ];
 
   const faqs = [
     {
@@ -137,90 +156,125 @@ export default function ContactPage() {
       answer:
         "Yes, we provide 24/7 emergency electrical services for critical issues. Contact our emergency hotline for immediate assistance.",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-
-      {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4 text-primary border-primary">
+            <Badge
+              variant="outline"
+              className="mb-4 text-primary border-primary animate-fade-in-up"
+            >
               Get In Touch
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-              Let's Power Your
-              <span className="text-primary"> Next Project</span>
+            <h1
+              className={`text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left ${dmSerif.className}`}
+            >
+              Let's Power Your <span className="text-primary">Next Project</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 text-pretty">
+            <p
+              className="text-xl text-muted-foreground mb-8 text-pretty animate-fade-in-up delay-200"
+            >
               Ready to start your electrical project? Contact our expert team for a free consultation and personalized
               solution tailored to your needs.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg">
+            <div
+              className="flex flex-wrap justify-center gap-4 animate-slide-in-right delay-300"
+            >
+              <Button asChild size="lg" className="hover:scale-105 transition-transform">
                 <Link href="#contact-form">Get Free Quote</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="hover:scale-105 transition-transform">
                 <Link href={`tel:${companyInfo.phone}`}>Call Now</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Methods */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Multiple Ways to Reach Us</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div
+            variants={staggerText}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.h2
+              variants={fadeUpText}
+              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+            >
+              Multiple Ways to Reach Us
+            </motion.h2>
+            <motion.p
+              variants={fadeUpText}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               Choose the most convenient way to get in touch with our team
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </motion.p>
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {contactMethods.map((method, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-              >
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <method.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-bold mb-2">{method.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-3">{method.description}</p>
-                  <p className="font-medium text-primary mb-2">{method.value}</p>
-                  <p className="text-xs text-muted-foreground mb-4">{method.available}</p>
-                  <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
-                    <Link href={method.action}>Contact</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={fadeUp}>
+                <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <method.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className={`font-bold mb-2 ${dmSerif.className}`}>{method.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-3">{method.description}</p>
+                    <p className="font-medium text-primary mb-2">{method.value}</p>
+                    <p className="text-xs text-muted-foreground mb-4">{method.available}</p>
+                    <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
+                      <Link href={method.action}>Contact</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* Contact Form */}
       <section id="contact-form" className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Send Us a Message</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+            <motion.div
+              variants={staggerText}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <motion.h2
+                variants={fadeUpText}
+                className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+              >
+                Send Us a Message
+              </motion.h2>
+              <motion.p
+                variants={fadeUpText}
+                className="text-muted-foreground max-w-2xl mx-auto"
+              >
                 Fill out the form below and we'll get back to you within 24 hours
-              </p>
-            </div>
-
+              </motion.p>
+            </motion.div>
             <Card className="shadow-lg">
               <CardContent className="p-8">
                 {isSubmitted ? (
                   <div className="text-center py-12">
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">Message Sent Successfully!</h3>
+                    <h3 className={`text-2xl font-bold mb-2 ${dmSerif.className}`}>
+                      Message Sent Successfully!
+                    </h3>
                     <p className="text-muted-foreground">
                       Thank you for contacting us. We'll get back to you within 24 hours.
                     </p>
@@ -248,7 +302,6 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2">Phone Number *</label>
@@ -269,7 +322,6 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2">Service Required *</label>
@@ -305,7 +357,6 @@ export default function ContactPage() {
                         </Select>
                       </div>
                     </div>
-
                     <div>
                       <label className="block text-sm font-medium mb-2">Project Budget (Optional)</label>
                       <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
@@ -322,7 +373,6 @@ export default function ContactPage() {
                         </SelectContent>
                       </Select>
                     </div>
-
                     <div>
                       <label className="block text-sm font-medium mb-2">Project Details *</label>
                       <Textarea
@@ -333,7 +383,6 @@ export default function ContactPage() {
                         placeholder="Please describe your project requirements, timeline, and any specific needs..."
                       />
                     </div>
-
                     <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? (
                         <>Sending Message...</>
@@ -351,100 +400,155 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Office Locations */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Office Locations</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div
+            variants={staggerText}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.h2
+              variants={fadeUpText}
+              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+            >
+              Our Office Locations
+            </motion.h2>
+            <motion.p
+              variants={fadeUpText}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               Visit us at any of our offices across India for in-person consultations
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </motion.p>
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {offices.map((office, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    {office.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-muted-foreground">{office.address}</p>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-4 w-4 text-primary" />
-                      <Link href={`tel:${office.phone}`} className="text-primary hover:underline">
-                        {office.phone}
-                      </Link>
-                    </div>
-                    {office.telefax && (
+              <motion.div key={index} variants={fadeUp}>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className={`flex items-center gap-2 ${dmSerif.className}`}>
+                      <MapPin className="h-5 w-5 text-primary" />
+                      {office.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-muted-foreground">{office.address}</p>
+                    <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <Phone className="h-4 w-4 text-primary" />
-                        <span className="text-sm text-muted-foreground">Telefax: {office.telefax}</span>
+                        <Link href={`tel:${office.phone}`} className="text-primary hover:underline">
+                          {office.phone}
+                        </Link>
                       </div>
-                    )}
-                    <div className="flex items-center gap-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <Link href={`mailto:${office.email}`} className="text-primary hover:underline">
-                        {office.email}
+                      {office.telefax && (
+                        <div className="flex items-center gap-2">
+                          <Phone className="h-4 w-4 text-primary" />
+                          <span className="text-sm text-muted-foreground">Telefax: {office.telefax}</span>
+                        </div>
+                      )}
+                      <div className="flex items-center gap-2">
+                        <Mail className="h-4 w-4 text-primary" />
+                        <Link href={`mailto:${office.email}`} className="text-primary hover:underline">
+                          {office.email}
+                        </Link>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4 text-primary" />
+                        <span className="text-sm text-muted-foreground">{office.hours}</span>
+                      </div>
+                    </div>
+                    <Button asChild variant="outline" size="sm" className="w-full mt-4 bg-transparent">
+                      <Link href={`https://maps.google.com/?q=${encodeURIComponent(office.address)}`} target="_blank">
+                        Get Directions
                       </Link>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-primary" />
-                      <span className="text-sm text-muted-foreground">{office.hours}</span>
-                    </div>
-                  </div>
-                  <Button asChild variant="outline" size="sm" className="w-full mt-4 bg-transparent">
-                    <Link href={`https://maps.google.com/?q=${encodeURIComponent(office.address)}`} target="_blank">
-                      Get Directions
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* FAQ Section */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div
+            variants={staggerText}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.h2
+              variants={fadeUpText}
+              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.p
+              variants={fadeUpText}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               Quick answers to common questions about our services
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
+            </motion.p>
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="max-w-3xl mx-auto space-y-4"
+          >
             {faqs.map((faq, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <h3 className="font-bold mb-2">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={fadeUp}>
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className={`font-bold mb-2 ${dmSerif.className}`}>{faq.question}</h3>
+                    <p className="text-muted-foreground">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* Emergency Contact */}
-      <section className="py-16 bg-red-50 dark:bg-red-950/20">
+      <section className="py-16 bg-red-500 dark:bg-red-950/20">
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
-            <Badge variant="destructive" className="mb-4">
-              Emergency Services
-            </Badge>
-            <h2 className="text-3xl font-bold mb-4">24/7 Emergency Support</h2>
-            <p className="text-muted-foreground mb-8">
+          <motion.div
+            variants={staggerText}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
+          >
+            <motion.div variants={fadeUpText}>
+              <Badge variant="destructive" className="mb-4">
+                Emergency Services
+              </Badge>
+            </motion.div>
+            <motion.h2
+              variants={fadeUpText}
+              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+            >
+              24/7 Emergency Support
+            </motion.h2>
+            <motion.p
+              variants={fadeUpText}
+              className="text-muted-foreground mb-8"
+            >
               Electrical emergencies can't wait. Our emergency response team is available 24/7 for critical electrical
               issues and power outages.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            </motion.p>
+            <motion.div
+              variants={fadeUpText}
+              className="flex flex-wrap justify-center gap-4"
+            >
               <Button asChild size="lg" variant="destructive">
                 <Link href="tel:+919876543210" className="text-white">
                   <Phone className="h-4 w-4 mr-2 text-white" />
@@ -456,13 +560,12 @@ export default function ContactPage() {
                   Emergency WhatsApp
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
       <Footer />
       <StickyButtons />
     </div>
-  )
+  );
 }

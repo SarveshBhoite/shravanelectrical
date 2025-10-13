@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
-import { StickyButtons } from "@/components/sticky-buttons"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { StickyButtons } from "@/components/sticky-buttons";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Shield,
   Award,
@@ -15,11 +15,27 @@ import {
   Building,
   Users,
   X,
-} from "lucide-react"
-import Link from "next/link"
+} from "lucide-react";
+import Link from "next/link";
+import { motion, Variants } from "framer-motion";
+import { DM_Serif_Display } from "next/font/google";
+
+// Elegant serif for headings
+const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
+
+// Animation variants
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
 
 export default function CertificatesPage() {
-  const [selectedCert, setSelectedCert] = useState<string | null>(null)
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
 
   const certifications = [
     {
@@ -84,7 +100,7 @@ export default function CertificatesPage() {
         "Certificate of Enrollment for Kumari Siddhi Balaji Kanthewad under the Maharashtra State Tax on Professions, Trades, Callings and Employments Act, 1975, with Enrollment Certificate Number 99474461512P, effective from 01-Apr-22, issued on 29-Nov-22, with the principal place of work/business at Shradha Niwas, Hanuman Gadh, Shivajinagar (Nanded), Nanded, Maharashtra, PIN 431602.",
       image: "/uploaded_image3.jpg?height=300&width=400",
     },
-  ]
+  ];
 
   const awards = [
     {
@@ -115,7 +131,7 @@ export default function CertificatesPage() {
       description:
         "Consistent quality delivery and customer satisfaction in electrical services",
     },
-  ]
+  ];
 
   const memberships = [
     {
@@ -139,7 +155,7 @@ export default function CertificatesPage() {
       type: "Active Member",
       since: "2012",
     },
-  ]
+  ];
 
   const categoryColors = {
     Quality: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
@@ -156,21 +172,17 @@ export default function CertificatesPage() {
       "bg-blue-200 text-blue-900 dark:bg-blue-800 dark:text-blue-200",
     Legal:
       "bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-200",
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
+      <section className="pt-24 pb-16 relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/background-certification.jpg"
-            alt="Background"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+         
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div> */}
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -181,7 +193,7 @@ export default function CertificatesPage() {
             >
               Certifications & Awards
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left">
+            <h1 className={`text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left ${dmSerif.className}`}>
               Certified
               <span className="text-primary"> Excellence</span>
             </h1>
@@ -205,38 +217,30 @@ export default function CertificatesPage() {
       {/* Certification Stats */}
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-2">6+</div>
-                <p className="text-muted-foreground">Active Certifications</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-2">4+</div>
-                <p className="text-muted-foreground">Industry Awards</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <Building className="h-12 w-12 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-2">4+</div>
-                <p className="text-muted-foreground">
-                  Professional Memberships
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                <p className="text-muted-foreground">Compliance Record</p>
-              </CardContent>
-            </Card>
-          </div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              { icon: Shield, value: "6+", label: "Active Certifications" },
+              { icon: Award, value: "4+", label: "Industry Awards" },
+              { icon: Building, value: "4+", label: "Professional Memberships" },
+              { icon: CheckCircle, value: "100%", label: "Compliance Record" },
+            ].map((stat, index) => (
+              <motion.div key={index} variants={fadeUp}>
+                <Card className="text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <stat.icon className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+                    <p className="text-muted-foreground">{stat.label}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -244,17 +248,26 @@ export default function CertificatesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Certifications</h2>
+            <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+              Our Certifications
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Internationally recognized certifications that validate our
               commitment to quality, safety, and environmental responsibility
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {certifications.map((cert, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={fadeUp}
                 className="group hover:shadow-xl transition-all duration-300 border border-gray-200 rounded-lg shadow-md"
               >
                 <div className="relative overflow-hidden rounded-t-lg cursor-pointer" onClick={() => setSelectedCert(cert.image)}>
@@ -273,7 +286,7 @@ export default function CertificatesPage() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                  <h3 className={`font-bold text-lg mb-1 group-hover:text-primary transition-colors ${dmSerif.className}`}>
                     {cert.title}
                   </h3>
                   <p className="text-primary font-medium mb-3">{cert.subtitle}</p>
@@ -294,9 +307,9 @@ export default function CertificatesPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -330,36 +343,46 @@ export default function CertificatesPage() {
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Awards & Recognition</h2>
+            <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+              Awards & Recognition
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Industry recognition for our outstanding performance and
               contribution to the electrical sector
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid md:grid-cols-2 gap-8"
+          >
             {awards.map((award, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Award className="h-6 w-6 text-primary" />
+              <motion.div key={index} variants={fadeUp}>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                          <Award className="h-6 w-6 text-primary" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className={`font-bold text-lg ${dmSerif.className}`}>{award.title}</h3>
+                          <Badge variant="outline">{award.year}</Badge>
+                        </div>
+                        <p className="text-primary font-medium mb-2">{award.issuer}</p>
+                        <p className="text-muted-foreground">{award.description}</p>
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-bold text-lg">{award.title}</h3>
-                        <Badge variant="outline">{award.year}</Badge>
-                      </div>
-                      <p className="text-primary font-medium mb-2">{award.issuer}</p>
-                      <p className="text-muted-foreground">{award.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -367,36 +390,46 @@ export default function CertificatesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Professional Memberships</h2>
+            <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
+              Professional Memberships
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Active participation in leading industry associations and
               professional bodies
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid md:grid-cols-2 gap-6"
+          >
             {memberships.map((membership, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Users className="h-6 w-6 text-primary" />
+              <motion.div key={index} variants={fadeUp}>
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                          <Users className="h-6 w-6 text-primary" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className={`font-bold mb-1 ${dmSerif.className}`}>{membership.organization}</h3>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <span>{membership.type}</span>
+                          <span>•</span>
+                          <span>Since {membership.since}</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold mb-1">{membership.organization}</h3>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{membership.type}</span>
-                        <span>•</span>
-                        <span>Since {membership.since}</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -405,52 +438,24 @@ export default function CertificatesPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">
+              <h2 className={`text-3xl font-bold mb-6 ${dmSerif.className}`}>
                 Why Our Certifications Matter
               </h2>
               <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Quality Assurance</h4>
-                    <p className="text-muted-foreground">
-                      ISO certifications ensure consistent quality in every
-                      project we undertake.
-                    </p>
+                {[
+                  { title: "Quality Assurance", description: "ISO certifications ensure consistent quality in every project we undertake." },
+                  { title: "Safety Standards", description: "Rigorous safety protocols protect our workers and your property." },
+                  { title: "Environmental Responsibility", description: "Sustainable practices minimize environmental impact of our operations." },
+                  { title: "Legal Compliance", description: "All necessary licenses and registrations for legitimate business operations." },
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className={`font-semibold mb-1 ${dmSerif.className}`}>{item.title}</h4>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Safety Standards</h4>
-                    <p className="text-muted-foreground">
-                      Rigorous safety protocols protect our workers and your
-                      property.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold mb-1">
-                      Environmental Responsibility
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Sustainable practices minimize environmental impact of our
-                      operations.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Legal Compliance</h4>
-                    <p className="text-muted-foreground">
-                      All necessary licenses and registrations for legitimate
-                      business operations.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -471,7 +476,7 @@ export default function CertificatesPage() {
       {/* CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
             Work With Certified Professionals
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
@@ -497,5 +502,5 @@ export default function CertificatesPage() {
       <Footer />
       <StickyButtons />
     </div>
-  )
+  );
 }
