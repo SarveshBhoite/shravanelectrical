@@ -1271,9 +1271,9 @@ export const companyInfo = {
   description:
     "Leading electrical contractor specializing in comprehensive electrical solutions, solar energy projects, and infrastructure development with over 15 years of industry expertise.",
   address: "123 Industrial Area, Phase-II, Gurgaon, Haryana 122015",
-  phone: "+91-124-4567890",
-  email: "info@shravanelectrical.com",
-  whatsapp: "+91-9876543210",
+  phone: "+9199237 99555",
+  email: "shravan.electrical2010@gmail.com",
+  whatsapp: "+9199237 99555",
 };
 
 // Commented out database API functions - using mock data instead

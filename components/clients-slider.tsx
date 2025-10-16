@@ -183,7 +183,7 @@ export function ClientsSlider() {
             { value: 50, suffix: "+", label: "Major Clients" },
             { value: 98, suffix: "%", label: "Satisfaction Rate" },
             { value: 250, suffix: "+", label: "Projects Delivered" },
-            { value: 15, suffix: "+", label: "States Covered" },
+            { value: 15, suffix: "+", label: "Districts Covered" },
           ].map((stat, index) => (
             <div
               key={stat.label}

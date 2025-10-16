@@ -10,11 +10,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  MessageSquare,
+  CheckCircle,
+} from "lucide-react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { DM_Serif_Display } from "next/font/google";
+import emailjs from "emailjs-com";
 
 const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
@@ -40,7 +55,7 @@ const staggerText: Variants = {
 
 const companyInfo = {
   phone: "+918888888765",
-  email: "info@shravanelectrical.com",
+  email: "shravan.electrical2010@gmail.com",
 };
 
 export default function ContactPage() {
@@ -58,25 +73,53 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // ✅ Send mail with EmailJS
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        message: "",
-        projectType: "",
-        budget: "",
-      });
-    }, 3000);
+
+    try {
+      const serviceId = "service_oty5fdf";
+      const templateId = "template_s4w19i3";
+      const publicKey =
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "xGl95W4yl857Eh6T7";
+
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: formData.service,
+        projectType: formData.projectType,
+        budget: formData.budget,
+        message: formData.message,
+        to_email: "rajb81008@gmail.com", // 💌 receiving address
+      };
+
+      const res = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      if (res.status === 200) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+          projectType: "",
+          budget: "",
+        });
+        setTimeout(() => setIsSubmitted(false), 4000);
+      } else {
+        alert("⚠️ Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("❌ Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -115,22 +158,24 @@ export default function ContactPage() {
       title: "Head Office",
       address: "Janki Nagar, Hanuman Gadh, Nanded, Maharashtra 431604",
       phone: "+918888888765",
-      email: "nanded@shravanelectrical.com",
+      email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
       telefax: "02462-220025",
     },
     {
       title: "Pune Branch",
-      address: "Shikrapur, c/o Om Sai Enterprises, near old Bridge, Tq. Shirur, Dist. Pune, Maharashtra",
+      address:
+        "Shikrapur, c/o Om Sai Enterprises, near old Bridge, Tq. Shirur, Dist. Pune, Maharashtra",
       phone: "+919923799555",
-      email: "pune@shravanelectrical.com",
+      email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
     {
       title: "Mumbai Branch",
-      address: "Pratiksha Nagar, Sayan Koliwad Building No. L11 B, Plot No. 103, Mumbai, Maharashtra",
+      address:
+        "Pratiksha Nagar, Sayan Koliwad Building No. L11 B, Plot No. 103, Mumbai, Maharashtra",
       phone: "+919923799555",
-      email: "mumbai@shravanelectrical.com",
+      email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
   ];
@@ -161,29 +206,24 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+
+      {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge
-              variant="outline"
-              className="mb-4 text-primary border-primary animate-fade-in-up"
-            >
+            <Badge variant="outline" className="mb-4 text-primary border-primary">
               Get In Touch
             </Badge>
             <h1
-              className={`text-4xl md:text-6xl font-bold mb-6 text-balance animate-slide-in-left ${dmSerif.className}`}
+              className={`text-4xl md:text-6xl font-bold mb-6 ${dmSerif.className}`}
             >
               Let's Power Your <span className="text-primary">Next Project</span>
             </h1>
-            <p
-              className="text-xl text-muted-foreground mb-8 text-pretty animate-fade-in-up delay-200"
-            >
+            <p className="text-xl text-muted-foreground mb-8">
               Ready to start your electrical project? Contact our expert team for a free consultation and personalized
               solution tailored to your needs.
             </p>
-            <div
-              className="flex flex-wrap justify-center gap-4 animate-slide-in-right delay-300"
-            >
+            <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="hover:scale-105 transition-transform">
                 <Link href="#contact-form">Get Free Quote</Link>
               </Button>
@@ -194,87 +234,17 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerText}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.h2
-              variants={fadeUpText}
-              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
-            >
-              Multiple Ways to Reach Us
-            </motion.h2>
-            <motion.p
-              variants={fadeUpText}
-              className="text-muted-foreground max-w-2xl mx-auto"
-            >
-              Choose the most convenient way to get in touch with our team
-            </motion.p>
-          </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {contactMethods.map((method, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <method.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className={`font-bold mb-2 ${dmSerif.className}`}>{method.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-3">{method.description}</p>
-                    <p className="font-medium text-primary mb-2">{method.value}</p>
-                    <p className="text-xs text-muted-foreground mb-4">{method.available}</p>
-                    <Button asChild variant="outline" size="sm" className="w-full bg-transparent">
-                      <Link href={method.action}>Contact</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
+      {/* Contact Form */}
       <section id="contact-form" className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              variants={staggerText}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <motion.h2
-                variants={fadeUpText}
-                className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
-              >
-                Send Us a Message
-              </motion.h2>
-              <motion.p
-                variants={fadeUpText}
-                className="text-muted-foreground max-w-2xl mx-auto"
-              >
-                Fill out the form below and we'll get back to you within 24 hours
-              </motion.p>
-            </motion.div>
             <Card className="shadow-lg">
               <CardContent className="p-8">
                 {isSubmitted ? (
-                  <div className="text-center py-12">
+                  <div className="text-center py-12 animate-fade-in">
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className={`text-2xl font-bold mb-2 ${dmSerif.className}`}>
-                      Message Sent Successfully!
-                    </h3>
+                    <h3 className="text-2xl font-bold mb-2">Message Sent Successfully!</h3>
                     <p className="text-muted-foreground">
                       Thank you for contacting us. We'll get back to you within 24 hours.
                     </p>
@@ -302,6 +272,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2">Phone Number *</label>
@@ -322,17 +293,25 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2">Service Required *</label>
-                        <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
+                        <Select
+                          value={formData.service}
+                          onValueChange={(value) => handleInputChange("service", value)}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="electrical-installation">Electrical Installation</SelectItem>
+                            <SelectItem value="electrical-installation">
+                              Electrical Installation
+                            </SelectItem>
                             <SelectItem value="solar-systems">Solar Systems</SelectItem>
-                            <SelectItem value="industrial-automation">Industrial Automation</SelectItem>
+                            <SelectItem value="industrial-automation">
+                              Industrial Automation
+                            </SelectItem>
                             <SelectItem value="maintenance">Maintenance & Repair</SelectItem>
                             <SelectItem value="consultation">Consultation</SelectItem>
                             <SelectItem value="other">Other</SelectItem>
@@ -357,9 +336,13 @@ export default function ContactPage() {
                         </Select>
                       </div>
                     </div>
+
                     <div>
                       <label className="block text-sm font-medium mb-2">Project Budget (Optional)</label>
-                      <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
+                      <Select
+                        value={formData.budget}
+                        onValueChange={(value) => handleInputChange("budget", value)}
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
@@ -373,6 +356,7 @@ export default function ContactPage() {
                         </SelectContent>
                       </Select>
                     </div>
+
                     <div>
                       <label className="block text-sm font-medium mb-2">Project Details *</label>
                       <Textarea
@@ -380,18 +364,12 @@ export default function ContactPage() {
                         rows={5}
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Please describe your project requirements, timeline, and any specific needs..."
+                        placeholder="Please describe your project requirements..."
                       />
                     </div>
+
                     <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        <>Sending Message...</>
-                      ) : (
-                        <>
-                          <Send className="h-4 w-4 mr-2" />
-                          Send Message
-                        </>
-                      )}
+                      {isSubmitting ? "Sending Message..." : <><Send className="mr-2 h-4 w-4" /> Send Message</>}
                     </Button>
                   </form>
                 )}
