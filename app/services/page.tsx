@@ -158,7 +158,10 @@ export default function ServicesPage() {
   ];
 
   const slugify = (s: string) =>
-    s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    s
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
   return (
     <div className="min-h-screen bg-background">
@@ -198,8 +201,9 @@ export default function ServicesPage() {
               variants={fadeUp}
               className="text-xl text-white/80 mb-8 text-pretty"
             >
-              From residential installations to large-scale industrial projects, we deliver innovative electrical
-              solutions tailored to your specific needs.
+              From residential installations to large-scale industrial projects,
+              we deliver innovative electrical solutions tailored to your
+              specific needs.
             </motion.p>
             <motion.div variants={fadeUp}>
               <Button asChild size="lg" variant="secondary">
@@ -210,24 +214,30 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Categories */}
-      <section className="py-16">
+      {/* Service Categories (enhanced visibility + lift) */}
+      <section className="py-16 relative">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerParent}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.25 }}
             className="text-center mb-12"
           >
             <motion.h2
               variants={fadeUp}
-              className={`text-3xl font-bold mb-4 ${dmSerif.className}`}
+              className={`text-3xl md:text-4xl font-extrabold tracking-tight ${dmSerif.className}`}
             >
-              Our Service Categories
+              <span className="bg-black bg-clip-text text-transparent">
+                Our Service Categories
+              </span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto">
-              We offer a comprehensive range of electrical services across multiple domains
+            <motion.p
+              variants={fadeUp}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
+              We offer a comprehensive range of electrical services across
+              multiple domains
             </motion.p>
           </motion.div>
 
@@ -238,30 +248,89 @@ export default function ServicesPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="grid md:grid-cols-2 gap-8"
           >
-            {serviceCategories.map((category, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <category.icon className={`h-8 w-8 ${category.color}`} />
-                      <CardTitle className="text-xl">{category.title}</CardTitle>
+            {serviceCategories.map((category) => (
+              <motion.div
+                key={category.title}
+                variants={fadeUp}
+                className="relative group rounded-2xl overflow-hidden border border-border/60
+                     bg-gradient-to-br from-primary/5 via-background to-accent/5
+                     shadow-[0_8px_30px_rgba(0,0,0,.08)] transition-all
+                     hover:-translate-y-1.5 hover:shadow-[0_14px_42px_rgba(0,0,0,.12)]"
+              >
+                {/* Rotating conic aura */}
+                <div
+                  className="pointer-events-none absolute -inset-[1px] rounded-2xl opacity-60 animate-spin-slower"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, rgba(59,130,246,0.18), transparent 35%, transparent 70%, rgba(59,130,246,0.18))",
+                  }}
+                />
+                {/* Hover tint to fight the white look */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                          bg-gradient-to-tr from-primary/10 via-transparent to-accent/10"
+                />
+
+                {/* Card content */}
+                <div className="relative z-10 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 ring-1 ring-primary/15 flex items-center justify-center shadow-sm">
+                      <category.icon className={`h-7 w-7 ${category.color}`} />
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {category.services.map((service, serviceIndex) => (
-                        <li key={serviceIndex} className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                          <span className="text-muted-foreground">{service}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">
+                        {category.title}
+                      </h3>
+                      <p className="text-sm text-foreground/70 mt-1">
+                        Tailored solutions crafted by certified experts
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Animated chips for services */}
+                  <motion.div
+                    variants={staggerParent}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    className="mt-5 flex flex-wrap gap-2"
+                  >
+                    {category.services.map((svc, i) => (
+                      <motion.span
+                        key={i}
+                        variants={fadeUp}
+                        className="inline-flex items-center gap-2 rounded-full pl-2 pr-3 py-1 text-sm
+                             bg-primary/5 text-foreground border border-primary/20
+                             shadow-sm hover:bg-primary/15 transition-colors"
+                      >
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        <span>{svc}</span>
+                      </motion.span>
+                    ))}
+                  </motion.div>
+
+                  {/* Bottom accent bar */}
+                  <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-primary via-accent to-primary/70 group-hover:w-28 transition-all" />
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
+
+        {/* Tiny CSS keyframe for the slow conic aura */}
+        <style jsx>{`
+          @keyframes spin-slower {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          .animate-spin-slower {
+            animation: spin-slower 30s linear infinite;
+          }
+        `}</style>
       </section>
 
       {/* Featured Services */}
@@ -280,7 +349,10 @@ export default function ServicesPage() {
             >
               Featured Services
             </motion.h2>
-            <motion.p variants={bounceInRight} className="text-muted-foreground max-w-2xl mx-auto">
+            <motion.p
+              variants={bounceInRight}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               Our most popular and specialized electrical services
             </motion.p>
           </motion.div>
@@ -320,8 +392,16 @@ export default function ServicesPage() {
                     <p className="text-muted-foreground mb-4 line-clamp-3">
                       {service.description}
                     </p>
-                    <Button asChild variant="ghost" className="p-0 h-auto font-medium group-hover:text-primary">
-                      <Link href={`/services/${service.slug ?? slugify(service.title)}`}>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      className="p-0 h-auto font-medium group-hover:text-primary"
+                    >
+                      <Link
+                        href={`/services/${
+                          service.slug ?? slugify(service.title)
+                        }`}
+                      >
                         Learn More <ArrowRight className="h-4 w-4 ml-1" />
                       </Link>
                     </Button>
@@ -349,8 +429,12 @@ export default function ServicesPage() {
             >
               Our Process
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-muted-foreground max-w-2xl mx-auto">
-              A systematic approach to ensure project success from start to finish
+            <motion.p
+              variants={fadeUp}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
+              A systematic approach to ensure project success from start to
+              finish
             </motion.p>
           </motion.div>
 
@@ -395,8 +479,13 @@ export default function ServicesPage() {
             >
               Our Credentials
             </motion.h2>
-            <motion.p variants={bounceInLeft} className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Precisely covering electrical fields as a trusted partner to major industries and public projects across India—planning and delivering turnkey solutions end-to-end.
+            <motion.p
+              variants={bounceInLeft}
+              className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            >
+              Precisely covering electrical fields as a trusted partner to major
+              industries and public projects across India—planning and
+              delivering turnkey solutions end-to-end.
             </motion.p>
           </motion.div>
 
@@ -446,7 +535,10 @@ export default function ServicesPage() {
             >
               Why Choose Us
             </motion.h2>
-            <motion.p variants={bounceInRight} className="text-muted-foreground max-w-2xl mx-auto">
+            <motion.p
+              variants={bounceInRight}
+              className="text-muted-foreground max-w-2xl mx-auto"
+            >
               What sets us apart in the electrical contracting industry
             </motion.p>
           </motion.div>
@@ -464,7 +556,9 @@ export default function ServicesPage() {
                   <CardContent className="p-6">
                     <item.icon className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -484,9 +578,13 @@ export default function ServicesPage() {
             className="grid lg:grid-cols-2 gap-12 items-center"
           >
             <motion.div variants={bounceInLeft}>
-              <h2 className={`text-3xl font-bold mb-6 ${dmSerif.className}`}>Service Areas</h2>
+              <h2 className={`text-3xl font-bold mb-6 ${dmSerif.className}`}>
+                Service Areas
+              </h2>
               <p className="text-muted-foreground mb-6">
-                We proudly serve clients across multiple states and regions, bringing our expertise to projects of all sizes and complexities.
+                We proudly serve clients across multiple states and regions,
+                bringing our expertise to projects of all sizes and
+                complexities.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="space-y-2">
@@ -539,7 +637,8 @@ export default function ServicesPage() {
               variants={fadeUp}
               className="text-xl mb-8 opacity-90 max-w-2xl mx-auto"
             >
-              Get a free consultation and quote for your electrical project today
+              Get a free consultation and quote for your electrical project
+              today
             </motion.p>
             <motion.div
               variants={staggerParent}

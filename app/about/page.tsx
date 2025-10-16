@@ -108,7 +108,7 @@ const coreValues = [
 const directors = [
   {
     name: "Mr. Balaji G. Kanthewad",
-    position: "Managing Director | Polytechnic (Electrical Eng.)",
+    position: "Managing Director | Electrical Engineer",
     info:
       "Founder-director leading Shravan Electricals since 2009. With a Polytechnic background in Electrical Engineering, he drives turnkey electrification and contracting—focusing on quality, safety, and on-time delivery across diverse electrical projects.",
     image: "/director1.png?height=1000&width=1000",
