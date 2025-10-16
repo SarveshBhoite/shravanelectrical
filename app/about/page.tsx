@@ -128,21 +128,24 @@ const directors = [
 
 // Staff data
 const staff = [
-  { name: "E. Nagarjuna Goud", qualification: "BE (Electrical)", designation: "Sr Project Manager" },
-  { name: "Mrs. Kavita Matke", qualification: "M.Com (Business Management & Accounting)", designation: "Tendering & QS Head" },
-  { name: "Prakash Reddy", qualification: "BE (Electrical)", designation: "Sr .Engineer" },
-  { name: "Miss . Sony Suture", qualification: "BE (Computer)", designation: "Q.S Engineer" },
-  { name: "Usman chaus", qualification: "BE (Electrical)", designation: "QC Engineer" },
-  { name: "Shoeb Shah Khayumshah", qualification: "BE (Electrical)", designation: "Site Engineer" },
-  { name: "Rajiv Pawer", qualification: "EX BSF , Dip Fire and safety management", designation: "Safety & Security Head" },
-  { name: "Swapnil Dange", qualification: "Dip. Electrical", designation: "Site Engineer" },
-  { name: "Kazi Azharuddin", qualification: "M.com, LLB , Dip. In DTL , &GST", designation: "Accounts Head" },
-  { name: "Balaji Borgave", qualification: "BE (Electrical)", designation: "Site Engineer" },
-  { name: "Lokhande Sanket", qualification: "ITI (Electrician)", designation: "Site Supervisor" },
-  { name: "Shinde Dipak", qualification: "ITI (Electrician) & Wireman", designation: "Site Supervisor" },
-  { name: "Manmath Handed", qualification: "Dep. Computer", designation: "Purchase" },
-  { name: "Mahesh panchal", qualification: "B.Com", designation: "Purchase" },
+  { name: "Madhav M. Hatkar", qualification: "BSL, LLB", designation: "Legal Advisor" },
+  { name: "Anil A. Joshi", qualification: "Chartered Accountant", designation: "Chartered Accountant" },
+  { name: "E Nagarjuna Gaud", qualification: "B.E Electrical", designation: "General Manager" },
+  { name: "Kavita Navnath Bhujbal", qualification: "B.E Electrical", designation: "DGM Project" },
+  { name: "Surya Prakash Readdy", qualification: "B.E Electrical", designation: "DGM Solar" },
+  { name: "Mahesh S. Thadwe", qualification: "Diploma in Civil Engineering", designation: "DGM Civil Construction" },
+  { name: "Deepak C. Shinde", qualification: "Electrical Engineer", designation: "DGM Electrical" },
+  { name: "Akash Jaiswal", qualification: "B.Tech", designation: "Procurement Executive" },
+  { name: "Rajiv S. Pawar", qualification: "Diploma Fire & Safety", designation: "Safety Manager" },
+  { name: "Pawan Pawade", qualification: "Diploma in Computer", designation: "Quality Head" },
+  { name: "Kazi Azharuddin Kazi R.", qualification: "DTL LLB", designation: "CFO & Finance Manager" },
+  { name: "Laxman H. Pandalwad", qualification: "ITI Electrical", designation: "Material Planner" },
+  { name: "Sanket Lokhande", qualification: "—", designation: "Production Manager" },
+  { name: "Hanmant M. Kachkalwar", qualification: "ITI Electrical", designation: "Assistant of Store Manager" },
+  { name: "Shoib Shah", qualification: "B.E Electrical", designation: "Billing And Invoicing" },
+  { name: "Sumedh R. Gaddahane", qualification: "B.Tech", designation: "Project Administrator" },
 ];
+
 
 // Animation variants
 const bounceInLeft: Variants = {
@@ -218,7 +221,7 @@ export default function AboutPage() {
           loop
           muted
           playsInline
-          poster="/hero-poster.jpg"
+          poster="/hero1.png"
         >
           <source src="/video1.mp4" type="video/mp4" />
         </video>

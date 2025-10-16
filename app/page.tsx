@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { StickyButtons } from "@/components/sticky-buttons"
 import { ClientsSlider } from "@/components/clients-slider"
+import { SisterConcernsSection } from "@/components/sister-concerns"
 
 
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <ServicesSection />
       <StatsSection />
       <ProjectsSection />
+      {/* <SisterConcernsSection /> */}
       <ClientsSlider />
       <ContactSection />
       <Footer />
