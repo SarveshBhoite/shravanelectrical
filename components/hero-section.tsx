@@ -10,7 +10,7 @@ export function HeroSection() {
 
   // Carousel images
   const images = [
-    { url: "/gate.png", alt: "Electrical Installation Project" },
+    { url: "/realgate.jpeg", alt: "Entrance gate" },
     { url: "/hero1.png", alt: "High-Tension Substation" },
     { url: "/hero2.png", alt: "Professional Wiring Team" },
     { url: "/hero3.png", alt: "Energy-Efficient Electrical Setup" }
