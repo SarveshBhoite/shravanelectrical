@@ -48,7 +48,7 @@ const CompanyIntro: React.FC = () => {
           >
             <div className="inline-block">
               <span className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-semibold animate-pulse-glow">
-                Leading Electrical Contractor in Nanded
+                Leading Electrical Contractor in Maharashtra
               </span>
             </div>
 
