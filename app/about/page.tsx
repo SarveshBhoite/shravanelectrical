@@ -285,16 +285,16 @@ export default function AboutPage() {
               >
                 {/* Front Side */}
                 <Image
-                  src="/hero2.png?height=500&width=800"
-                  alt="Company facilities"
+                  src="/real/entry.jpeg?height=500&width=800"
+                  alt="Company Entry"
                   fill
                   style={{ objectFit: "cover", backfaceVisibility: "hidden" }}
                   className="absolute inset-0 rounded-lg"
                 />
                 {/* Back Side */}
                 <Image
-                  src="/solar.jpeg?height=500&width=800"
-                  alt="Solar Power Plant"
+                  src="/real/growthimage.jpeg?height=500&width=800"
+                  alt="Cable Role"
                   fill
                   style={{
                     objectFit: "cover",
@@ -377,16 +377,16 @@ export default function AboutPage() {
               >
                 {/* Front Side */}
                 <Image
-                  src="/hero1.png?height=500&width=800"
-                  alt="Company team"
+                  src="/real/infrastructure1.jpeg?height=500&width=800"
+                  alt="Infrastructure"
                   fill
                   style={{ objectFit: "cover", backfaceVisibility: "hidden" }}
                   className="absolute inset-0 rounded-lg"
                 />
                 {/* Back Side */}
                 <Image
-                  src="/repair.png?height=500&width=800"
-                  alt="Office interior"
+                  src="/real/infrastructure2.jpeg?height=500&width=800"
+                  alt="Infrastructure"
                   fill
                   style={{
                     objectFit: "cover",

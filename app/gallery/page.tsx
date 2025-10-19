@@ -27,12 +27,18 @@ const galleryImages = [
   { src: "/gallery/gallery9.jpg", alt: "Gallery image9" },
   { src: "/gallery/gallery10.jpeg", alt: "Gallery image10" },
   { src: "/gallery/gallery11.jpeg", alt: "Gallery image11" },
+  { src: "/gallery/gallery12.jpeg", alt: "Gallery image12" },
+  { src: "/gallery/gallery13.jpeg", alt: "Gallery image13" },
+  { src: "/gallery/gallery14.jpeg", alt: "Gallery image14" },
 ];
 
 export default function GalleryPage() {
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   const openLightbox = (image: { src: string; alt: string }) => {
     setSelectedImage(image);
@@ -68,7 +74,9 @@ export default function GalleryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className={`text-6xl md:text-8xl font-black text-white text-balance leading-tight tracking-tight ${dmSerif.className}`}>
+            <h1
+              className={`text-6xl md:text-8xl font-black text-white text-balance leading-tight tracking-tight ${dmSerif.className}`}
+            >
               Our Work in Pictures
             </h1>
             <p className="mt-4 text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
@@ -99,7 +107,12 @@ export default function GalleryPage() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="absolute top-10 left-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/hero1.png" alt="Corner Image 1" fill style={{ objectFit: "cover" }} />
+          <Image
+            src="/hero1.png"
+            alt="Corner Image 1"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </motion.div>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -107,7 +120,12 @@ export default function GalleryPage() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="absolute top-10 right-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/hero3.png" alt="Corner Image 2" fill style={{ objectFit: "cover" }} />
+          <Image
+            src="/real/gallery1.jpeg"
+            alt="Corner Image 2"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </motion.div>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -115,7 +133,12 @@ export default function GalleryPage() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="absolute bottom-8 left-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/tower.png" alt="Corner Image 3" fill style={{ objectFit: "cover" }} />
+          <Image
+            src="/real/gallery2.jpeg"
+            alt="Corner Image 3"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </motion.div>
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -123,12 +146,19 @@ export default function GalleryPage() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="absolute bottom-8 right-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
         >
-          <Image src="/repair.png" alt="Corner Image 4" fill style={{ objectFit: "cover" }} />
+          <Image
+            src="/repair.png"
+            alt="Corner Image 4"
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </motion.div>
 
         {/* Main Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className={`text-4xl md:text-5xl font-bold text-foreground leading-tight ${dmSerif.className}`}>
+          <h2
+            className={`text-4xl md:text-5xl font-bold text-foreground leading-tight ${dmSerif.className}`}
+          >
             A Global View of
             <span className="bg-gradient-to-r from-primary via-secondary to-yellow-500 bg-clip-text text-transparent animate-gradient">
               {" "}
@@ -136,7 +166,8 @@ export default function GalleryPage() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Experience our activities and capabilities from a dynamic, new perspective.
+            Experience our activities and capabilities from a dynamic, new
+            perspective.
           </p>
 
           {/* Ring */}
@@ -153,9 +184,19 @@ export default function GalleryPage() {
               style={{ width: 135, height: 135 }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.6, type: "spring", stiffness: 100 }}
+              transition={{
+                delay: 0.6,
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100,
+              }}
             >
-              <Image src="/logo.png" alt="Company Logo" fill style={{ objectFit: "contain" }} />
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                fill
+                style={{ objectFit: "contain" }}
+              />
             </motion.div>
 
             {/* Rotating image ring (CENTERED, images remain upright via counter-rotation) */}
@@ -172,12 +213,20 @@ export default function GalleryPage() {
                   <div
                     key={image.src}
                     className="absolute"
-                    style={{ left: "50%", top: "50%", transform: `translate(${x - 56}px, ${y - 56}px)` }}
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      transform: `translate(${x - 56}px, ${y - 56}px)`,
+                    }}
                   >
                     <div className="counter-spin">
                       <motion.div
                         className="relative w-28 h-28 rounded-lg overflow-hidden shadow-lg border-2 border-primary/50 cursor-pointer bg-background/30 backdrop-blur"
-                        initial={{ opacity: 0, scale: 0.6, filter: "blur(6px)" }}
+                        initial={{
+                          opacity: 0,
+                          scale: 0.6,
+                          filter: "blur(6px)",
+                        }}
                         animate={{
                           opacity: 1,
                           scale: [0.6, 1.12, 1],
@@ -238,11 +287,14 @@ export default function GalleryPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold ${dmSerif.className}`}>
+            <h2
+              className={`text-3xl md:text-4xl font-bold ${dmSerif.className}`}
+            >
               Company Highlights & Activities
             </h2>
             <p className="text-lg text-muted-foreground mt-2 max-w-2xl mx-auto">
-              Explore a collection of moments that define our journey and expertise.
+              Explore a collection of moments that define our journey and
+              expertise.
             </p>
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -270,7 +322,9 @@ export default function GalleryPage() {
                       height: "auto",
                       objectFit: "cover",
                       filter:
-                        hoveredImage === index ? "brightness(1.1) saturate(1.2)" : "brightness(1) saturate(1)",
+                        hoveredImage === index
+                          ? "brightness(1.1) saturate(1.2)"
+                          : "brightness(1) saturate(1)",
                       transition: "filter 0.3s ease-in-out",
                     }}
                     className="w-full h-auto"
@@ -309,7 +363,11 @@ export default function GalleryPage() {
                 alt={selectedImage.alt}
                 width={1200}
                 height={800}
-                style={{ objectFit: "contain", maxHeight: "85vh", width: "auto" }}
+                style={{
+                  objectFit: "contain",
+                  maxHeight: "85vh",
+                  width: "auto",
+                }}
                 className="rounded-lg shadow-xl"
               />
               <button
