@@ -520,7 +520,7 @@ export const mockServices: Service[] = [
       "Comprehensive electrical solutions for government, industrial, and rural/urban projects, ensuring safety and regulatory compliance.",
     overview:
       "We execute end-to-end electrical contracting for substations, HT/LT networks, industrial plants, and public infrastructure. Our experienced teams manage engineering, procurement, installation, testing, and commissioning with safety-first delivery.",
-    image: "/electricalcontracting.png",
+    image: "/services/electrical.jpeg",
     category: "Electrical Infrastructure",
     features: [
       "HT/LT Power Distribution Systems",
@@ -596,7 +596,7 @@ export const mockServices: Service[] = [
       "End-to-end solar energy solutions, including photovoltaic plants and agricultural pump systems, supporting sustainable power initiatives.",
     overview:
       "From MW-scale PV plants to off-grid pumps, we deliver site assessment, engineering, supply, installation, and grid integration with performance monitoring.",
-    image: "/hero3.png",
+    image: "/services/solar.jpeg",
     category: "Renewable Energy",
     features: [
       "Solar PV Plant Installation (23 MW)",
@@ -668,7 +668,7 @@ export const mockServices: Service[] = [
       "Supply, installation, and repair of transformers for reliable power distribution in government and public projects.",
     overview:
       "Specialists in transformer erection, augmentation, diagnostics, and preventive maintenance to maximize uptime and asset life.",
-    image: "/repair.png",
+    image: "/services/transformer.jpeg",
     category: "Power Equipment",
     features: [
       "Transformer Installation (up to 200 kVA)",
@@ -740,7 +740,7 @@ export const mockServices: Service[] = [
       "Installation and jointing of HT/LT overhead lines and underground cables for robust power distribution networks.",
     overview:
       "End-to-end erection of overhead lines and UG cabling with joints/terminations, route surveys, and safety supervision.",
-    image: "/cableconductor.png",
+    image: "/services/cable.jpeg",
     category: "Power Distribution",
     features: [
       "HT/LT Overhead Line Erection (11/33 kV)",
@@ -812,7 +812,7 @@ export const mockServices: Service[] = [
       "Complete turnkey solutions for large-scale electrical infrastructure, including substations, distribution networks, and civil works.",
     overview:
       "Design-build-execute for substations, feeders, and civil auxiliaries. We manage drawings, procurement, execution, and compliance end-to-end.",
-    image: "/tower.png",
+    image: "/services/turnkey.jpeg",
     category: "Infrastructure Development",
     features: [
       "Substation Design & Construction (33/11 kV)",
@@ -884,7 +884,7 @@ export const mockServices: Service[] = [
       "High-tension power supply setups for electric vehicle charging stations, supporting clean mobility initiatives.",
     overview:
       "We design and deliver HT connections, transformers, switchgear, and cabling for fast-charging hubs and depot charging.",
-    image: "/hero3.png",
+    image: "/services/ev.png",
     category: "Clean Energy",
     features: [
       "HT Equipment & Cabling Installation",
@@ -956,7 +956,7 @@ export const mockServices: Service[] = [
       "Energy audits, safety assessments, and regulatory liaisoning to optimize and ensure compliant electrical systems.",
     overview:
       "Diagnostic assessments to reduce energy costs, improve safety, and align with regulations—backed by actionable reports.",
-    image: "/repair.png",
+    image: "/services/repair.png",
     category: "Consulting Services",
     features: [
       "Energy Efficiency Audits",
@@ -1028,7 +1028,7 @@ export const mockServices: Service[] = [
       "Dedicated high-voltage systems for agricultural consumers to reduce losses and improve voltage regulation.",
     overview:
       "Deploy HVDS with dedicated transformers for agricultural feeders to minimize technical losses and enhance reliability.",
-    image: "/solar.jpeg",
+    image: "/services/hvd.jpeg",
     category: "Agricultural Power",
     features: [
       "11/33 kV Dedicated Line Installation",
@@ -1100,7 +1100,7 @@ export const mockServices: Service[] = [
       "Strengthening power infrastructure for rural and urban areas under government schemes for reliable electricity access.",
     overview:
       "We execute scheme-based electrification—new lines, metering, and household connections—improving access and reliability. Our teams coordinate with DISCOMs for planning, execution, and smooth closure.",
-    image: "/hero2.png",
+    image: "/services/electrification.jpeg",
     category: "Infrastructure Development",
     features: [
       "New/Augmented 11/22 kV & LT Lines",
@@ -1167,7 +1167,7 @@ export const mockServices: Service[] = [
       "Construction and civil engineering support for electrical infrastructure projects, including substations and lines.",
     overview:
       "We execute substation foundations, cable trenches, equipment plinths, boundary walls, and enclosures, coordinated with electrical packages to ensure continuous workfronts and quality finishes.",
-    image: "/hero1.png",
+    image: "/services/civil.jpeg",
     category: "Civil Engineering",
     features: [
       "Substation Foundations & Enclosures",
