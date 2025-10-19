@@ -340,7 +340,7 @@ export default function CertificatesPage() {
       )}
 
       {/* Awards */}
-      <section className="py-16 bg-muted/50">
+      {/* <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
@@ -384,10 +384,10 @@ export default function CertificatesPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Professional Memberships */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className={`text-3xl font-bold mb-4 ${dmSerif.className}`}>
@@ -431,7 +431,7 @@ export default function CertificatesPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Certifications Matter */}
       <section className="py-16 bg-muted/50">
@@ -460,8 +460,8 @@ export default function CertificatesPage() {
             </div>
             <div className="relative">
               <img
-                src="/blog3.jpeg?height=400&width=500"
-                alt="Quality certification process"
+                src="/certificate/handshake.png?height=400&width=500"
+                alt="Handshake image"
                 className="rounded-lg shadow-lg"
               />
               <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg">
