@@ -180,11 +180,14 @@ export default function ProjectsPage() {
                 <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <Link href={href} aria-label={`View details about ${project.name}`}>
                     <div className="relative overflow-hidden rounded-t-lg">
-                      <img
-                        src={project.image || "/project-default.jpg?height=200&width=400"}
-                        alt={project.name}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                      <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-lg">
+  <img
+    src={project.image || "/project-default.jpg?height=200&width=400"}
+    alt={project.name}
+    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+  />
+</div>
+
                       <div className="absolute top-4 left-4 flex gap-2">
                         <Badge className="bg-primary/90 text-primary-foreground">{project.category}</Badge>
                         <Badge
