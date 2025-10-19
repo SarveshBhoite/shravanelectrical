@@ -68,22 +68,31 @@ const CompanyIntro: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                size="lg"
-                className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover-lift hover-glow transition-all duration-300 shadow-md"
-              >
-                Get Quote <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+  {/* 🔹 Get Quote Button - Redirects to Contact Page */}
+  <Button
+    asChild
+    size="lg"
+    className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-300 shadow-md"
+  >
+    <a href="/contact">
+      Get Quote <ArrowRight className="ml-2 h-5 w-5 inline" />
+    </a>
+  </Button>
 
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-8 py-4 text-primary border-primary rounded-lg font-semibold hover:bg-primary hover:text-primary hover-lift transition-all duration-300"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Call Now
-              </Button>
-            </div>
+  {/* 🔹 Call Now Button - Initiates Direct Phone Call */}
+  <Button
+    asChild
+    size="lg"
+    variant="outline"
+    className="px-8 py-4 text-primary border-primary rounded-lg font-semibold hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1"
+  >
+    <a href="tel:+919923799555">
+      <Phone className="mr-2 h-5 w-5 inline" />
+      Call Now
+    </a>
+  </Button>
+</div>
+
 
             <div className="grid grid-cols-3 gap-4 pt-8">
               {[

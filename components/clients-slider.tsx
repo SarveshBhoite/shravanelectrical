@@ -144,9 +144,9 @@ export function ClientsSlider() {
   }`}
 >
   <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
-    Sister Concern{" "}
+    Sister{" "}
     <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-      Clients
+      Concerns
     </span>
   </h3>
   <p className="text-lg text-gray-400 max-w-xl mx-auto mb-12">

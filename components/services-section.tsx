@@ -116,8 +116,10 @@ export function ServicesSection() {
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 hover:scale-105 transition-all duration-300 shadow-md"
               style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
             >
+              <a href="/services" className="flex items-center">
               Learn More
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
 

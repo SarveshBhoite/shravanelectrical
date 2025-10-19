@@ -142,7 +142,7 @@ export default function ProjectDetailClient({ project, moreProjects }: ProjectDe
           <Button
             asChild
             variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-transform"
+            className="border-primary text-primary hover:bg-primary hover:text-black hover:scale-105 transition-transform"
           >
             <Link href="/projects">Explore Other Projects</Link>
           </Button>
