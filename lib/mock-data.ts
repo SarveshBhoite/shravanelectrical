@@ -261,7 +261,7 @@ export const mockProjects: Project[] = [
     name: "Solar Photovoltaic Power Stations - PM-KUSUM MSKVY 2.0",
     description:
       "As a Solar Power Developer under the PM-KUSUM MSKVY 2.0 Scheme, we are developing solar photovoltaic power generating stations with a total capacity of 23 MW (AC) across Maharashtra. The project involves site assessment, engineering, procurement, installation, and commissioning of solar plants, along with grid integration and performance monitoring. This initiative promotes renewable energy adoption, supports agricultural sustainability by powering irrigation systems, and reduces carbon emissions in rural areas. Our team employs advanced solar technologies and SCADA systems to ensure optimal performance and reliability.",
-    image: "/projects/project15.png", // Replaced with service image
+    image: "/projects/project15.png", 
     category: "Solar",
     completedDate: "TBD",
     location: "Maharashtra, India",
@@ -275,7 +275,7 @@ export const mockProjects: Project[] = [
     name: "Substation Maintenance - Nanded Division",
     description:
       "This ongoing project focuses on breakdown maintenance for substations in Nanded Division under O&M Nanded Circle. Our team is conducting diagnostics, repairs, and preventive maintenance for critical substation equipment, including transformers, switchgear, and control systems. The initiative ensures minimal downtime, enhances grid reliability, and maintains consistent power supply for urban and rural consumers in Nanded Zone. Advanced diagnostic tools and skilled technicians ensure high-quality maintenance and compliance with safety standards.",
-    image: "/nandeddivision/project1.jpeg", // Replaced with service image
+    image: "/projects/project16.png", 
     category: "Substation Maintenance",
     completedDate: "TBD",
     location: "Nanded Division, Nanded Zone, Maharashtra, India",

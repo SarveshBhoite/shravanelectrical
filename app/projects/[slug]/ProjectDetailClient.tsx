@@ -46,77 +46,144 @@ export default function ProjectDetailClient({ project, moreProjects }: ProjectDe
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
       </section>
-      <section className="py-12 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="mb-6">
-            <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-              <ArrowLeft className="h-4 w-4" />
-              Back to all projects
-            </Link>
+      <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-accent/10 overflow-hidden">
+  <div className="container mx-auto px-4">
+    <div className="mb-6">
+      <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+        <ArrowLeft className="h-4 w-4" />
+        Back to all projects
+      </Link>
+    </div>
+
+    {/* Split Layout */}
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* LEFT — Text Content */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="max-w-2xl"
+      >
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
+          <div className="inline-flex items-center gap-2">
+            <Calendar className="h-4 w-4" />
+            <span>
+              Status: {project.status}{" "}
+              {project.completedDate !== "TBD" ? `(${project.completedDate})` : ""}
+            </span>
           </div>
-          <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-              <div className="inline-flex items-center gap-2 animate-fade-in-up">
-                <Calendar className="h-4 w-4" />
-                <span>Status: {project.status} {project.completedDate !== "TBD" ? `(${project.completedDate})` : ""}</span>
-              </div>
-              <div className="inline-flex items-center gap-2 animate-fade-in-up">
-                <MapPin className="h-4 w-4" />
-                <span>{project.location}</span>
-              </div>
-              <div className="flex gap-2 ml-auto animate-fade-in-up">
-                <Badge variant="outline">{project.category}</Badge>
-                <Badge
-                  className={
-                    project.status === "Completed"
-                      ? "bg-green-600/90 text-white"
-                      : project.status === "Work in Hand"
-                      ? "bg-blue-600/90 text-white"
-                      : "bg-orange-600/90 text-white"
-                    }
-                >
-                  {project.status}
-                </Badge>
-              </div>
+          <div className="inline-flex items-center gap-2">
+            <MapPin className="h-4 w-4" />
+            <span>{project.location}</span>
+          </div>
+          <div className="flex gap-2 ml-auto">
+            <Badge variant="outline">{project.category}</Badge>
+            <Badge
+              className={
+                project.status === "Completed"
+                  ? "bg-green-600/90 text-white"
+                  : project.status === "Work in Hand"
+                  ? "bg-blue-600/90 text-white"
+                  : "bg-orange-600/90 text-white"
+              }
+            >
+              {project.status}
+            </Badge>
+          </div>
+        </div>
+
+        <h1
+          className={`text-4xl md:text-5xl font-bold tracking-tight mb-4 ${dmSerif.className}`}
+        >
+          {project.name}
+        </h1>
+        <p className="text-lg text-foreground/90 leading-relaxed mb-6">
+          {project.description}
+        </p>
+
+        <div className="border-t border-border pt-6">
+          <h2 className={`text-2xl font-bold mb-4 ${dmSerif.className}`}>
+            Project Details
+          </h2>
+          <div className="grid gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <FileText className="h-4 w-4" />
+              <span>
+                <strong>Work Order No:</strong> {project.workOrderNo}
+              </span>
             </div>
-            <h1 className={`text-3xl md:text-5xl font-bold tracking-tight mb-4 animate-slide-in-left ${dmSerif.className}`}>
-              {project.name}
-            </h1>
-            <p className="text-lg text-foreground/90 leading-relaxed mb-6 animate-fade-in-up delay-200">
-              {project.description}
-            </p>
-            <div className="border-t border-border pt-6">
-              <h2 className={`text-2xl font-bold mb-4 ${dmSerif.className}`}>Project Details</h2>
-              <div className="grid gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  <span><strong>Work Order No:</strong> {project.workOrderNo}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  <span><strong>Year of Execution:</strong> {project.yearOfExecution}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <IndianRupee className="h-4 w-4" />
-                  <span><strong>Value (Rs. Lakhs):</strong> {project.valueInLakhs.toLocaleString()}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Tag className="h-4 w-4" />
-                  <span><strong>Category:</strong> {project.category}</span>
-                </div>
-              </div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              <span>
+                <strong>Year of Execution:</strong> {project.yearOfExecution}
+              </span>
             </div>
-            <div className="mt-8 flex gap-3 animate-slide-in-right delay-300">
-              <Button asChild className="hover:scale-105 transition-transform">
-                <Link href="/contact">Start Your Project</Link>
-              </Button>
-              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-transform">
-                <Link href="/projects">Explore Other Projects</Link>
-              </Button>
+            <div className="flex items-center gap-2">
+              <IndianRupee className="h-4 w-4" />
+              <span>
+                <strong>Value (Rs. Lakhs):</strong>{" "}
+                {project.valueInLakhs.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Tag className="h-4 w-4" />
+              <span>
+                <strong>Category:</strong> {project.category}
+              </span>
             </div>
           </div>
         </div>
-      </section>
+
+        <div className="mt-8 flex gap-3">
+          <Button asChild className="hover:scale-105 transition-transform">
+            <Link href="/contact">Start Your Project</Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-transform"
+          >
+            <Link href="/projects">Explore Other Projects</Link>
+          </Button>
+        </div>
+      </motion.div>
+
+      {/* RIGHT — Floating Image */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative hidden lg:block"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative rounded-2xl shadow-2xl overflow-hidden group"
+        >
+          <Image
+            src={project.image || "/project-default.jpg?height=600&width=800"}
+            alt={project.name}
+            width={700}
+            height={500}
+            className="rounded-2xl object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            className="absolute bottom-6 right-6 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-white shadow-md"
+          >
+            Featured Project
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
       <section className="py-14">
         <div className="container mx-auto px-4">
           <div className="flex items-end justify-between mb-8">
