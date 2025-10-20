@@ -246,7 +246,7 @@ export default function ServicesPage() {
                     <img
                       src={service.image || "/blog4.jpeg?height=200&width=400"}
                       alt={service.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-65 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
                       {service.category && (

@@ -740,7 +740,7 @@ export const mockServices: Service[] = [
       "Installation and jointing of HT/LT overhead lines and underground cables for robust power distribution networks.",
     overview:
       "End-to-end erection of overhead lines and UG cabling with joints/terminations, route surveys, and safety supervision.",
-    image: "/services/erection.jpeg",
+    image: "/services/cables.png",
     category: "Power Distribution",
     features: [
       "HT/LT Overhead Line Erection (11/33 kV)",
@@ -1100,7 +1100,7 @@ export const mockServices: Service[] = [
       "Strengthening power infrastructure for rural and urban areas under government schemes for reliable electricity access.",
     overview:
       "We execute scheme-based electrification—new lines, metering, and household connections—improving access and reliability. Our teams coordinate with DISCOMs for planning, execution, and smooth closure.",
-    image: "/services/ruralurban.jpeg",
+    image: "/services/rural.png",
     category: "Infrastructure Development",
     features: [
       "New/Augmented 11/22 kV & LT Lines",
@@ -1167,7 +1167,7 @@ export const mockServices: Service[] = [
       "Construction and civil engineering support for electrical infrastructure projects, including substations and lines.",
     overview:
       "We execute substation foundations, cable trenches, equipment plinths, boundary walls, and enclosures, coordinated with electrical packages to ensure continuous workfronts and quality finishes.",
-    image: "/services/civil.jpeg",
+    image: "/services/civilservice.png",
     category: "Civil Engineering",
     features: [
       "Substation Foundations & Enclosures",
