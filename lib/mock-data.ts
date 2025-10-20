@@ -662,7 +662,7 @@ export const mockServices: Service[] = [
   },
   {
     id: "3",
-    title: "Transformer Installation & Maintenance",
+    title: "Transformer Manufacturing & Maintenance",
     slug: "transformer-installation-maintenance",
     description:
       "Supply, installation, and repair of transformers for reliable power distribution in government and public projects.",
@@ -740,7 +740,7 @@ export const mockServices: Service[] = [
       "Installation and jointing of HT/LT overhead lines and underground cables for robust power distribution networks.",
     overview:
       "End-to-end erection of overhead lines and UG cabling with joints/terminations, route surveys, and safety supervision.",
-    image: "/services/cable.jpeg",
+    image: "/services/erection.jpeg",
     category: "Power Distribution",
     features: [
       "HT/LT Overhead Line Erection (11/33 kV)",
@@ -1100,7 +1100,7 @@ export const mockServices: Service[] = [
       "Strengthening power infrastructure for rural and urban areas under government schemes for reliable electricity access.",
     overview:
       "We execute scheme-based electrification—new lines, metering, and household connections—improving access and reliability. Our teams coordinate with DISCOMs for planning, execution, and smooth closure.",
-    image: "/services/electrification.jpeg",
+    image: "/services/ruralurban.jpeg",
     category: "Infrastructure Development",
     features: [
       "New/Augmented 11/22 kV & LT Lines",
