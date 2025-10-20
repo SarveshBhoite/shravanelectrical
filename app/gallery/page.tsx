@@ -105,7 +105,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="absolute top-10 left-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
+          className="hidden md:block absolute top-10 left-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image
             src="/hero1.png"
@@ -118,7 +118,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="absolute top-10 right-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
+          className="hidden md:block absolute top-10 right-8 w-80 h-70 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image
             src="/real/gallery1.jpeg"
@@ -131,7 +131,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="absolute bottom-8 left-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
+          className="hidden md:block absolute bottom-8 left-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image
             src="/real/gallery2.jpeg"
@@ -144,7 +144,7 @@ export default function GalleryPage() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="absolute bottom-8 right-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
+          className="hidden md:block absolute bottom-8 right-8 w-100 h-90 overflow-hidden rounded-xl shadow-lg z-10"
         >
           <Image
             src="/repair.png"
