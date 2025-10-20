@@ -276,7 +276,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       )}
 
       {/* Projects Related to This Service */}
-      {!!projects.length && (
+      {/* {!!projects.length && (
         <section className="py-16">
           <div className="container mx-auto px-4">
             <motion.div
@@ -341,7 +341,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             </motion.div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Benefits / Stats Band */}
       {(!!benefits.length || !!stats.length) && (
