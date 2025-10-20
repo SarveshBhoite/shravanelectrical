@@ -665,7 +665,7 @@ export const mockServices: Service[] = [
     title: "Transformer Manufacturing & Maintenance",
     slug: "transformer-installation-maintenance",
     description:
-      "Supply, installation, and repair of transformers for reliable power distribution in government and public projects.",
+      "Supply, installation, and repair of transformers for reliable power distribution in government and public projects efficiently.",
     overview:
       "Specialists in transformer erection, augmentation, diagnostics, and preventive maintenance to maximize uptime and asset life.",
     image: "/services/transformer.jpeg",

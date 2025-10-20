@@ -15,37 +15,63 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
+import { easeInOut, easeOut, motion, Variants } from "framer-motion";
 import { DM_Serif_Display } from "next/font/google";
+
 
 // Elegant serif for headings
 const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
 // Animation variants
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5, ease: easeOut } 
+  },
 };
 
-const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
+const stagger: Variants = {
+  hidden: {},
+  visible: { 
+    transition: { 
+      staggerChildren: 0.08, 
+      ease: easeInOut 
+    } 
+  },
+};
 
 const bounceInLeft: Variants = {
   hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: "spring", stiffness: 120, damping: 15, duration: 0.6 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      type: "spring", 
+      stiffness: 120, 
+      damping: 15, 
+      duration: 0.6, 
+      ease: easeOut 
+    } 
   },
 };
 
 const bounceInRight: Variants = {
   hidden: { opacity: 0, x: 100 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: "spring", stiffness: 120, damping: 15, duration: 0.6 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      type: "spring", 
+      stiffness: 120, 
+      damping: 15, 
+      duration: 0.6, 
+      ease: easeOut 
+    } 
   },
 };
+
 
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
