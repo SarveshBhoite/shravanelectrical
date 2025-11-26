@@ -130,6 +130,9 @@ const directors = [
 // Staff data
 const staff = [
   // --- Existing Staff ---
+  { name: "Dr.Riddhi B.Kanthewad", qualification: "Operation", designation: "Managing Head" },
+  { name: "Riddhi B.Kanthewad", qualification: "Civil Engg.& HR Operation", designation: "Managing Head" },
+  { name: "Shravan B.Kanthewad", qualification: "IT & Technical Operation", designation: "Executive Head" },
   { name: "Mrs. Kavita Matke", qualification: "M.Com (Business Management & Accounting)", designation: "Tendering & QS Head" },
   { name: "Prakash Reddy", qualification: "BE (Electrical)", designation: "Sr .Engineer" },
   { name: "Miss. Sony Suture", qualification: "BE (Computer)", designation: "Q.S Engineer" },
@@ -155,6 +158,7 @@ const staff = [
   { name: "Hanmant M. Kachkalwar", qualification: "ITI Electrical", designation: "Assistant of Store Manager" },
   { name: "Shoib Shah", qualification: "B.E Electrical", designation: "Billing and Invoicing" },
   { name: "Sumedh R. Gaddahane", qualification: "B.Tech", designation: "Project Administrator" },
+
 ];
 
 
@@ -707,130 +711,7 @@ export default function AboutPage() {
       </section>
 
       {/* Extended Leadership Team (Spotlight layout) */}
-<section className="py-20 bg-gradient-to-tr from-background via-primary/5 to-accent/10 relative overflow-hidden">
-  <div className="container mx-auto px-4 relative z-10">
-    <div className="text-center mb-14">
-      <motion.h2
-        variants={bounceInLeft}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight ${dmSerif.className}`}
-      >
-        <span className="bg-black bg-clip-text text-transparent">
-          Leadership Team
-        </span>
-      </motion.h2>
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        className="text-muted-foreground max-w-2xl mx-auto"
-      >
-        The driving force behind Shravan Electricals’ innovation, growth, and operational excellence.
-      </motion.p>
-    </div>
 
-    <motion.div
-      variants={staggerParent}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="space-y-16"
-    >
-      {[
-        {
-          name: "Dr. Riddhi B. Kanthewad",
-          position: "Managing Director (Operation)",
-          info: "Leads strategic operations, ensuring innovation and organizational excellence across the company.",
-          quote: "Leadership with vision creates progress that lasts.",
-          image: "/director3.png",
-        },
-        {
-          name: "Siddhi B. Kanthewad",
-          position: "Managing Director – Civil Engg. & HR",
-          info: "Heads HR and civil divisions with people-centric leadership and a focus on operational synergy.",
-          quote: "Empowering people and processes to deliver excellence.",
-          image: "/director4.png",
-        },
-        {
-          name: "Shravan Balaji Kanthewad",
-          position: "Executive Director – IT & Technical",
-          info: "Oversees IT and technical operations with emphasis on automation and modern infrastructure.",
-          quote: "Technology and precision are the foundation of our future.",
-          image: "/director5.png",
-        },
-      ].map((leader, index) => {
-        const reverse = index % 2 === 1; // alternate layout
-        return (
-          <motion.div
-            key={leader.name}
-            variants={fadeUp}
-            className="grid lg:grid-cols-12 gap-8 items-center"
-          >
-            {/* Visual */}
-            <div className={`relative flex justify-center ${reverse ? "lg:order-2 lg:col-span-5" : "lg:col-span-5"}`}>
-              {/* Gradient bar behind the portrait */}
-              <div className="absolute -inset-x-24 top-1/2 -translate-y-1/2 h-24 rounded-full bg-gradient-to-r from-primary/15 via-accent/15 to-primary/10 blur-2xl opacity-70 pointer-events-none" />
-              {/* Rotating conic ring */}
-              <div className="relative w-44 h-44 md:w-56 md:h-56">
-                <div
-                  className="absolute -inset-3 rounded-full animate-spin-slow opacity-80"
-                  style={{
-                    background:
-                      "conic-gradient(from 0deg, rgba(99,102,241,0.35), transparent 40%, transparent 70%, rgba(20,184,166,0.35))",
-                    filter: "drop-shadow(0 0 18px rgba(99,102,241,0.25))",
-                  }}
-                />
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl bg-background/40 backdrop-blur">
-                  <Image
-                    src={leader.image}
-                    alt={leader.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Text */}
-            <div className={`${reverse ? "lg:order-1 lg:col-span-7" : "lg:col-span-7"}`}>
-              <div className="relative rounded-2xl p-6 md:p-7 border bg-background/70 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_52px_rgba(0,0,0,0.12)] transition-shadow">
-                {/* Decorative corner glows */}
-                <span className="pointer-events-none absolute -top-2 -left-2 w-10 h-10 rounded-full bg-primary/15 blur-xl" />
-                <span className="pointer-events-none absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-accent/15 blur-xl" />
-
-                <h3 className={`text-2xl md:text-3xl font-bold tracking-tight ${dmSerif.className}`}>
-                  {leader.name}
-                </h3>
-                <p className="text-primary font-semibold mt-1">{leader.position}</p>
-                <p className="text-muted-foreground mt-3">{leader.info}</p>
-
-                {/* Quote */}
-                <div className="mt-4 pl-4 border-l-4 border-primary/30">
-                  <p className="italic text-sm text-foreground/80">“{leader.quote}”</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
-      })}
-    </motion.div>
-  </div>
-
-  {/* soft background shapes */}
-  <div className="pointer-events-none absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-primary/10 blur-3xl" />
-  <div className="pointer-events-none absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-accent/10 blur-3xl" />
-
-  <style jsx>{`
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .animate-spin-slow { animation: spin-slow 24s linear infinite; }
-  `}</style>
-</section>
 
       {/* Horizontal Timeline */}
       <section className="py-16 bg-muted/50">
