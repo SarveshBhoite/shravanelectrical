@@ -1,11 +1,11 @@
-// This file is the Client Component UI
+// app/services/[slug]/ServiceContent.tsx (Client Component - UI Layer)
 "use client";
 
 import { Footer } from "@/components/footer";
 import { StickyButtons } from "@/components/sticky-buttons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-// import { services } from "@/lib/mock-data"; // <-- REMOVED: Data will be passed via props
+// REMOVED: import { services } from "@/lib/mock-data"; 
 import {
   CheckCircle2,
   Shield,
@@ -23,7 +23,7 @@ import { Navbar } from "@/components/navbar";
 // Elegant serif for headings
 const dmSerif = DM_Serif_Display({ subsets: ["latin"], weight: "400" });
 
-// Animation variants
+// Animation variants (Keeping your definitions)
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
@@ -74,7 +74,7 @@ const bounceInRight: Variants = {
 };
 
 
-// You'll need to define the type for Service (or use 'any' if you prefer)
+// You'll need to define the type for ServiceData based on your mockdata.ts
 type ServiceData = {
     title: string;
     overview?: string;
@@ -87,17 +87,14 @@ type ServiceData = {
     benefits?: string[];
     stats?: { value: string; label: string }[];
     faqs?: { q: string; a: string }[];
-    // Include other properties from your mock data if needed
+    projects?: any[]; // Simplified type for related projects
 };
 
-// Update the function signature to accept the service data as a prop
+// Component now takes the fully fetched `service` data as a prop
 export default function ServiceContent({ service }: { service: ServiceData | undefined }) {
-  // const { slug } = params; // <-- REMOVED: No longer needs params
-  // const service: any = services.find((s: any) => (s.slug ?? slugify(s.title)) === slug); // <-- REMOVED: Data is passed as prop
 
   if (!service) {
     return (
-      // ... Service Not Found UI logic (keep the same)
       <div className="min-h-screen bg-background">
         <Navbar />
         <motion.div
@@ -127,7 +124,8 @@ export default function ServiceContent({ service }: { service: ServiceData | und
     );
   }
 
-  const projects = (service as any).projects ?? []; // Casting back to 'any' for the sake of using 'projects'
+  // Data extraction is now safe because we know 'service' exists
+  const projects = (service as any).projects ?? []; 
   const highlights = service.highlights ?? [];
   const scope = service.scope ?? service.features ?? [];
   const benefits = service.benefits ?? [];
@@ -136,11 +134,9 @@ export default function ServiceContent({ service }: { service: ServiceData | und
 
   return (
     <div className="min-h-screen bg-background">
-      {/* <Navbar /> REMOVED: Navbar should be in the layout or server component*/}
-
+      <Navbar /> 
+      
       {/* Hero */}
-      {/* ... rest of the component is the same ... */}
-       <Navbar /> {/* KEPT HERE to satisfy the UI structure you had */}
       <section className="pt-24 pb-12 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container mx-auto px-4">
           <motion.div
@@ -293,6 +289,8 @@ export default function ServiceContent({ service }: { service: ServiceData | und
         </section>
       )}
 
+      {/* Projects Related to This Service (Keep commented out if not ready) */}
+
       {/* Benefits / Stats Band */}
       {(!!benefits.length || !!stats.length) && (
         <section className="py-14 bg-gradient-to-br from-primary/10 via-background to-accent/10">
@@ -421,6 +419,3 @@ export default function ServiceContent({ service }: { service: ServiceData | und
     </div>
   );
 }
-
-// NOTE: generateStaticParams is moved to the server component page.tsx
-// to resolve the 'use client' conflict.

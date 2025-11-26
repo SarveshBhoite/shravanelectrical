@@ -59,6 +59,10 @@ export interface Stats {
   branches: number;
 }
 
+
+export const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 export const mockProjects: Project[] = [
   {
     id: "1",
