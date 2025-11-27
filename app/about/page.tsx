@@ -111,7 +111,7 @@ const directors = [
     position: "Managing Director | Electrical Engineer",
     info:
       "Founder-director leading Shravan Electricals since 2009. With a Polytechnic background in Electrical Engineering, he drives turnkey electrification and contracting—focusing on quality, safety, and on-time delivery across diverse electrical projects.",
-    image: "/director1.png?height=1000&width=1000",
+    image: "/about/director1.jpeg?height=1000&width=1000",
     quote:
       "Our commitment is to deliver time-bound, cost-efficient, and safe electrical solutions.",
   },
@@ -120,7 +120,7 @@ const directors = [
     position: "Director | BE (Computer Eng.)",
     info:
       "Oversees operations, digital processes, tendering, and compliance. With a BE in Computer Engineering, she champions process efficiency, transparent communication, and customer-centric service.",
-    image: "/director2.png?height=1000&width=1000",
+    image: "/about/director2.jpeg?height=1000&width=1000",
     quote:
       "Clear communication and accountability are at the core of every successful project.",
   },
