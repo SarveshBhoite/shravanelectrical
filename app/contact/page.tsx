@@ -54,7 +54,7 @@ const staggerText: Variants = {
 };
 
 const companyInfo = {
-  phone: "+918888888765",
+  phone: "+917757873588",
   email: "shravan.electrical2010@gmail.com",
 };
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
         projectType: formData.projectType,
         budget: formData.budget,
         message: formData.message,
-        to_email: "rajb81008@gmail.com", // 💌 receiving address
+        to_email: "shravan.electrical2010@gmail.com", // 💌 receiving address
       };
 
       const res = await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -157,7 +157,7 @@ export default function ContactPage() {
     {
       title: "Head Office",
       address: "Janki Nagar, Hanuman Gadh, Nanded, Maharashtra 431604",
-      phone: "+918888888765",
+      phone: "+917757873588",
       email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
       telefax: "02462-220025",

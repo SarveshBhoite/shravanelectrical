@@ -42,7 +42,7 @@ export function ContactSection() {
         phone: formData.phone,
         subject: formData.subject,
         message: formData.message,
-        to_email: "rajb81008@gmail.com", // ✅ your destination email
+        to_email: "shravan.electrical2010@gmail.com", // ✅ your destination email
       }
 
       const res = await emailjs.send(serviceId, templateId, templateParams, publicKey)
@@ -97,7 +97,7 @@ export function ContactSection() {
                   </div>
                   <h4 className="font-semibold text-white mb-2">Call Us</h4>
                   <p className="text-blue-100 text-sm">
-                    <a href="tel:+918888888765">+91 88888 88765</a>
+                    <a href="tel:+917757873588">+91 88888 88765</a>
                   </p>
                   <p className="text-blue-100 text-sm">
                     <a href="tel:+919923799555">+91 99237 99555</a>

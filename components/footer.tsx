@@ -9,7 +9,7 @@ const companyInfo = {
   name: "Shravan Electrical Contractor PVT LTD",
   description: "Leading electrical contractor delivering reliable and sustainable solutions since 2009",
   address: "Janki Nagar, Hanuman Gadh, Nanded, Maharashtra 431604",
-  phone: "+918888888765",
+  phone: "+917757873588",
   email: "shravan.electrical2010@gmail.com",
   telefax: "02462-220025",
   directors: [
