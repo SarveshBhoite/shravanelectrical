@@ -86,7 +86,7 @@ const CompanyIntro: React.FC = () => {
     variant="outline"
     className="px-8 py-4 text-primary border-primary rounded-lg font-semibold hover:bg-primary hover:text-black transition-all duration-300 hover:-translate-y-1"
   >
-    <a href="tel:+919923799555">
+    <a href="tel:+917757873588">
       <Phone className="mr-2 h-5 w-5 inline" />
       Call Now
     </a>

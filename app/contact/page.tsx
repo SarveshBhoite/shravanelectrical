@@ -147,8 +147,8 @@ export default function ContactPage() {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Quick chat for urgent queries",
-      value: "+919923799555",
-      action: "https://wa.me/919923799555",
+      value: "+917757873588",
+      action: "https://wa.me/917757873588",
       available: "Mon-Sat, 9 AM - 9 PM",
     },
   ];
@@ -166,7 +166,7 @@ export default function ContactPage() {
       title: "Pune Branch",
       address:
         "Shikrapur, c/o Om Sai Enterprises, near old Bridge, Tq. Shirur, Dist. Pune, Maharashtra",
-      phone: "+919923799555",
+      phone: "+917757873588",
       email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },
@@ -174,7 +174,7 @@ export default function ContactPage() {
       title: "Mumbai Branch",
       address:
         "Pratiksha Nagar, Sayan Koliwad Building No. L11 B, Plot No. 103, Mumbai, Maharashtra",
-      phone: "+919923799555",
+      phone: "+917757873588",
       email: "shravan.electrical2010@gmail.com",
       hours: "Mon-Sat: 9:00 AM - 6:00 PM",
     },

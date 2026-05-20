@@ -289,7 +289,7 @@ export default function ServicesPage() {
               variant="outline"
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
             >
-              <Link href="tel:+919923799555">
+              <Link href="tel:+917757873588">
                 <Phone className="h-4 w-4 mr-2" />
                 Call Now
               </Link>
